@@ -126,6 +126,7 @@ const honors = [
 
 function Orbit() {
   const orbitDuration = 18;
+  const orbitRadius = 'min(42vw, 190px)';
   const items = useMemo(
     () =>
       [
@@ -151,7 +152,10 @@ function Orbit() {
   );
 
   return (
-    <div className="relative mx-auto h-[30rem] w-[30rem] max-w-full overflow-hidden">
+    <div className="relative mx-auto h-[30rem] w-full max-w-[30rem]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[82%] w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/20" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15" />
+
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
@@ -161,12 +165,13 @@ function Orbit() {
           <motion.div
             key={item.name}
             className="absolute left-1/2 top-1/2"
-            style={{ transform: `rotate(${item.angle}deg) translateY(-205px)` }}
+            style={{ transform: `rotate(${item.angle}deg) translateY(calc(-1 * ${orbitRadius}))` }}
           >
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
-              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/85 px-3 py-1 text-[11px] text-cyan-100 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
+              style={{ transform: `translateX(-50%) rotate(${-item.angle}deg)` }}
+              className="rounded-full border border-cyan-300/50 bg-slate-900/85 px-3 py-1 text-[11px] text-cyan-100 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
             >
               {item.name}
             </motion.div>
