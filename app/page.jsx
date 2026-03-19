@@ -124,107 +124,82 @@ const honors = [
   },
 ];
 
-const skillNodes = [
-  { name: 'Python', group: 'Languages', x: 8, y: 18 },
-  { name: 'Bash', group: 'Languages', x: 18, y: 34 },
-  { name: 'C++', group: 'Languages', x: 30, y: 16 },
-  { name: 'Git', group: 'Version Control', x: 44, y: 12 },
-  { name: 'GitHub', group: 'Version Control', x: 58, y: 16 },
-  { name: 'GitHub Actions', group: 'CI/CD', x: 74, y: 22 },
-  { name: 'Docker', group: 'Containers', x: 84, y: 36 },
-  { name: 'ESP32', group: 'Hardware', x: 88, y: 54 },
-  { name: 'Semtech SX1278 RA-02', group: 'Hardware', x: 78, y: 68 },
-  { name: 'React', group: 'Frontend', x: 64, y: 80 },
-  { name: 'FastAPI', group: 'Backend', x: 50, y: 86 },
-  { name: 'CMU Multimodal SDK', group: 'AI/ML', x: 34, y: 80 },
-  { name: 'TorchGeo', group: 'AI/ML', x: 22, y: 72 },
-  { name: 'Power Apps', group: 'Enterprise', x: 12, y: 58 },
-  { name: 'Power Automate', group: 'Enterprise', x: 10, y: 44 },
-  { name: 'Dataverse', group: 'Enterprise', x: 20, y: 56 },
-  { name: 'Microsoft 365 Integration', group: 'Enterprise', x: 28, y: 44 },
+const techProjectionLanes = [
+  {
+    title: 'Languages',
+    accent: 'border-cyan-300/35 bg-cyan-500/5',
+    skills: ['Python', 'Bash', 'C++'],
+  },
+  {
+    title: 'Version Control + CI/CD',
+    accent: 'border-sky-300/35 bg-sky-500/5',
+    skills: ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
+  },
+  {
+    title: 'AI + Application',
+    accent: 'border-indigo-300/35 bg-indigo-500/5',
+    skills: ['React', 'FastAPI', 'CMU Multimodal SDK', 'TorchGeo'],
+  },
+  {
+    title: 'Hardware + Enterprise',
+    accent: 'border-emerald-300/35 bg-emerald-500/5',
+    skills: ['ESP32', 'Semtech SX1278 RA-02', 'Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365 Integration'],
+  },
 ];
 
-const skillLinks = [
-  ['Python', 'FastAPI'],
-  ['Git', 'GitHub'],
-  ['GitHub', 'GitHub Actions'],
-  ['GitHub Actions', 'Docker'],
-  ['ESP32', 'Semtech SX1278 RA-02'],
-  ['React', 'FastAPI'],
-  ['CMU Multimodal SDK', 'TorchGeo'],
-  ['Power Apps', 'Power Automate'],
-  ['Power Automate', 'Dataverse'],
-  ['Dataverse', 'Microsoft 365 Integration'],
-  ['Python', 'CMU Multimodal SDK'],
-  ['FastAPI', 'TorchGeo'],
-];
-
-function SkillsConstellation() {
-  const nodeByName = Object.fromEntries(skillNodes.map((node) => [node.name, node]));
-  const groupedSkills = {
-    Languages: ['Python', 'Bash', 'C++'],
-    'Version Control + CI/CD': ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
-    'AI + Application': ['React', 'FastAPI', 'CMU Multimodal SDK', 'TorchGeo'],
-    'Hardware + Enterprise': ['ESP32', 'Semtech SX1278 RA-02', 'Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365 Integration'],
-  };
-
+function SkillsProjectionDeck() {
   return (
-    <div className="space-y-5">
-      <div className="relative hidden h-[31rem] rounded-2xl border border-cyan-500/20 bg-slate-950/35 p-4 md:block">
-        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden="true">
-          {skillLinks.map(([fromName, toName], index) => {
-            const from = nodeByName[fromName];
-            const to = nodeByName[toName];
-            if (!from || !to) {
-              return null;
-            }
+    <div className="space-y-4">
+      <div className="relative hidden h-[31rem] overflow-hidden rounded-2xl border border-cyan-500/20 bg-slate-950/35 p-4 md:block">
+        <motion.div
+          className="pointer-events-none absolute inset-y-3 w-20 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent blur-sm"
+          animate={{ x: ['-20%', '120%'] }}
+          transition={{ repeat: Infinity, duration: 6.2, ease: 'linear' }}
+        />
 
-            return (
-              <line
-                key={`${fromName}-${toName}-${index}`}
-                x1={from.x}
-                y1={from.y}
-                x2={to.x}
-                y2={to.y}
-                stroke="rgba(103, 232, 249, 0.22)"
-                strokeWidth="0.35"
-              />
-            );
-          })}
-        </svg>
-
-        <div className="absolute left-1/2 top-1/2 grid h-36 w-36 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-cyan-300/35 bg-slate-900/80 text-center text-sm font-semibold text-cyan-100 shadow-[0_0_35px_rgba(6,182,212,0.25)]">
-          Skills
-          <br />
-          Constellation
+        <div className="absolute bottom-7 left-1/2 z-20 h-16 w-40 -translate-x-1/2 rounded-full border border-cyan-300/30 bg-slate-900/90 text-center text-xs uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_34px_rgba(6,182,212,0.28)]">
+          <div className="mt-3">Projection Core</div>
         </div>
+        <div className="pointer-events-none absolute bottom-14 left-1/2 h-56 w-[72%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.18),transparent_72%)]" />
 
-        {skillNodes.map((node, index) => (
-          <motion.div
-            key={node.name}
-            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/45 bg-slate-900/90 px-3 py-1 text-[11px] text-cyan-100"
-            style={{ left: `${node.x}%`, top: `${node.y}%` }}
-            initial={false}
-            animate={{ y: [0, -4, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 3.8 + (index % 5) * 0.5,
-              ease: 'easeInOut',
-              delay: index * 0.06,
-            }}
-            whileHover={{ scale: 1.06, boxShadow: '0 0 18px rgba(56,189,248,0.38)' }}
-          >
-            {node.name}
-          </motion.div>
-        ))}
+        <div className="relative z-10 mt-2 space-y-4 [perspective:1000px]">
+          {techProjectionLanes.map((lane, index) => (
+            <motion.div
+              key={lane.title}
+              className={`rounded-xl border px-4 py-3 backdrop-blur-sm ${lane.accent}`}
+              style={{
+                marginLeft: `${index * 18}px`,
+                marginRight: `${index * 10}px`,
+                transform: `rotateX(9deg) translateZ(${(3 - index) * 8}px)`,
+                transformOrigin: 'center bottom',
+              }}
+              initial={false}
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 4.2 + index * 0.5, ease: 'easeInOut' }}
+            >
+              <p className="text-[11px] uppercase tracking-[0.16em] text-cyan-200/95">{lane.title}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {lane.skills.map((skill) => (
+                  <motion.span
+                    key={skill}
+                    className="rounded-full border border-cyan-300/45 bg-slate-900/85 px-2.5 py-1 text-xs text-cyan-100"
+                    whileHover={{ y: -2, scale: 1.04, boxShadow: '0 0 16px rgba(56,189,248,0.34)' }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <div className="grid gap-3 md:hidden">
-        {Object.entries(groupedSkills).map(([heading, skills]) => (
-          <div key={heading} className="glass rounded-xl p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-cyan-300">{heading}</p>
+        {techProjectionLanes.map((lane) => (
+          <div key={lane.title} className={`glass rounded-xl border p-4 ${lane.accent}`}>
+            <p className="text-xs uppercase tracking-[0.18em] text-cyan-300">{lane.title}</p>
             <div className="mt-2 flex flex-wrap gap-2">
-              {skills.map((skill) => (
+              {lane.skills.map((skill) => (
                 <span key={skill} className="rounded-full border border-cyan-300/45 px-2 py-1 text-xs text-cyan-100">
                   {skill}
                 </span>
@@ -386,9 +361,9 @@ export default function Home() {
         </div>
 
         <div className="panel">
-          <h2 className="section-title mb-2">Skills Constellation</h2>
-          <p className="mb-4 text-sm text-slate-300">A live constellation map of resume skills, connected by real workflow relationships.</p>
-          <SkillsConstellation />
+          <h2 className="section-title mb-2">Tech Stack Projection</h2>
+          <p className="mb-4 text-sm text-slate-300">A layered projection deck of resume skills grouped by delivery workflow.</p>
+          <SkillsProjectionDeck />
         </div>
       </section>
 
