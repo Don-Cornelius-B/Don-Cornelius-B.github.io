@@ -150,27 +150,27 @@ const techProjectionLanes = [
 function SkillsProjectionDeck() {
   return (
     <div className="space-y-4">
-      <div className="relative hidden h-[31rem] overflow-hidden rounded-2xl border border-cyan-500/20 bg-slate-950/35 p-4 md:block">
+      <div className="relative hidden h-[35rem] overflow-hidden rounded-2xl border border-cyan-500/20 bg-slate-950/35 p-5 md:block">
         <motion.div
-          className="pointer-events-none absolute inset-y-3 w-20 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent blur-sm"
-          animate={{ x: ['-20%', '120%'] }}
-          transition={{ repeat: Infinity, duration: 6.2, ease: 'linear' }}
+          className="pointer-events-none absolute inset-y-3 z-0 w-14 bg-gradient-to-r from-transparent via-cyan-300/14 to-transparent blur-sm"
+          animate={{ x: ['-15%', '108%'] }}
+          transition={{ repeat: Infinity, duration: 7.2, ease: 'linear' }}
         />
 
-        <div className="absolute bottom-7 left-1/2 z-20 h-16 w-40 -translate-x-1/2 rounded-full border border-cyan-300/30 bg-slate-900/90 text-center text-xs uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_34px_rgba(6,182,212,0.28)]">
+        <div className="absolute bottom-6 left-1/2 z-20 h-14 w-44 -translate-x-1/2 rounded-full border border-cyan-300/35 bg-slate-900/92 text-center text-xs uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_34px_rgba(6,182,212,0.28)]">
           <div className="mt-3">Projection Core</div>
         </div>
-        <div className="pointer-events-none absolute bottom-14 left-1/2 h-56 w-[72%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.18),transparent_72%)]" />
+        <div className="pointer-events-none absolute bottom-12 left-1/2 z-10 h-52 w-[70%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.18),transparent_72%)]" />
 
-        <div className="relative z-10 mt-2 space-y-4 [perspective:1000px]">
+        <div className="relative z-30 mt-1 space-y-4 pb-24 [perspective:1000px]">
           {techProjectionLanes.map((lane, index) => (
             <motion.div
               key={lane.title}
               className={`rounded-xl border px-4 py-3 backdrop-blur-sm ${lane.accent}`}
               style={{
-                marginLeft: `${index * 18}px`,
-                marginRight: `${index * 10}px`,
-                transform: `rotateX(9deg) translateZ(${(3 - index) * 8}px)`,
+                marginLeft: `${index * 14}px`,
+                marginRight: `${index * 8}px`,
+                transform: `rotateX(8deg) translateZ(${(3 - index) * 6}px)`,
                 transformOrigin: 'center bottom',
               }}
               initial={false}
@@ -178,7 +178,7 @@ function SkillsProjectionDeck() {
               transition={{ repeat: Infinity, duration: 4.2 + index * 0.5, ease: 'easeInOut' }}
             >
               <p className="text-[11px] uppercase tracking-[0.16em] text-cyan-200/95">{lane.title}</p>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <div className="mt-2 flex flex-wrap gap-2.5">
                 {lane.skills.map((skill) => (
                   <motion.span
                     key={skill}
