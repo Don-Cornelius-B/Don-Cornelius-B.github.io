@@ -159,18 +159,14 @@ function SkillsProjectionDeck() {
 
         <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 h-44 w-[74%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.15),transparent_72%)]" />
 
-        <div className="relative z-30 mt-1 space-y-4 pb-3 [perspective:1000px]">
+        <div className="relative z-30 mt-1 space-y-4 pb-3">
           {techProjectionLanes.map((lane, index) => (
             <motion.div
               key={lane.title}
               className={`mx-auto w-[94%] rounded-xl border px-4 py-3 backdrop-blur-sm ${lane.accent}`}
-              style={{
-                transform: `rotateX(8deg) translateZ(${(3 - index) * 6}px)`,
-                transformOrigin: 'center bottom',
-              }}
               initial={false}
-              animate={{ y: [0, -3, 0] }}
-              transition={{ repeat: Infinity, duration: 4.2 + index * 0.5, ease: 'easeInOut' }}
+              animate={{ y: [0, -2, 0] }}
+              transition={{ repeat: Infinity, duration: 4.4 + index * 0.4, ease: 'easeInOut' }}
             >
               <p className="text-[11px] uppercase tracking-[0.16em] text-cyan-200/95">{lane.title}</p>
               <div className="mt-2 flex flex-wrap gap-2.5">
@@ -191,7 +187,7 @@ function SkillsProjectionDeck() {
 
       <div className="grid gap-3 md:hidden">
         {techProjectionLanes.map((lane) => (
-          <div key={lane.title} className={`glass rounded-xl border p-4 ${lane.accent}`}>
+          <div key={lane.title} className={`glass mx-auto w-[94%] rounded-xl border p-4 ${lane.accent}`}>
             <p className="text-xs uppercase tracking-[0.18em] text-cyan-300">{lane.title}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {lane.skills.map((skill) => (
