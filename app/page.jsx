@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -124,69 +124,115 @@ const honors = [
   },
 ];
 
-function Orbit() {
-  const orbitDuration = 18;
-  const orbitRadius = 'min(42vw, 190px)';
-  const items = useMemo(
-    () =>
-      [
-        'Python',
-        'Bash',
-        'C++',
-        'Git',
-        'GitHub',
-        'GitHub Actions',
-        'Docker',
-        'ESP32',
-        'Semtech SX1278 RA-02',
-        'React',
-        'FastAPI',
-        'CMU Multimodal SDK',
-        'TorchGeo',
-        'Power Apps',
-        'Power Automate',
-        'Dataverse',
-        'Microsoft 365 Integration',
-      ].map((name, index, all) => ({ name, angle: (index * 360) / all.length })),
-    []
-  );
+const skillNodes = [
+  { name: 'Python', group: 'Languages', x: 8, y: 18 },
+  { name: 'Bash', group: 'Languages', x: 18, y: 34 },
+  { name: 'C++', group: 'Languages', x: 30, y: 16 },
+  { name: 'Git', group: 'Version Control', x: 44, y: 12 },
+  { name: 'GitHub', group: 'Version Control', x: 58, y: 16 },
+  { name: 'GitHub Actions', group: 'CI/CD', x: 74, y: 22 },
+  { name: 'Docker', group: 'Containers', x: 84, y: 36 },
+  { name: 'ESP32', group: 'Hardware', x: 88, y: 54 },
+  { name: 'Semtech SX1278 RA-02', group: 'Hardware', x: 78, y: 68 },
+  { name: 'React', group: 'Frontend', x: 64, y: 80 },
+  { name: 'FastAPI', group: 'Backend', x: 50, y: 86 },
+  { name: 'CMU Multimodal SDK', group: 'AI/ML', x: 34, y: 80 },
+  { name: 'TorchGeo', group: 'AI/ML', x: 22, y: 72 },
+  { name: 'Power Apps', group: 'Enterprise', x: 12, y: 58 },
+  { name: 'Power Automate', group: 'Enterprise', x: 10, y: 44 },
+  { name: 'Dataverse', group: 'Enterprise', x: 20, y: 56 },
+  { name: 'Microsoft 365 Integration', group: 'Enterprise', x: 28, y: 44 },
+];
+
+const skillLinks = [
+  ['Python', 'FastAPI'],
+  ['Git', 'GitHub'],
+  ['GitHub', 'GitHub Actions'],
+  ['GitHub Actions', 'Docker'],
+  ['ESP32', 'Semtech SX1278 RA-02'],
+  ['React', 'FastAPI'],
+  ['CMU Multimodal SDK', 'TorchGeo'],
+  ['Power Apps', 'Power Automate'],
+  ['Power Automate', 'Dataverse'],
+  ['Dataverse', 'Microsoft 365 Integration'],
+  ['Python', 'CMU Multimodal SDK'],
+  ['FastAPI', 'TorchGeo'],
+];
+
+function SkillsConstellation() {
+  const nodeByName = Object.fromEntries(skillNodes.map((node) => [node.name, node]));
+  const groupedSkills = {
+    Languages: ['Python', 'Bash', 'C++'],
+    'Version Control + CI/CD': ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
+    'AI + Application': ['React', 'FastAPI', 'CMU Multimodal SDK', 'TorchGeo'],
+    'Hardware + Enterprise': ['ESP32', 'Semtech SX1278 RA-02', 'Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365 Integration'],
+  };
 
   return (
-    <div className="relative mx-auto h-[30rem] w-full max-w-[30rem]">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[82%] w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/20" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/15" />
+    <div className="space-y-5">
+      <div className="relative hidden h-[31rem] rounded-2xl border border-cyan-500/20 bg-slate-950/35 p-4 md:block">
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden="true">
+          {skillLinks.map(([fromName, toName], index) => {
+            const from = nodeByName[fromName];
+            const to = nodeByName[toName];
+            if (!from || !to) {
+              return null;
+            }
 
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
-        className="absolute inset-0"
-      >
-        {items.map((item) => (
+            return (
+              <line
+                key={`${fromName}-${toName}-${index}`}
+                x1={from.x}
+                y1={from.y}
+                x2={to.x}
+                y2={to.y}
+                stroke="rgba(103, 232, 249, 0.22)"
+                strokeWidth="0.35"
+              />
+            );
+          })}
+        </svg>
+
+        <div className="absolute left-1/2 top-1/2 grid h-36 w-36 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-cyan-300/35 bg-slate-900/80 text-center text-sm font-semibold text-cyan-100 shadow-[0_0_35px_rgba(6,182,212,0.25)]">
+          Skills
+          <br />
+          Constellation
+        </div>
+
+        {skillNodes.map((node, index) => (
           <motion.div
-            key={item.name}
-            className="absolute left-1/2 top-1/2"
-            style={{ transform: `rotate(${item.angle}deg) translateY(calc(-1 * ${orbitRadius}))` }}
+            key={node.name}
+            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/45 bg-slate-900/90 px-3 py-1 text-[11px] text-cyan-100"
+            style={{ left: `${node.x}%`, top: `${node.y}%` }}
+            initial={false}
+            animate={{ y: [0, -4, 0] }}
+            transition={{
+              repeat: Infinity,
+              duration: 3.8 + (index % 5) * 0.5,
+              ease: 'easeInOut',
+              delay: index * 0.06,
+            }}
+            whileHover={{ scale: 1.06, boxShadow: '0 0 18px rgba(56,189,248,0.38)' }}
           >
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
-              style={{ transform: `translateX(-50%) rotate(${-item.angle}deg)` }}
-              className="rounded-full border border-cyan-300/50 bg-slate-900/85 px-3 py-1 text-[11px] text-cyan-100 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
-            >
-              {item.name}
-            </motion.div>
+            {node.name}
           </motion.div>
         ))}
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={false}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={spring}
-        className="glass absolute left-1/2 top-1/2 -ml-20 -mt-20 grid h-40 w-40 place-items-center rounded-full text-center text-sm font-semibold text-cyan-100"
-      >
-        Resume Skills Core
-      </motion.div>
+      <div className="grid gap-3 md:hidden">
+        {Object.entries(groupedSkills).map(([heading, skills]) => (
+          <div key={heading} className="glass rounded-xl p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-cyan-300">{heading}</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <span key={skill} className="rounded-full border border-cyan-300/45 px-2 py-1 text-xs text-cyan-100">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -340,9 +386,9 @@ export default function Home() {
         </div>
 
         <div className="panel">
-          <h2 className="section-title mb-2">Tech Stack Orbit</h2>
-          <p className="mb-4 text-sm text-slate-300">All skills from the resume in a continuously rotating, horizontally-locked orbit.</p>
-          <Orbit />
+          <h2 className="section-title mb-2">Skills Constellation</h2>
+          <p className="mb-4 text-sm text-slate-300">A live constellation map of resume skills, connected by real workflow relationships.</p>
+          <SkillsConstellation />
         </div>
       </section>
 
