@@ -157,19 +157,14 @@ function SkillsProjectionDeck() {
           transition={{ repeat: Infinity, duration: 7.2, ease: 'linear' }}
         />
 
-        <div className="absolute bottom-6 left-1/2 z-20 h-14 w-44 -translate-x-1/2 rounded-full border border-cyan-300/35 bg-slate-900/92 text-center text-xs uppercase tracking-[0.2em] text-cyan-200 shadow-[0_0_34px_rgba(6,182,212,0.28)]">
-          <div className="mt-3">Projection Core</div>
-        </div>
-        <div className="pointer-events-none absolute bottom-12 left-1/2 z-10 h-52 w-[70%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.18),transparent_72%)]" />
+        <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 h-44 w-[74%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(56,189,248,0.15),transparent_72%)]" />
 
-        <div className="relative z-30 mt-1 space-y-4 pb-24 [perspective:1000px]">
+        <div className="relative z-30 mt-1 space-y-4 pb-3 [perspective:1000px]">
           {techProjectionLanes.map((lane, index) => (
             <motion.div
               key={lane.title}
-              className={`rounded-xl border px-4 py-3 backdrop-blur-sm ${lane.accent}`}
+              className={`mx-auto w-[94%] rounded-xl border px-4 py-3 backdrop-blur-sm ${lane.accent}`}
               style={{
-                marginLeft: `${index * 14}px`,
-                marginRight: `${index * 8}px`,
                 transform: `rotateX(8deg) translateZ(${(3 - index) * 6}px)`,
                 transformOrigin: 'center bottom',
               }}
