@@ -127,7 +127,16 @@ body {
 }
 
 .architecture .node {
-  @apply absolute rounded-lg border border-cyan-300/40 bg-slate-900/70 px-3 py-2 text-xs text-cyan-100;
+  @apply absolute text-xs;
+}
+
+.architecture .node--skeu span {
+  @apply block rounded-xl border px-3 py-2;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -8px 12px rgba(0, 0, 0, 0.22),
+    0 8px 14px rgba(2, 8, 23, 0.24);
+  transform: translateZ(0);
 }
 
 .architecture .line {

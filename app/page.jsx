@@ -18,6 +18,15 @@ const projects = [
     description:
       'Built a P2P security gateway bridging mobile socket messaging with off-grid RF hardware for emergency response and resilient field communication.',
     tags: ['Python', 'C++', 'GitHub Actions', 'ESP32', 'Semtech SX1278 RA-02'],
+    theme: {
+      edge: 'rgba(125, 211, 252, 0.7)',
+      nodeBorder: 'rgba(125, 211, 252, 0.45)',
+      nodeBg: 'rgba(8, 25, 49, 0.78)',
+      nodeText: '#dbeafe',
+      panelBg: 'linear-gradient(145deg, rgba(10, 20, 40, 0.72), rgba(17, 47, 76, 0.56))',
+      chipBorder: 'rgba(125, 211, 252, 0.48)',
+      chipText: '#bae6fd',
+    },
     diagram: {
       nodes: [
         { id: 'mobile', label: 'Mobile Socket', x: 11, y: 16 },
@@ -41,6 +50,15 @@ const projects = [
     description:
       'Developed a situational awareness system for supply-chain disruption detection by fusing real-time traffic, weather, and social signals into a multimodal AI pipeline.',
     tags: ['React', 'FastAPI', 'Python', 'CMU Multimodal SDK', 'TorchGeo', 'GitHub Actions'],
+    theme: {
+      edge: 'rgba(165, 180, 252, 0.72)',
+      nodeBorder: 'rgba(165, 180, 252, 0.42)',
+      nodeBg: 'rgba(25, 22, 58, 0.78)',
+      nodeText: '#e0e7ff',
+      panelBg: 'linear-gradient(145deg, rgba(20, 22, 58, 0.72), rgba(52, 40, 96, 0.52))',
+      chipBorder: 'rgba(167, 139, 250, 0.5)',
+      chipText: '#ddd6fe',
+    },
     diagram: {
       nodes: [
         { id: 'feeds', label: 'Traffic/Weather/Social', x: 11, y: 16 },
@@ -64,6 +82,15 @@ const projects = [
     description:
       'Designed and prototyped an internal gig-economy marketplace to unlock underutilized organizational talent and support fractional work assignments.',
     tags: ['Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365'],
+    theme: {
+      edge: 'rgba(110, 231, 183, 0.68)',
+      nodeBorder: 'rgba(110, 231, 183, 0.45)',
+      nodeBg: 'rgba(14, 38, 34, 0.76)',
+      nodeText: '#d1fae5',
+      panelBg: 'linear-gradient(145deg, rgba(11, 28, 29, 0.74), rgba(23, 65, 58, 0.5))',
+      chipBorder: 'rgba(110, 231, 183, 0.5)',
+      chipText: '#bbf7d0',
+    },
     diagram: {
       nodes: [
         { id: 'staff', label: 'Employee Profiles', x: 11, y: 16 },
@@ -203,15 +230,25 @@ function SkillsProjectionDeck() {
   );
 }
 
-function ArchitectureDiagram({ diagram }) {
-  if (!diagram?.nodes?.length) {
+function ArchitectureDiagram({ project }) {
+  if (!project?.diagram?.nodes?.length) {
     return null;
   }
+
+  const { diagram, theme } = project;
 
   const nodesById = Object.fromEntries(diagram.nodes.map((node) => [node.id, node]));
 
   return (
-    <div className="architecture glass mt-4 overflow-hidden rounded-xl p-3">
+    <div
+      className="architecture mt-4 overflow-hidden rounded-xl p-3"
+      style={{
+        background: theme?.panelBg,
+        border: `1px solid ${theme?.nodeBorder || 'rgba(103, 232, 249, 0.35)'}`,
+        boxShadow:
+          'inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -10px 22px rgba(0,0,0,0.28), 0 10px 24px rgba(2,8,23,0.28)',
+      }}
+    >
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden="true">
         {diagram.links?.map((link, index) => {
           const from = nodesById[link.from];
@@ -228,7 +265,7 @@ function ArchitectureDiagram({ diagram }) {
               key={`${link.from}-${link.to}-${index}`}
               points={`${from.x},${from.y} ${from.x},${bridgeY} ${to.x},${bridgeY} ${to.x},${to.y}`}
               fill="none"
-              stroke="rgba(103, 232, 249, 0.55)"
+              stroke={theme?.edge || 'rgba(103, 232, 249, 0.55)'}
               strokeWidth="0.65"
               strokeLinecap="round"
             />
@@ -239,10 +276,18 @@ function ArchitectureDiagram({ diagram }) {
       {diagram.nodes.map((node) => (
         <div
           key={node.id}
-          className="node -translate-x-1/2 -translate-y-1/2"
+          className="node node--skeu -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${node.x}%`, top: `${node.y}%` }}
         >
-          {node.label}
+          <span
+            style={{
+              borderColor: theme?.nodeBorder,
+              color: theme?.nodeText,
+              background: theme?.nodeBg,
+            }}
+          >
+            {node.label}
+          </span>
         </div>
       ))}
     </div>
@@ -251,7 +296,6 @@ function ArchitectureDiagram({ diagram }) {
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
-  const [showLogs, setShowLogs] = useState(false);
   const reduceMotion = useReducedMotion();
 
   return (
@@ -330,22 +374,16 @@ export default function Home() {
                 <p className="mt-2 text-sm text-slate-300">{project.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2 opacity-0 transition group-hover:opacity-100">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-cyan-300/50 px-2 py-1 text-xs text-cyan-200">
+                    <span
+                      key={tag}
+                      className="rounded-full border px-2 py-1 text-xs"
+                      style={{ borderColor: project.theme.chipBorder, color: project.theme.chipText }}
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setShowLogs(true);
-                    setActiveProject(project);
-                  }}
-                  className="mt-4 rounded-md border border-slate-400/40 px-3 py-2 text-xs text-slate-200 transition hover:bg-white/10"
-                >
-                  View Technical Specs
-                </button>
+                <p className="mt-4 text-xs text-slate-400">Click card for project deep dive</p>
               </motion.article>
             ))}
           </div>
@@ -494,10 +532,14 @@ export default function Home() {
             >
               <h3 className="text-2xl font-bold text-slate-100">{activeProject.title} — Project Deep Dive</h3>
               <p className="mt-2 text-slate-300">{activeProject.description}</p>
-              <ArchitectureDiagram diagram={activeProject.diagram} />
+              <ArchitectureDiagram project={activeProject} />
               <div className="mt-4 flex flex-wrap gap-2">
                 {activeProject.tags.map((tag) => (
-                  <span key={tag} className="rounded-full border border-cyan-300/40 px-2 py-1 text-xs text-cyan-200">
+                  <span
+                    key={tag}
+                    className="rounded-full border px-2 py-1 text-xs"
+                    style={{ borderColor: activeProject.theme.chipBorder, color: activeProject.theme.chipText }}
+                  >
                     {tag}
                   </span>
                 ))}
@@ -509,43 +551,6 @@ export default function Home() {
               >
                 Close
               </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {showLogs && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 grid place-items-center bg-black/75 p-4"
-            onClick={() => setShowLogs(false)}
-          >
-            <motion.div
-              initial={reduceMotion ? false : { y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 12, opacity: 0 }}
-              transition={spring}
-              onClick={(event) => event.stopPropagation()}
-              className="scanline w-full max-w-3xl rounded-xl border border-emerald-400/40 bg-black/90 p-4 font-mono text-xs text-emerald-300"
-            >
-              <div className="mb-3 flex items-center justify-between border-b border-emerald-500/30 pb-2">
-                <span>SYSTEM LOGS :: {activeProject?.title || 'Project'} :: TECHNICAL SPECS</span>
-                <button type="button" className="text-emerald-200" onClick={() => setShowLogs(false)}>
-                  EXIT
-                </button>
-              </div>
-              <pre className="whitespace-pre-wrap leading-relaxed">
-{`[INFO] Initializing diagnostics pipeline...
-[INFO] Build validation: PASS
-[INFO] Runtime checks: PASS
-[INFO] Telemetry stream: ACTIVE
-[INFO] Integrity monitor: STABLE
-[INFO] Last deployment source: GitHub Actions / main.yml
-[READY] Technical profile rendered successfully.`}
-              </pre>
             </motion.div>
           </motion.div>
         )}
