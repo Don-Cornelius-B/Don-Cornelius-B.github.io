@@ -1,6 +1,5 @@
 'use client';
 
-            <motion.div\n+              animate={{ rotate: -360 }}\n+              transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}\n+              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/80 px-3 py-1 text-xs text-cyan-200 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"\n+            >\n+              {item.name}\n+            </motion.div>
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
@@ -14,67 +13,70 @@ const fadeIn = {
 const projects = [
   {
     id: 'akon',
-    title: 'AKON',
+    title: 'AKON - Agnostic Key-stream Optimized Network',
+    duration: '01/2026 - Present',
     description:
-      'P2P security gateway bridging mobile sockets with RF hardware for emergency response. Designed for reliability with automated build/test checks for mobile socket messaging using GitHub Actions.',
-    tags: ['Python', 'C++', 'ESP32'],
+      'Built a P2P security gateway bridging mobile socket messaging with off-grid RF hardware for emergency response and resilient field communication.',
+    tags: ['Python', 'C++', 'GitHub Actions', 'ESP32', 'Semtech SX1278 RA-02'],
     diagram: {
       nodes: [
-        { id: 'field', label: 'Field Device', x: 11, y: 16 },
-        { id: 'relay', label: 'Secure Relay', x: 50, y: 16 },
-        { id: 'ops', label: 'Ops Console', x: 89, y: 16 },
-        { id: 'check', label: 'Threat Check', x: 33, y: 72 },
-        { id: 'rf', label: 'RF Hardware', x: 67, y: 72 },
+        { id: 'mobile', label: 'Mobile Socket', x: 11, y: 16 },
+        { id: 'gateway', label: 'Secure Gateway', x: 50, y: 16 },
+        { id: 'rescue', label: 'Responder Console', x: 89, y: 16 },
+        { id: 'crypto', label: 'Key-stream Layer', x: 32, y: 72 },
+        { id: 'rf', label: 'RF Transceiver', x: 68, y: 72 },
       ],
       links: [
-        { from: 'field', to: 'relay' },
-        { from: 'relay', to: 'ops' },
-        { from: 'relay', to: 'check' },
-        { from: 'relay', to: 'rf' },
+        { from: 'mobile', to: 'gateway' },
+        { from: 'gateway', to: 'rescue' },
+        { from: 'gateway', to: 'crypto' },
+        { from: 'gateway', to: 'rf' },
       ],
     },
   },
   {
-    id: 'virspace',
-    title: 'VirSpace',
+    id: 'multimodal-supply-chain',
+    title: 'Multimodal AI Supply Chain Analysis',
+    duration: '02/2026 - Present',
     description:
-      'Scalable multi-user virtual world with 3D digital twins. Built around real-time state synchronization and low-latency data flow using Supabase.',
-    tags: ['React', 'Supabase', 'Three.js'],
+      'Developed a situational awareness system for supply-chain disruption detection by fusing real-time traffic, weather, and social signals into a multimodal AI pipeline.',
+    tags: ['React', 'FastAPI', 'Python', 'CMU Multimodal SDK', 'TorchGeo', 'GitHub Actions'],
     diagram: {
       nodes: [
-        { id: 'avatar', label: 'Client Avatars', x: 13, y: 16 },
-        { id: 'sync', label: 'Realtime Sync', x: 50, y: 16 },
-        { id: 'scene', label: 'Twin Scene', x: 87, y: 16 },
-        { id: 'state', label: 'State Cache', x: 32, y: 72 },
-        { id: 'db', label: 'Supabase', x: 68, y: 72 },
+        { id: 'feeds', label: 'Traffic/Weather/Social', x: 11, y: 16 },
+        { id: 'fusion', label: 'Fusion Engine', x: 50, y: 16 },
+        { id: 'dashboard', label: 'React Dashboard', x: 89, y: 16 },
+        { id: 'geo', label: 'TorchGeo Signals', x: 33, y: 72 },
+        { id: 'api', label: 'FastAPI Service', x: 67, y: 72 },
       ],
       links: [
-        { from: 'avatar', to: 'sync' },
-        { from: 'sync', to: 'scene' },
-        { from: 'sync', to: 'state' },
-        { from: 'sync', to: 'db' },
+        { from: 'feeds', to: 'fusion' },
+        { from: 'fusion', to: 'dashboard' },
+        { from: 'fusion', to: 'geo' },
+        { from: 'fusion', to: 'api' },
       ],
     },
   },
   {
-    id: 'ecosphere',
-    title: 'EcoSphere',
+    id: 'usda-marketplace',
+    title: 'USDA Talent Mobility Marketplace',
+    duration: '03/2026 - Present',
     description:
-      '2D eco-simulation game engineered in Unity with dynamic logic loops and continuous feedback systems to model evolving environmental states.',
-    tags: ['Unity', 'Piskel'],
+      'Designed and prototyped an internal gig-economy marketplace to unlock underutilized organizational talent and support fractional work assignments.',
+    tags: ['Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365'],
     diagram: {
       nodes: [
-        { id: 'player', label: 'Player Input', x: 13, y: 16 },
-        { id: 'loop', label: 'Simulation Loop', x: 50, y: 16 },
-        { id: 'hud', label: 'Game HUD', x: 87, y: 16 },
-        { id: 'eco', label: 'Eco Rules', x: 30, y: 72 },
-        { id: 'assets', label: 'Asset Pipeline', x: 70, y: 72 },
+        { id: 'staff', label: 'Employee Profiles', x: 11, y: 16 },
+        { id: 'market', label: 'Talent Marketplace', x: 50, y: 16 },
+        { id: 'admins', label: 'Program Leads', x: 89, y: 16 },
+        { id: 'flows', label: 'Power Automate Flows', x: 33, y: 72 },
+        { id: 'data', label: 'Dataverse Records', x: 67, y: 72 },
       ],
       links: [
-        { from: 'player', to: 'loop' },
-        { from: 'loop', to: 'hud' },
-        { from: 'loop', to: 'eco' },
-        { from: 'eco', to: 'assets' },
+        { from: 'staff', to: 'market' },
+        { from: 'market', to: 'admins' },
+        { from: 'market', to: 'flows' },
+        { from: 'flows', to: 'data' },
       ],
     },
   },
@@ -96,9 +98,9 @@ const principles = [
 ];
 
 const capabilities = [
-  ['Software Engineering', 'Python', 'C++', 'JavaScript'],
-  ['Creative Tech', 'Unity', 'Blender', 'Figma'],
-  ['Cloud & DevOps', 'GitHub Actions', 'Linux', 'Automation'],
+  ['Programming & APIs', 'Python', 'C++', 'Bash', 'FastAPI'],
+  ['Cloud & Delivery', 'Docker', 'GitHub Actions', 'Git', 'GitHub'],
+  ['Applied Platforms', 'ESP32', 'TorchGeo', 'Power Apps', 'Dataverse'],
 ];
 
 const timeline = [
@@ -110,47 +112,75 @@ const timeline = [
   },
 ];
 
-function Orbit() {
-  const items = useMemo(
-    () => [
-      { name: 'Python', angle: 0 },
-      { name: 'Unity', angle: 120 },
-      { name: 'Docker / GHA', angle: 240 },
+const honors = [
+  {
+    title: 'ChallengeX Participant | George Mason University',
+    period: '02/2026 - Present',
+    points: [
+      'Selected for an 8-week high-impact hackathon focused on federal and private-sector challenges.',
+      'Built focused solutions for Supply Chain Situational Awareness (CNA) and Talent Mobility (USDA).',
+      'Collaborating in a multidisciplinary team to ship production-ready prototypes and multimodal AI architectures.',
     ],
+  },
+];
+
+function Orbit() {
+  const orbitDuration = 18;
+  const items = useMemo(
+    () =>
+      [
+        'Python',
+        'Bash',
+        'C++',
+        'Git',
+        'GitHub',
+        'GitHub Actions',
+        'Docker',
+        'ESP32',
+        'Semtech SX1278 RA-02',
+        'React',
+        'FastAPI',
+        'CMU Multimodal SDK',
+        'TorchGeo',
+        'Power Apps',
+        'Power Automate',
+        'Dataverse',
+        'Microsoft 365 Integration',
+      ].map((name, index, all) => ({ name, angle: (index * 360) / all.length })),
     []
   );
 
   return (
-    <div className="relative mx-auto h-64 w-64">
+    <div className="relative mx-auto h-[30rem] w-[30rem] max-w-full overflow-hidden">
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}
+        transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
         className="absolute inset-0"
       >
         {items.map((item) => (
           <motion.div
             key={item.name}
             className="absolute left-1/2 top-1/2"
-            style={{ transform: `rotate(${item.angle}deg) translateY(-126px)` }}
-            transition={spring}
+            style={{ transform: `rotate(${item.angle}deg) translateY(-205px)` }}
           >
             <motion.div
               animate={{ rotate: -360 }}
-              transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}
-              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/80 px-3 py-1 text-xs text-cyan-200 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
+              transition={{ repeat: Infinity, duration: orbitDuration, ease: 'linear' }}
+              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/85 px-3 py-1 text-[11px] text-cyan-100 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
             >
               {item.name}
             </motion.div>
           </motion.div>
         ))}
       </motion.div>
+
       <motion.div
         initial={false}
         animate={{ scale: 1, opacity: 1 }}
         transition={spring}
-        className="glass absolute left-1/2 top-1/2 -ml-14 -mt-14 grid h-28 w-28 place-items-center rounded-full text-center text-sm font-semibold text-cyan-100"
+        className="glass absolute left-1/2 top-1/2 -ml-20 -mt-20 grid h-40 w-40 place-items-center rounded-full text-center text-sm font-semibold text-cyan-100"
       >
-        Tech Stack Core
+        Resume Skills Core
       </motion.div>
     </div>
   );
@@ -215,17 +245,17 @@ export default function Home() {
         transition={spring}
         className="hero-grid accent-border panel noise-overlay overflow-hidden"
       >
-        <div className="grid items-end gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
+        <div className="grid gap-8">
+          <div className="mx-auto max-w-4xl text-center">
             <p className="mb-3 text-xs uppercase tracking-[0.28em] text-cyan-300">Creative Technologist</p>
-            <h1 className="text-3xl font-bold leading-tight text-slate-50 sm:text-5xl">
-              I design software experiences where engineering precision meets visual storytelling.
+            <h1 className="text-3xl font-bold leading-tight text-slate-50 sm:text-5xl lg:text-6xl">
+              Building cloud-native software systems for real-world impact.
             </h1>
-            <p className="mt-5 max-w-2xl text-base text-slate-300 sm:text-lg">
-              Don Cornelius B — 3rd Year CSE, building production-ready systems, immersive digital products, and
-              automation-driven workflows.
+            <p className="mx-auto mt-5 max-w-3xl text-base text-slate-300 sm:text-lg">
+              Don Cornelius B - 3rd Year CSE student focused on Cloud Computing and DevOps Engineering, shipping
+              resilient products with automation-first workflows.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <a
                 href="https://linkedin.com/in/don-cornelius-livi/"
                 target="_blank"
@@ -245,14 +275,18 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             <div className="glass rounded-xl p-4">
               <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Current Focus</p>
-              <p className="mt-2 text-sm text-slate-200">Cloud-native systems, telemetry-backed products, and resilient delivery pipelines.</p>
+              <p className="mt-2 text-sm text-slate-200">Cloud-native systems and resilient DevOps delivery pipelines.</p>
+            </div>
+            <div className="glass rounded-xl p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Education</p>
+              <p className="mt-2 text-sm text-slate-200">B.E CSE at Sathyabama Institute of Science and Technology.</p>
             </div>
             <div className="glass rounded-xl p-4">
               <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Workflow</p>
-              <p className="mt-2 text-sm text-slate-200">Design → Build → Validate → Ship, with CI checks and performance-aware UI architecture.</p>
+              <p className="mt-2 text-sm text-slate-200">Design -&gt; Build -&gt; Validate -&gt; Ship with strong CI checks.</p>
             </div>
           </div>
         </div>
@@ -261,7 +295,7 @@ export default function Home() {
       <section className="mt-10 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <div className="panel">
           <h2 className="section-title mb-2">Featured Work</h2>
-          <p className="mb-5 text-sm text-slate-300">A product-centric set of builds across embedded systems, virtual platforms, and interaction design.</p>
+          <p className="mb-5 text-sm text-slate-300">Selected resume projects across embedded security, multimodal AI, and enterprise workflow systems.</p>
           <div className="grid gap-4 sm:grid-cols-2">
             {projects.map((project, index) => (
               <motion.article
@@ -275,6 +309,7 @@ export default function Home() {
                 onClick={() => setActiveProject(project)}
               >
                 <h3 className="text-lg font-semibold text-slate-100">{project.title}</h3>
+                <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{project.duration}</p>
                 <p className="mt-2 text-sm text-slate-300">{project.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2 opacity-0 transition group-hover:opacity-100">
                   {project.tags.map((tag) => (
@@ -301,7 +336,7 @@ export default function Home() {
 
         <div className="panel">
           <h2 className="section-title mb-2">Tech Stack Orbit</h2>
-          <p className="mb-4 text-sm text-slate-300">Core tools in continuous rotation around a build-first engineering mindset.</p>
+          <p className="mb-4 text-sm text-slate-300">All skills from the resume in a continuously rotating, horizontally-locked orbit.</p>
           <Orbit />
         </div>
       </section>
@@ -370,6 +405,33 @@ export default function Home() {
             >
               <h3 className="text-base font-semibold text-cyan-200">{principle.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{principle.text}</p>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10 panel">
+        <h2 className="section-title mb-2">Honors</h2>
+        <p className="mb-5 text-sm text-slate-300">Recognition and challenge programs that shaped high-impact, production-minded work.</p>
+        <div className="grid gap-4">
+          {honors.map((honor, index) => (
+            <motion.article
+              key={honor.title}
+              initial={reduceMotion ? false : fadeIn.hidden}
+              whileInView={fadeIn.visible}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ ...spring, delay: index * 0.08 }}
+              className="glass rounded-xl p-5"
+            >
+              <h3 className="text-base font-semibold text-cyan-200">{honor.title}</h3>
+              <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{honor.period}</p>
+              <ul className="mt-3 space-y-2 text-sm text-slate-300">
+                {honor.points.map((point) => (
+                  <li key={point} className="border-l-2 border-cyan-400/40 pl-3">
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </motion.article>
           ))}
         </div>
