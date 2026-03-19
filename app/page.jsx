@@ -1,5 +1,6 @@
 'use client';
 
+            <motion.div\n+              animate={{ rotate: -360 }}\n+              transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}\n+              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/80 px-3 py-1 text-xs text-cyan-200 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"\n+            >\n+              {item.name}\n+            </motion.div>
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
@@ -77,28 +78,6 @@ const projects = [
       ],
     },
   },
-  {
-    id: 'resqtap',
-    title: 'ResQTap',
-    description:
-      'SOS GPS tracking workflow integrating ESP32 nodes with Telegram Bot API to route emergency location data quickly and clearly.',
-    tags: ['ESP32', 'Arduino'],
-    diagram: {
-      nodes: [
-        { id: 'client', label: 'SOS Trigger', x: 11, y: 16 },
-        { id: 'gateway', label: 'Location Router', x: 50, y: 16 },
-        { id: 'alert', label: 'Telegram Alert', x: 89, y: 16 },
-        { id: 'gps', label: 'GPS Parsing', x: 31, y: 72 },
-        { id: 'unit', label: 'ESP32 Unit', x: 69, y: 72 },
-      ],
-      links: [
-        { from: 'client', to: 'gateway' },
-        { from: 'gateway', to: 'alert' },
-        { from: 'gateway', to: 'gps' },
-        { from: 'gps', to: 'unit' },
-      ],
-    },
-  },
 ];
 
 const principles = [
@@ -155,9 +134,13 @@ function Orbit() {
             style={{ transform: `rotate(${item.angle}deg) translateY(-126px)` }}
             transition={spring}
           >
-            <div className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/80 px-3 py-1 text-xs text-cyan-200 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]">
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ repeat: Infinity, duration: 14, ease: 'linear' }}
+              className="-translate-x-1/2 rounded-full border border-cyan-300/50 bg-slate-900/80 px-3 py-1 text-xs text-cyan-200 transition-all hover:bg-cyan-400/10 hover:shadow-[0_0_18px_rgba(56,189,248,0.35)]"
+            >
               {item.name}
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </motion.div>
