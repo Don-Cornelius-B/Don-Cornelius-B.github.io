@@ -5,6 +5,17 @@ export const projects = [
     duration: '01/2026 - Present',
     description:
       'Built a P2P security gateway bridging mobile socket messaging with off-grid RF hardware for emergency response and resilient field communication.',
+    role: 'Systems + Embedded Engineer',
+    impact: 'Offline message relay prototype validated with secure key-stream exchange.',
+    outcomes: [
+      'Reduced dependency on internet connectivity for field communication paths.',
+      'Designed bridge architecture between mobile socket clients and RF edge devices.',
+      'Created CI-friendly pipeline for repeatable firmware and gateway updates.',
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
+    ],
     tags: ['Python', 'C++', 'GitHub Actions', 'ESP32', 'Semtech SX1278 RA-02'],
     theme: {
       edge: 'rgba(125, 211, 252, 0.7)',
@@ -37,6 +48,17 @@ export const projects = [
     duration: '02/2026 - Present',
     description:
       'Developed a situational awareness system for supply-chain disruption detection by fusing real-time traffic, weather, and social signals into a multimodal AI pipeline.',
+    role: 'Full-stack AI Engineer',
+    impact: 'Built a multimodal pipeline that surfaces disruption signals into a single operational view.',
+    outcomes: [
+      'Integrated heterogeneous traffic, weather, and social feeds for unified risk scoring.',
+      'Delivered React dashboard views for rapid response and anomaly inspection.',
+      'Modularized pipeline components for reproducible model and API deployments.',
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
+    ],
     tags: ['React', 'FastAPI', 'Python', 'CMU Multimodal SDK', 'TorchGeo', 'GitHub Actions'],
     theme: {
       edge: 'rgba(165, 180, 252, 0.72)',
@@ -69,6 +91,17 @@ export const projects = [
     duration: '03/2026 - Present',
     description:
       'Designed and prototyped an internal gig-economy marketplace to unlock underutilized organizational talent and support fractional work assignments.',
+    role: 'Product + Workflow Engineer',
+    impact: 'Prototyped an internal marketplace flow for faster talent matching and assignment execution.',
+    outcomes: [
+      'Mapped low-friction process from employee profile creation to assignment fulfillment.',
+      'Automated approval and routing steps with Power Automate flows.',
+      'Structured Dataverse records to support scalable reporting and governance.',
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
+    ],
     tags: ['Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365'],
     theme: {
       edge: 'rgba(110, 231, 183, 0.68)',

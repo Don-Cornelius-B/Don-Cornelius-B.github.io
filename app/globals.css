@@ -4,6 +4,11 @@
 
 :root {
   color-scheme: dark;
+  --surface-1: rgba(11, 18, 33, 0.76);
+  --surface-2: rgba(15, 23, 42, 0.86);
+  --border-soft: rgba(148, 163, 184, 0.22);
+  --accent-cyan: rgba(56, 189, 248, 0.72);
+  --accent-violet: rgba(139, 92, 246, 0.48);
 }
 
 * {
@@ -113,11 +118,13 @@ body {
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-glow;
+  background: linear-gradient(160deg, var(--surface-1), var(--surface-2));
+  border: 1px solid var(--border-soft);
+  @apply backdrop-blur-lg shadow-glow;
 }
 
 .panel {
-  @apply glass rounded-2xl p-6;
+  @apply glass rounded-2xl p-5 sm:p-6;
 }
 
 .hero-grid {
@@ -138,10 +145,10 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: 1rem;
-  background: linear-gradient(120deg, rgba(56, 189, 248, 0.8), rgba(139, 92, 246, 0.65));
+  background: linear-gradient(120deg, var(--accent-cyan), var(--accent-violet));
   z-index: -1;
-  filter: blur(10px);
-  opacity: 0.6;
+  filter: blur(8px);
+  opacity: 0.48;
 }
 
 .architecture {

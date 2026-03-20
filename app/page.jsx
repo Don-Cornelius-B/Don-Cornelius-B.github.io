@@ -5,8 +5,11 @@ import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
+import HonorsSection from './components/HonorsSection';
+import PrinciplesSection from './components/PrinciplesSection';
 import ProjectModal from './components/ProjectModal';
 import SkillsProjectionDeck from './components/SkillsProjectionDeck';
+import TimelineSection from './components/TimelineSection';
 import { capabilities, honors, principles, projects, techProjectionLanes, timeline } from './data/portfolio';
 
 const spring = { type: 'spring', stiffness: 120, damping: 16 };
@@ -120,75 +123,12 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={reduceMotion ? false : fadeIn.hidden}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ ...spring, delay: 0.08 }}
-          className="panel"
-        >
-          <h2 className="section-title mb-2">Journey Timeline</h2>
-          <p className="mb-4 text-sm text-slate-300">A progression from foundational computing to production-minded system design.</p>
-          <div className="relative pl-6">
-            <div className="absolute left-[11px] top-0 h-full w-[2px] bg-gradient-to-b from-cyan-300 to-violet-400" />
-            {timeline.map((item) => (
-              <div key={item.stage} className="relative mb-6 last:mb-0">
-                <div className="absolute -left-[19px] top-1 h-4 w-4 rounded-full border border-cyan-300 bg-slate-950" />
-                <p className="text-xs text-slate-400">{item.year}</p>
-                <h3 className="text-base font-semibold text-slate-100">{item.stage}</h3>
-                <p className="text-sm text-slate-300">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        <TimelineSection timeline={timeline} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
       </section>
 
-      <section className="mt-10 panel">
-        <h2 className="section-title mb-2">Engineering Principles</h2>
-        <p className="mb-5 text-sm text-slate-300">How I balance product intent, technical depth, and long-term maintainability.</p>
-        <div className="grid gap-4 md:grid-cols-3">
-          {principles.map((principle, index) => (
-            <motion.article
-              key={principle.title}
-              initial={reduceMotion ? false : fadeIn.hidden}
-              whileInView={fadeIn.visible}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ ...spring, delay: index * 0.08 }}
-              className="glass rounded-xl p-4"
-            >
-              <h3 className="text-base font-semibold text-cyan-200">{principle.title}</h3>
-              <p className="mt-2 text-sm text-slate-300">{principle.text}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+      <PrinciplesSection principles={principles} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
 
-      <section className="mt-10 panel">
-        <h2 className="section-title mb-2">Honors</h2>
-        <p className="mb-5 text-sm text-slate-300">Recognition and challenge programs that shaped high-impact, production-minded work.</p>
-        <div className="grid gap-4">
-          {honors.map((honor, index) => (
-            <motion.article
-              key={honor.title}
-              initial={reduceMotion ? false : fadeIn.hidden}
-              whileInView={fadeIn.visible}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ ...spring, delay: index * 0.08 }}
-              className="glass rounded-xl p-5"
-            >
-              <h3 className="text-base font-semibold text-cyan-200">{honor.title}</h3>
-              <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{honor.period}</p>
-              <ul className="mt-3 space-y-2 text-sm text-slate-300">
-                {honor.points.map((point) => (
-                  <li key={point} className="border-l-2 border-cyan-400/40 pl-3">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+      <HonorsSection honors={honors} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
 
       <footer className="mt-10 panel">
         <div className="flex flex-wrap items-center justify-between gap-3">

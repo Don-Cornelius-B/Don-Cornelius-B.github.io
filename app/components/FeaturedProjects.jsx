@@ -26,7 +26,9 @@ export default function FeaturedProjects({ projects, reduceMotion, fadeIn, sprin
             >
               <h3 className="text-lg font-semibold text-slate-100">{project.title}</h3>
               <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{project.duration}</p>
+              <p className="mt-2 text-xs uppercase tracking-[0.12em] text-slate-400">{project.role}</p>
               <p className="mt-2 text-sm text-slate-300">{project.description}</p>
+              <p className="mt-3 rounded-lg border border-cyan-300/20 bg-slate-950/30 px-3 py-2 text-xs text-cyan-100">{project.impact}</p>
               <div className="mt-3 flex flex-wrap gap-2 opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">
                 {project.tags.map((tag) => (
                   <span

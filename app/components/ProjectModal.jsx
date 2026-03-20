@@ -1,4 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
+
+const TABS = ['overview', 'architecture', 'outcomes', 'links'];
 
 function ArchitectureDiagram({ project }) {
   if (!project?.diagram?.nodes?.length) {
@@ -60,6 +63,8 @@ function ArchitectureDiagram({ project }) {
 }
 
 export default function ProjectModal({ activeProject, reduceMotion, spring, onClose, dialogRef, closeRef }) {
+  const [activeTab, setActiveTab] = useState('overview');
+
   return (
     <AnimatePresence>
       {activeProject && (
@@ -86,19 +91,80 @@ export default function ProjectModal({ activeProject, reduceMotion, spring, onCl
             <h3 id="project-modal-title" className="text-2xl font-bold text-slate-100">
               {activeProject.title} - Project Deep Dive
             </h3>
-            <p className="mt-2 text-slate-300">{activeProject.description}</p>
-            <ArchitectureDiagram project={activeProject} />
-            <div className="mt-4 flex flex-wrap gap-2">
-              {activeProject.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border px-2 py-1 text-xs"
-                  style={{ borderColor: activeProject.theme.chipBorder, color: activeProject.theme.chipText }}
-                >
-                  {tag}
-                </span>
-              ))}
+            <p className="mt-2 text-sm uppercase tracking-[0.14em] text-cyan-300">{activeProject.duration}</p>
+            <p className="mt-1 text-slate-300">{activeProject.role}</p>
+
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap" role="tablist" aria-label="Project details tabs">
+              {TABS.map((tab) => {
+                const selected = activeTab === tab;
+
+                return (
+                  <button
+                    key={tab}
+                    type="button"
+                    role="tab"
+                    aria-selected={selected}
+                    className={`rounded-lg border px-3 py-2 text-xs uppercase tracking-[0.12em] transition ${
+                      selected
+                        ? 'border-cyan-300/70 bg-cyan-500/15 text-cyan-100'
+                        : 'border-slate-500/40 text-slate-300 hover:border-cyan-300/50 hover:text-cyan-100'
+                    }`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab}
+                  </button>
+                );
+              })}
             </div>
+
+            {activeTab === 'overview' && (
+              <div className="mt-4 space-y-3">
+                <p className="text-sm text-slate-300">{activeProject.description}</p>
+                <p className="rounded-lg border border-cyan-300/25 bg-slate-950/40 px-3 py-2 text-sm text-cyan-100">
+                  {activeProject.impact}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {activeProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border px-2 py-1 text-xs"
+                      style={{ borderColor: activeProject.theme.chipBorder, color: activeProject.theme.chipText }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'architecture' && <ArchitectureDiagram project={activeProject} />}
+
+            {activeTab === 'outcomes' && (
+              <ul className="mt-4 space-y-2 text-sm text-slate-300">
+                {activeProject.outcomes?.map((point) => (
+                  <li key={point} className="rounded-lg border border-cyan-300/20 bg-slate-950/30 px-3 py-2">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {activeTab === 'links' && (
+              <div className="mt-4 grid gap-2">
+                {activeProject.links?.map((link) => (
+                  <a
+                    key={link.href + link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-fit rounded-lg border border-cyan-300/45 px-3 py-2 text-sm text-cyan-100 hover:bg-cyan-500/15"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             <button
               type="button"
               onClick={onClose}
