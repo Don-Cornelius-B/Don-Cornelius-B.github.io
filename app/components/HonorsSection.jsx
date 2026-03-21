@@ -5,7 +5,7 @@ export default function HonorsSection({ honors, reduceMotion, fadeIn, spring }) 
     <section className="mt-10 panel honors-dossier">
       <p className="honors-dossier__eyebrow">Recognition</p>
       <h2 className="section-title mb-2">Honors</h2>
-      <p className="honors-dossier__intro">Challenge programs and selective tracks that sharpened production-focused delivery.</p>
+      <p className="honors-dossier__intro">Programs and tracks that sharpened production-focused delivery.</p>
       <div className="honors-dossier__list">
         {honors.map((honor, index) => (
           <motion.article

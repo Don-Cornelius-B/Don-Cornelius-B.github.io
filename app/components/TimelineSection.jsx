@@ -11,7 +11,7 @@ export default function TimelineSection({ timeline, reduceMotion, fadeIn, spring
     >
       <p className="timeline-ledger__eyebrow">Milestones</p>
       <h2 className="section-title mb-2">Journey Timeline</h2>
-      <p className="timeline-ledger__intro">A progression from foundational computing to production-minded system design.</p>
+      <p className="timeline-ledger__intro">From computing foundations to production-focused system design.</p>
       <div className="timeline-ledger__track">
         <div className="timeline-ledger__line" />
         <div className="timeline-ledger__list">
@@ -21,7 +21,7 @@ export default function TimelineSection({ timeline, reduceMotion, fadeIn, spring
               <p className="timeline-ledger__year">{item.year}</p>
               <h3 className="timeline-ledger__stage">{item.stage}</h3>
               <p className="timeline-ledger__text">{item.text}</p>
-              <p className="timeline-ledger__index">Checkpoint {String(index + 1).padStart(2, '0')}</p>
+              <p className="timeline-ledger__index">Phase {String(index + 1).padStart(2, '0')}</p>
             </article>
           ))}
         </div>

@@ -67,11 +67,10 @@ export default function HeroSection({ spring, resumeMode, onResumeModeToggle, re
         <div>
           <p className="hero-eyebrow">Creative Technologist</p>
           <h1 className="hero-display">
-            Building cloud-native software systems for real-world impact.
+            Building cloud-native systems that ship.
           </h1>
           <p className="hero-lead">
-            Don Cornelius B - 3rd Year CSE student focused on Cloud Computing and DevOps Engineering, shipping resilient
-            products with automation-first workflows.
+            Don Cornelius B, 3rd-year CSE student focused on cloud computing, DevOps, and resilient delivery.
           </p>
 
           <div className="hero-cta-row">
@@ -112,23 +111,23 @@ export default function HeroSection({ spring, resumeMode, onResumeModeToggle, re
             </a>
           </div>
 
-          <p className="hero-quick-note">Recruiter quick action: download one-page PDF resume.</p>
+          <p className="hero-quick-note">Quick action: download one-page resume.</p>
         </div>
 
         <div className="hero-aside">
           <div className="hero-aside-card">
             <p className="hero-aside-label">Current Focus</p>
-            <p className="hero-aside-text">Cloud-native systems and resilient DevOps delivery pipelines.</p>
+            <p className="hero-aside-text">Cloud-native systems and resilient DevOps pipelines.</p>
           </div>
 
           <div className="hero-aside-card">
             <p className="hero-aside-label">Education</p>
-            <p className="hero-aside-text">B.E CSE at Sathyabama Institute of Science and Technology.</p>
+            <p className="hero-aside-text">B.E. CSE, Sathyabama Institute of Science and Technology.</p>
           </div>
 
           <div className="hero-aside-card">
             <p className="hero-aside-label">Workflow</p>
-            <p className="hero-aside-text">Design -&gt; Build -&gt; Validate -&gt; Ship with strong CI checks.</p>
+            <p className="hero-aside-text">Design -&gt; Build -&gt; Validate -&gt; Ship.</p>
           </div>
         </div>
       </div>

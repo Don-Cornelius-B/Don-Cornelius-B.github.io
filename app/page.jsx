@@ -135,8 +135,8 @@ export default function Home() {
           <h2 className="section-title mb-2">Tech Stack Projection</h2>
           <p className="mb-4 text-sm text-slate-300">
             {resumeMode
-              ? 'Resume mode keeps the atlas visible while reducing movement for quick recruiter scanning.'
-              : 'An atlas-style layout of applied tools, grouped by how they ship value in production.'}
+              ? 'Resume mode keeps this section visible with low motion for quick scanning.'
+              : 'Applied tools grouped by how they deliver production value.'}
           </p>
           <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} disableAnimation={resumeMode || reduceMotion} />
         </motion.div>
@@ -153,7 +153,7 @@ export default function Home() {
           className="panel capability-frame"
         >
           <h2 className="section-title mb-2">Capability Matrix</h2>
-          <p className="mb-4 text-sm text-slate-300">Cross-disciplinary strength across code, creative tooling, and deployment systems.</p>
+          <p className="mb-4 text-sm text-slate-300">Core strengths across engineering, tooling, and delivery.</p>
           <div className="capability-grid">
             {capabilities.map(([heading, ...skills]) => (
               <div key={heading} className="capability-card">

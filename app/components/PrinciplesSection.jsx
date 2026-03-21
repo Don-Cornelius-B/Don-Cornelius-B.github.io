@@ -5,7 +5,7 @@ export default function PrinciplesSection({ principles, reduceMotion, fadeIn, sp
     <section className="mt-10 panel principles-constellation">
       <p className="principles-constellation__eyebrow">Operating model</p>
       <h2 className="section-title mb-2">Engineering Principles</h2>
-      <p className="principles-constellation__intro">How product intent, technical depth, and maintainability stay aligned across every build.</p>
+      <p className="principles-constellation__intro">How product intent, technical depth, and maintainability stay aligned.</p>
       <div className="principles-constellation__grid">
         {principles.map((principle, index) => (
           <motion.article

@@ -37,7 +37,7 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
       >
         <div className="project-strip__meta-row">
           <p className="project-strip__duration">{project.duration}</p>
-          <p className="project-strip__open">Open deep dive</p>
+          <p className="project-strip__open">Open details</p>
         </div>
 
         <h3 className="project-strip__title">{project.title}</h3>
@@ -81,7 +81,7 @@ export default function FeaturedProjects({
       <p className="project-atlas__eyebrow">Selected builds</p>
       <h2 className="section-title mb-2">Featured Work</h2>
       <p className="project-atlas__intro">
-        A compact editorial index of builds across embedded security, multimodal AI, and enterprise workflow systems.
+        Projects across embedded security, multimodal AI, and enterprise workflows.
       </p>
 
       <div className="project-filter-row" aria-label="Project filters">
