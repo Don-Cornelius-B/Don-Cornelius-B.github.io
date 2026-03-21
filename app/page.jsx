@@ -125,19 +125,21 @@ export default function Home() {
           />
         </motion.div>
 
-        {!resumeMode && (
-          <motion.div
-            initial={reduceMotion ? false : fadeIn.hidden}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.24 }}
-            transition={{ ...spring, delay: sectionDelays.skills }}
-            className="panel"
-          >
-            <h2 className="section-title mb-2">Tech Stack Projection</h2>
-            <p className="mb-4 text-sm text-slate-300">A layered projection deck of resume skills grouped by delivery workflow.</p>
-            <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} />
-          </motion.div>
-        )}
+        <motion.div
+          initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.24 }}
+          transition={{ ...spring, delay: sectionDelays.skills }}
+          className="panel"
+        >
+          <h2 className="section-title mb-2">Tech Stack Projection</h2>
+          <p className="mb-4 text-sm text-slate-300">
+            {resumeMode
+              ? 'Resume mode keeps this section visible with reduced visual effects for quick recruiter scanning.'
+              : 'A layered projection deck of resume skills grouped by delivery workflow.'}
+          </p>
+          <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} disableAnimation={resumeMode || reduceMotion} />
+        </motion.div>
       </section>
 
       <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />

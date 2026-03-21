@@ -1,37 +1,23 @@
-import { motion } from 'framer-motion';
-import { useMotionValueEvent } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useTransform } from 'framer-motion';
 
 export default function SectionDivider({ velocityValue, resumeMode = false }) {
-  const [velocity, setVelocity] = useState(0);
+  const x = useTransform(velocityValue, (velocity) => {
+    const normalized = Math.max(-24, Math.min(24, velocity / 55));
+    return normalized;
+  });
 
-  useMotionValueEvent(velocityValue, 'change', (latest) => {
-    setVelocity(latest);
+  const opacity = useTransform(velocityValue, (velocity) => {
+    const intensity = Math.min(1, Math.abs(velocity) / 1400);
+    return 0.35 + intensity * 0.42;
   });
 
   if (resumeMode) {
     return <div className="my-8 h-px bg-slate-800/70" aria-hidden="true" />;
   }
 
-  const intensity = Math.min(1, Math.abs(velocity) / 1500);
-
   return (
     <div className="section-divider-wrap" aria-hidden="true">
-      <motion.div
-        className="section-divider"
-        animate={{
-          opacity: 0.35 + intensity * 0.45,
-          backgroundPositionX: velocity >= 0 ? ['0%', '100%'] : ['100%', '0%'],
-        }}
-        transition={{
-          backgroundPositionX: {
-            duration: 2.1 - intensity * 0.8,
-            repeat: Infinity,
-            ease: 'linear',
-          },
-          opacity: { duration: 0.2 },
-        }}
-      />
+      <motion.div className="section-divider" style={{ opacity, x }} />
     </div>
   );
 }
