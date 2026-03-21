@@ -95,7 +95,7 @@ export default function Home() {
   }, [activeProject]);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
+    <main className="main-canvas mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
       <HeroSection
         spring={spring}
         resumeMode={resumeMode}
@@ -105,7 +105,7 @@ export default function Home() {
 
       <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
 
-      <section className="mt-10 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+      <section className="section-cluster grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <motion.div
           initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}
@@ -144,23 +144,23 @@ export default function Home() {
 
       <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
 
-      <section className="mt-10 grid gap-6 lg:grid-cols-2">
+      <section className="section-cluster grid gap-6 lg:grid-cols-2">
         <motion.div
           initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ ...spring, delay: sectionDelays.capabilities }}
-          className="panel"
+          className="panel capability-frame"
         >
           <h2 className="section-title mb-2">Capability Matrix</h2>
           <p className="mb-4 text-sm text-slate-300">Cross-disciplinary strength across code, creative tooling, and deployment systems.</p>
-          <div className="grid gap-4">
+          <div className="capability-grid">
             {capabilities.map(([heading, ...skills]) => (
-              <div key={heading} className="glass rounded-xl p-4">
-                <h3 className="text-sm uppercase tracking-wide text-cyan-300">{heading}</h3>
+              <div key={heading} className="capability-card">
+                <h3 className="capability-card__title">{heading}</h3>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {skills.map((skill) => (
-                    <span key={skill} className="rounded-full border border-cyan-300/40 px-2 py-1 text-xs text-cyan-100">
+                    <span key={skill} className="capability-chip">
                       {skill}
                     </span>
                   ))}

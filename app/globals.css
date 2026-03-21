@@ -130,6 +130,49 @@ body {
   @apply glass rounded-2xl p-5 sm:p-6;
 }
 
+.main-canvas {
+  --section-gap: clamp(2rem, 4.6vw, 3rem);
+}
+
+.section-cluster {
+  margin-top: var(--section-gap);
+}
+
+.capability-frame {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(56, 189, 248, 0.1), transparent 32%),
+    linear-gradient(160deg, rgba(11, 18, 33, 0.8), rgba(16, 24, 44, 0.9));
+}
+
+.capability-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.capability-card {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 0.85rem;
+  background: rgba(2, 6, 23, 0.35);
+  padding: 0.72rem;
+}
+
+.capability-card__title {
+  margin: 0;
+  font-size: 0.73rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #67e8f9;
+}
+
+.capability-chip {
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  border-radius: 999px;
+  padding: 0.2rem 0.52rem;
+  font-size: 0.72rem;
+  color: #e0f2fe;
+  background: rgba(15, 23, 42, 0.48);
+}
+
 .hero-atlas {
   position: relative;
   overflow: hidden;
@@ -969,7 +1012,7 @@ body {
 }
 
 .section-divider-wrap {
-  margin: 1.75rem 0 0.75rem;
+  margin: clamp(1.2rem, 3vw, 1.75rem) 0 0.75rem;
   pointer-events: none;
 }
 
@@ -1014,5 +1057,62 @@ body {
 
   .section-divider {
     animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .panel {
+    border-radius: 1rem;
+    padding: 0.95rem;
+  }
+
+  .hero-display {
+    font-size: clamp(1.72rem, 9vw, 2.22rem);
+    line-height: 1.06;
+  }
+
+  .hero-lead {
+    font-size: 0.92rem;
+    line-height: 1.52;
+  }
+
+  .hero-cta-row {
+    gap: 0.42rem;
+  }
+
+  .hero-cta {
+    width: 100%;
+    text-align: center;
+    padding: 0.56rem 0.78rem;
+    font-size: 0.8rem;
+  }
+
+  .project-strip__button {
+    padding: 0.75rem 0.72rem 0.8rem 0.82rem;
+  }
+
+  .project-strip__title {
+    font-size: 1rem;
+  }
+
+  .project-strip__body {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .project-strip__impact,
+  .timeline-ledger__text,
+  .principles-constellation__text,
+  .honors-dossier__point {
+    font-size: 0.84rem;
+  }
+
+  .site-signoff__row {
+    align-items: flex-start;
+  }
+
+  .site-signoff__status {
+    width: 100%;
+    justify-content: center;
   }
 }
