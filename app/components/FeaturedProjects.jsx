@@ -15,10 +15,10 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
   return (
     <motion.article
       ref={cardRef}
-      initial={reduceMotion ? false : fadeIn.hidden}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+      whileInView={resumeMode ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
-      transition={{ ...spring, delay: index * 0.08 }}
+      transition={resumeMode ? { duration: 0 } : { ...spring, delay: index * 0.08 }}
       whileHover={resumeMode ? undefined : { y: -6, scale: 1.01 }}
       style={resumeMode ? undefined : { y: storyY, opacity: storyOpacity, scale: storyScale }}
       className="group accent-border glass cursor-pointer rounded-xl p-4 focus-within:ring-2 focus-within:ring-cyan-300/60"

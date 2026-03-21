@@ -63,7 +63,7 @@ function ArchitectureDiagram({ project }) {
   );
 }
 
-export default function ProjectModal({ activeProject, reduceMotion, spring, onClose, dialogRef, closeRef }) {
+export default function ProjectModal({ activeProject, reduceMotion, resumeMode, spring, onClose, dialogRef, closeRef }) {
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
@@ -76,17 +76,17 @@ export default function ProjectModal({ activeProject, reduceMotion, spring, onCl
     <AnimatePresence>
       {activeProject && (
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={resumeMode ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={resumeMode ? { opacity: 1 } : { opacity: 0 }}
           className="fixed inset-0 z-40 grid place-items-center bg-black/70 p-4"
           onClick={onClose}
         >
           <motion.div
-            initial={reduceMotion ? false : { y: 24, opacity: 0, scale: 0.98 }}
+            initial={reduceMotion || resumeMode ? false : { y: 24, opacity: 0, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 20, opacity: 0 }}
-            transition={spring}
+            exit={resumeMode ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={resumeMode ? { duration: 0 } : spring}
             onClick={(event) => event.stopPropagation()}
             className="glass max-h-[88vh] w-full max-w-2xl overflow-auto rounded-2xl p-6"
             role="dialog"

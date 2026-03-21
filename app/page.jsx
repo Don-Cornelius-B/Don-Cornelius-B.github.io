@@ -219,6 +219,7 @@ export default function Home() {
       <ProjectModal
         activeProject={activeProject}
         reduceMotion={reduceMotion}
+        resumeMode={resumeMode}
         spring={spring}
         onClose={handleProjectClose}
         dialogRef={dialogRef}
