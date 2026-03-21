@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 const TABS = ['overview', 'architecture', 'outcomes', 'links'];
@@ -64,6 +65,12 @@ function ArchitectureDiagram({ project }) {
 
 export default function ProjectModal({ activeProject, reduceMotion, spring, onClose, dialogRef, closeRef }) {
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    if (activeProject) {
+      setActiveTab('overview');
+    }
+  }, [activeProject]);
 
   return (
     <AnimatePresence>
@@ -140,13 +147,17 @@ export default function ProjectModal({ activeProject, reduceMotion, spring, onCl
             {activeTab === 'architecture' && <ArchitectureDiagram project={activeProject} />}
 
             {activeTab === 'outcomes' && (
-              <ul className="mt-4 space-y-2 text-sm text-slate-300">
-                {activeProject.outcomes?.map((point) => (
-                  <li key={point} className="rounded-lg border border-cyan-300/20 bg-slate-950/30 px-3 py-2">
-                    {point}
+              <ol className="project-stepper mt-4" aria-label="Challenge decision outcome timeline">
+                {activeProject.stepper?.map((step) => (
+                  <li key={step.phase} className="project-stepper__item">
+                    <span className="project-stepper__dot" aria-hidden="true" />
+                    <div className="project-stepper__card">
+                      <p className="project-stepper__phase">{step.phase}</p>
+                      <p className="project-stepper__text">{step.detail}</p>
+                    </div>
                   </li>
                 ))}
-              </ul>
+              </ol>
             )}
 
             {activeTab === 'links' && (

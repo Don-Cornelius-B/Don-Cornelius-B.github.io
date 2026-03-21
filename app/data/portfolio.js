@@ -12,6 +12,20 @@ export const projects = [
       'Designed bridge architecture between mobile socket clients and RF edge devices.',
       'Created CI-friendly pipeline for repeatable firmware and gateway updates.',
     ],
+    stepper: [
+      {
+        phase: 'Challenge',
+        detail: 'Enable resilient communication in low-connectivity environments for emergency teams.',
+      },
+      {
+        phase: 'Decision',
+        detail: 'Bridge mobile socket traffic into an RF-enabled gateway with secure key-stream handling.',
+      },
+      {
+        phase: 'Outcome',
+        detail: 'Validated offline relay workflow with repeatable deployment and operational traceability.',
+      },
+    ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
@@ -55,6 +69,20 @@ export const projects = [
       'Delivered React dashboard views for rapid response and anomaly inspection.',
       'Modularized pipeline components for reproducible model and API deployments.',
     ],
+    stepper: [
+      {
+        phase: 'Challenge',
+        detail: 'Detect disruptions early across fragmented, high-volume logistics data streams.',
+      },
+      {
+        phase: 'Decision',
+        detail: 'Implement multimodal fusion pipeline with operational dashboard and API-driven services.',
+      },
+      {
+        phase: 'Outcome',
+        detail: 'Produced a unified view of risk signals to accelerate response and decision quality.',
+      },
+    ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
@@ -97,6 +125,20 @@ export const projects = [
       'Mapped low-friction process from employee profile creation to assignment fulfillment.',
       'Automated approval and routing steps with Power Automate flows.',
       'Structured Dataverse records to support scalable reporting and governance.',
+    ],
+    stepper: [
+      {
+        phase: 'Challenge',
+        detail: 'Improve talent utilization across teams while reducing assignment friction.',
+      },
+      {
+        phase: 'Decision',
+        detail: 'Design an internal marketplace backed by Dataverse with automated routing flows.',
+      },
+      {
+        phase: 'Outcome',
+        detail: 'Delivered a workable prototype for faster role matching and transparent workflow governance.',
+      },
     ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },

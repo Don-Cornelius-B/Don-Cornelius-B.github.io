@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useSpring, useVelocity } from 'framer-motion';
 import Image from 'next/image';
 import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
 import HonorsSection from './components/HonorsSection';
 import PrinciplesSection from './components/PrinciplesSection';
 import ProjectModal from './components/ProjectModal';
+import SectionDivider from './components/SectionDivider';
 import SkillsProjectionDeck from './components/SkillsProjectionDeck';
 import TimelineSection from './components/TimelineSection';
 import { capabilities, honors, principles, projects, techProjectionLanes, timeline } from './data/portfolio';
@@ -20,10 +21,26 @@ const fadeIn = {
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [resumeMode, setResumeMode] = useState(false);
   const reduceMotion = useReducedMotion();
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
   const lastFocusedRef = useRef(null);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, { stiffness: 120, damping: 24 });
+
+  const filterOptions = [...new Set(projects.flatMap((project) => project.tags))].slice(0, 8);
+  const filteredProjects = activeFilter === 'all' ? projects : projects.filter((project) => project.tags.includes(activeFilter));
+
+  const sectionDelays = {
+    projects: 0.04,
+    skills: 0.1,
+    capabilities: 0.16,
+    principles: 0.22,
+    honors: 0.28,
+  };
 
   const handleProjectOpen = (project) => {
     lastFocusedRef.current = document.activeElement;
@@ -79,30 +96,58 @@ export default function Home() {
 
   return (
     <main className="mx-auto max-w-6xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
-      <HeroSection spring={spring} />
+      <HeroSection
+        spring={spring}
+        resumeMode={resumeMode}
+        onResumeModeToggle={() => setResumeMode((prev) => !prev)}
+        reduceMotion={reduceMotion}
+      />
+
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
 
       <section className="mt-10 grid gap-6 lg:grid-cols-[1.35fr_1fr]">
-        <FeaturedProjects
-          projects={projects}
-          reduceMotion={reduceMotion}
-          fadeIn={fadeIn}
-          spring={spring}
-          onProjectOpen={handleProjectOpen}
-        />
+        <motion.div
+          initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.24 }}
+          transition={{ ...spring, delay: sectionDelays.projects }}
+        >
+          <FeaturedProjects
+            projects={filteredProjects}
+            reduceMotion={reduceMotion}
+            fadeIn={fadeIn}
+            spring={spring}
+            onProjectOpen={handleProjectOpen}
+            activeFilter={activeFilter}
+            onFilterChange={setActiveFilter}
+            filterOptions={filterOptions}
+            resumeMode={resumeMode}
+          />
+        </motion.div>
 
-        <div className="panel">
-          <h2 className="section-title mb-2">Tech Stack Projection</h2>
-          <p className="mb-4 text-sm text-slate-300">A layered projection deck of resume skills grouped by delivery workflow.</p>
-          <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} />
-        </div>
+        {!resumeMode && (
+          <motion.div
+            initial={reduceMotion ? false : fadeIn.hidden}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.24 }}
+            transition={{ ...spring, delay: sectionDelays.skills }}
+            className="panel"
+          >
+            <h2 className="section-title mb-2">Tech Stack Projection</h2>
+            <p className="mb-4 text-sm text-slate-300">A layered projection deck of resume skills grouped by delivery workflow.</p>
+            <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} />
+          </motion.div>
+        )}
       </section>
+
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
 
       <section className="mt-10 grid gap-6 lg:grid-cols-2">
         <motion.div
-          initial={reduceMotion ? false : fadeIn.hidden}
+          initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={spring}
+          transition={{ ...spring, delay: sectionDelays.capabilities }}
           className="panel"
         >
           <h2 className="section-title mb-2">Capability Matrix</h2>
@@ -126,9 +171,27 @@ export default function Home() {
         <TimelineSection timeline={timeline} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
       </section>
 
-      <PrinciplesSection principles={principles} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
 
-      <HonorsSection honors={honors} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
+      <motion.div
+        initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.28 }}
+        transition={{ ...spring, delay: sectionDelays.principles }}
+      >
+        <PrinciplesSection principles={principles} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
+      </motion.div>
+
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+
+      <motion.div
+        initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.28 }}
+        transition={{ ...spring, delay: sectionDelays.honors }}
+      >
+        <HonorsSection honors={honors} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
+      </motion.div>
 
       <footer className="mt-10 panel">
         <div className="flex flex-wrap items-center justify-between gap-3">
