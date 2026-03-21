@@ -11,6 +11,11 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
   const storyY = useTransform(scrollYProgress, [0, 1], [28, 0]);
   const storyOpacity = useTransform(scrollYProgress, [0, 0.35, 1], [0.2, 0.7, 1]);
   const storyScale = useTransform(scrollYProgress, [0, 1], [0.985, 1]);
+  const accentStyle = {
+    '--project-edge': project.theme.edge,
+    '--project-chip-border': project.theme.chipBorder,
+    '--project-chip-text': project.theme.chipText,
+  };
 
   return (
     <motion.article
@@ -19,29 +24,42 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
       whileInView={resumeMode ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={resumeMode ? { duration: 0 } : { ...spring, delay: index * 0.08 }}
-      whileHover={resumeMode ? undefined : { y: -6, scale: 1.01 }}
+      whileHover={resumeMode ? undefined : { y: -5 }}
       style={resumeMode ? undefined : { y: storyY, opacity: storyOpacity, scale: storyScale }}
-      className="group accent-border glass cursor-pointer rounded-xl p-4 focus-within:ring-2 focus-within:ring-cyan-300/60"
+      className="project-strip group"
     >
       <button
         type="button"
         onClick={() => onProjectOpen(project)}
-        className="w-full text-left"
+        className="project-strip__button"
         aria-label={`Open ${project.title} project details`}
+        style={accentStyle}
       >
-        <h3 className="text-lg font-semibold text-slate-100">{project.title}</h3>
-        <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{project.duration}</p>
-        <p className="mt-2 text-xs uppercase tracking-[0.12em] text-slate-400">{project.role}</p>
-        <p className="mt-2 text-sm text-slate-300">{project.description}</p>
-        <p className="mt-3 rounded-lg border border-cyan-300/20 bg-slate-950/30 px-3 py-2 text-xs text-cyan-100">{project.impact}</p>
-        <div className="mt-3 flex flex-wrap gap-2 opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
-          {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full border px-2 py-1 text-xs" style={{ borderColor: project.theme.chipBorder, color: project.theme.chipText }}>
-              {tag}
-            </span>
-          ))}
+        <div className="project-strip__meta-row">
+          <p className="project-strip__duration">{project.duration}</p>
+          <p className="project-strip__open">Open deep dive</p>
         </div>
-        <p className="mt-4 text-xs text-slate-400">Open project deep dive</p>
+
+        <h3 className="project-strip__title">{project.title}</h3>
+
+        <div className="project-strip__content-grid">
+          <div>
+            <p className="project-strip__body">{project.description}</p>
+            <div className="project-strip__tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="project-strip__tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="project-strip__aside">
+            <p className="project-strip__role">{project.role}</p>
+            <p className="project-strip__impact">{project.impact}</p>
+            <p className="project-strip__frame">Story frame {String(index + 1).padStart(2, '0')}</p>
+          </div>
+        </div>
       </button>
     </motion.article>
   );
@@ -59,19 +77,17 @@ export default function FeaturedProjects({
   resumeMode,
 }) {
   return (
-    <div className="panel">
+    <div className="panel project-atlas">
+      <p className="project-atlas__eyebrow">Selected builds</p>
       <h2 className="section-title mb-2">Featured Work</h2>
-      <p className="mb-5 text-sm text-slate-300">
-        Selected resume projects across embedded security, multimodal AI, and enterprise workflow systems.
+      <p className="project-atlas__intro">
+        A compact editorial index of builds across embedded security, multimodal AI, and enterprise workflow systems.
       </p>
-      <div className="mb-4 flex flex-wrap gap-2" aria-label="Project filters">
+
+      <div className="project-filter-row" aria-label="Project filters">
         <button
           type="button"
-          className={`rounded-full border px-3 py-1.5 text-xs uppercase tracking-[0.12em] transition ${
-            activeFilter === 'all'
-              ? 'border-cyan-300/70 bg-cyan-500/15 text-cyan-100'
-              : 'border-slate-500/40 text-slate-300 hover:border-cyan-300/50 hover:text-cyan-100'
-          }`}
+          className={`project-filter ${activeFilter === 'all' ? 'project-filter--active' : ''}`}
           onClick={() => onFilterChange('all')}
           aria-pressed={activeFilter === 'all'}
         >
@@ -81,11 +97,7 @@ export default function FeaturedProjects({
           <button
             key={option}
             type="button"
-            className={`rounded-full border px-3 py-1.5 text-xs uppercase tracking-[0.12em] transition ${
-              activeFilter === option
-                ? 'border-cyan-300/70 bg-cyan-500/15 text-cyan-100'
-                : 'border-slate-500/40 text-slate-300 hover:border-cyan-300/50 hover:text-cyan-100'
-            }`}
+            className={`project-filter ${activeFilter === option ? 'project-filter--active' : ''}`}
             onClick={() => onFilterChange(option)}
             aria-pressed={activeFilter === option}
           >
@@ -94,7 +106,7 @@ export default function FeaturedProjects({
         ))}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="project-list">
         {projects.map((project, index) => (
           <ProjectStoryCard
             key={project.id}
