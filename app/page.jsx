@@ -95,7 +95,7 @@ export default function Home() {
   }, [activeProject]);
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
+    <main className="mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
       <HeroSection
         spring={spring}
         resumeMode={resumeMode}
