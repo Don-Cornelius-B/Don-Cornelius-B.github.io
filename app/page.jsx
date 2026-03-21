@@ -9,6 +9,7 @@ import HonorsSection from './components/HonorsSection';
 import PrinciplesSection from './components/PrinciplesSection';
 import ProjectModal from './components/ProjectModal';
 import SectionDivider from './components/SectionDivider';
+import SkillOrbitSection from './components/SkillOrbitSection';
 import SkillsProjectionDeck from './components/SkillsProjectionDeck';
 import TimelineSection from './components/TimelineSection';
 import { capabilities, honors, principles, projects, techProjectionLanes, timeline } from './data/portfolio';
@@ -40,6 +41,7 @@ export default function Home() {
     capabilities: 0.16,
     principles: 0.22,
     honors: 0.28,
+    orbit: 0.34,
   };
 
   const handleProjectOpen = (project) => {
@@ -193,6 +195,17 @@ export default function Home() {
         transition={{ ...spring, delay: sectionDelays.honors }}
       >
         <HonorsSection honors={honors} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
+      </motion.div>
+
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+
+      <motion.div
+        initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.24 }}
+        transition={{ ...spring, delay: sectionDelays.orbit }}
+      >
+        <SkillOrbitSection techProjectionLanes={techProjectionLanes} reduceMotion={reduceMotion} resumeMode={resumeMode} />
       </motion.div>
 
       <footer className="mt-10 panel site-signoff">
