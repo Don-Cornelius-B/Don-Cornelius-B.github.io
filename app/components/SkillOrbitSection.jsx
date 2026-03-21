@@ -49,8 +49,13 @@ export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, r
 
       <div className="skill-orbit__shell">
         <div className="skill-orbit__desktop" role="presentation">
+          <div className="skill-orbit__nebula skill-orbit__nebula--one" />
+          <div className="skill-orbit__nebula skill-orbit__nebula--two" />
+          <div className="skill-orbit__nebula skill-orbit__nebula--three" />
           <div className="skill-orbit__core" />
+          <div className="skill-orbit__core-halo" />
           <div className="skill-orbit__ring" />
+          <div className="skill-orbit__ring skill-orbit__ring--outer" />
           <div className="skill-orbit__ring skill-orbit__ring--inner" />
 
           {nodes.map((node, index) => {
@@ -67,7 +72,7 @@ export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, r
                 key={node.id}
                 type="button"
                 className={`skill-orbit__node ${isActive ? 'skill-orbit__node--active' : ''} ${isRelated ? 'skill-orbit__node--related' : ''}`}
-                style={{ transform: `translate(${x}px, ${y}px)` }}
+                style={{ transform: `translate(${x}px, ${y}px)`, '--node-energy': `${node.energy}` }}
                 onClick={() => setActiveId(node.id)}
                 aria-pressed={isActive}
                 aria-label={`Focus ${node.title}`}
@@ -88,6 +93,13 @@ export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, r
                 </p>
                 <div className="skill-orbit__energy-track" aria-hidden="true">
                   <div className="skill-orbit__energy-fill" style={{ width: `${activeNode.energy}%` }} />
+                </div>
+                <div className="skill-orbit__lane-mini-list" aria-label="Related lane skills">
+                  {(techProjectionLanes.find((lane) => lane.title === activeNode.lane)?.skills ?? []).slice(0, 5).map((skill) => (
+                    <span key={skill} className="skill-orbit__lane-mini-chip">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </>
             )}
