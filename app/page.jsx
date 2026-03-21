@@ -130,13 +130,13 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.24 }}
           transition={{ ...spring, delay: sectionDelays.skills }}
-          className="panel"
+          className="panel skill-atlas-panel"
         >
           <h2 className="section-title mb-2">Tech Stack Projection</h2>
           <p className="mb-4 text-sm text-slate-300">
             {resumeMode
-              ? 'Resume mode keeps this section visible with reduced visual effects for quick recruiter scanning.'
-              : 'A layered projection deck of resume skills grouped by delivery workflow.'}
+              ? 'Resume mode keeps the atlas visible while reducing movement for quick recruiter scanning.'
+              : 'An atlas-style layout of applied tools, grouped by how they ship value in production.'}
           </p>
           <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} disableAnimation={resumeMode || reduceMotion} />
         </motion.div>
