@@ -683,6 +683,199 @@ body {
     color: #7dd3fc;
   }
 
+  .principles-constellation {
+    background:
+      radial-gradient(circle at 82% 15%, rgba(245, 158, 11, 0.1), transparent 28%),
+      linear-gradient(160deg, rgba(9, 16, 31, 0.82), rgba(17, 24, 39, 0.92));
+  }
+
+  .principles-constellation__eyebrow {
+    margin: 0;
+    font-size: 0.69rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #67e8f9;
+  }
+
+  .principles-constellation__intro {
+    margin: 0 0 1rem;
+    max-width: 52rem;
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .principles-constellation__grid {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 768px) {
+    .principles-constellation__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .principles-constellation__card {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 0.85rem;
+    background: rgba(2, 6, 23, 0.4);
+    padding: 0.82rem;
+  }
+
+  .principles-constellation__index {
+    margin: 0;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+
+  .principles-constellation__title {
+    margin: 0.3rem 0 0;
+    font-size: 1rem;
+    color: #dbeafe;
+  }
+
+  .principles-constellation__text {
+    margin: 0.42rem 0 0;
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  .honors-dossier {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.11), transparent 32%),
+      linear-gradient(155deg, rgba(11, 18, 33, 0.82), rgba(18, 27, 46, 0.9));
+  }
+
+  .honors-dossier__eyebrow {
+    margin: 0;
+    font-size: 0.69rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #67e8f9;
+  }
+
+  .honors-dossier__intro {
+    margin: 0 0 1rem;
+    color: #cbd5e1;
+    font-size: 0.92rem;
+  }
+
+  .honors-dossier__list {
+    display: grid;
+    gap: 0.72rem;
+  }
+
+  .honors-dossier__item {
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 0.9rem;
+    background: rgba(2, 6, 23, 0.42);
+    padding: 0.85rem;
+  }
+
+  .honors-dossier__head {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .honors-dossier__title {
+    margin: 0;
+    color: #e0f2fe;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .honors-dossier__period {
+    margin: 0;
+    color: #7dd3fc;
+    font-size: 0.67rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .honors-dossier__points {
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .honors-dossier__point {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: start;
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    line-height: 1.48;
+  }
+
+  .honors-dossier__point-index {
+    margin-top: 0.03rem;
+    border: 1px solid rgba(56, 189, 248, 0.46);
+    border-radius: 999px;
+    min-width: 1.55rem;
+    text-align: center;
+    padding: 0.05rem 0.34rem;
+    font-size: 0.63rem;
+    letter-spacing: 0.1em;
+    color: #67e8f9;
+  }
+
+  .site-signoff {
+    background:
+      linear-gradient(160deg, rgba(8, 14, 26, 0.84), rgba(12, 20, 36, 0.94));
+    border-color: rgba(148, 163, 184, 0.28);
+  }
+
+  .site-signoff__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.72rem;
+  }
+
+  .site-signoff__eyebrow {
+    margin: 0;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #67e8f9;
+  }
+
+  .site-signoff__owner {
+    margin: 0.24rem 0 0;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+
+  .site-signoff__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    border-radius: 0.62rem;
+    border: 1px solid rgba(110, 231, 183, 0.58);
+    padding: 0.4rem 0.62rem;
+    color: #a7f3d0;
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(6, 78, 59, 0.2);
+  }
+
+  .site-signoff__status:hover,
+  .site-signoff__status:focus-visible {
+    border-color: rgba(167, 243, 208, 0.82);
+    background: rgba(6, 78, 59, 0.3);
+    color: #d1fae5;
+    outline: none;
+  }
+
 .accent-border {
   position: relative;
 }

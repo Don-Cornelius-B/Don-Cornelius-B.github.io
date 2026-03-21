@@ -195,14 +195,17 @@ export default function Home() {
         <HonorsSection honors={honors} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
       </motion.div>
 
-      <footer className="mt-10 panel">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-slate-300">© {new Date().getFullYear()} Don Cornelius B</p>
+      <footer className="mt-10 panel site-signoff">
+        <div className="site-signoff__row">
+          <div>
+            <p className="site-signoff__eyebrow">Build log</p>
+            <p className="site-signoff__owner">© {new Date().getFullYear()} Don Cornelius B</p>
+          </div>
           <a
             href="https://github.com/Don-Cornelius-B/My-Portfolio/actions/workflows/main.yml"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-lg border border-emerald-300/50 px-3 py-2 text-xs text-emerald-200"
+            className="site-signoff__status"
           >
             <Image
               src="https://github.com/Don-Cornelius-B/My-Portfolio/actions/workflows/main.yml/badge.svg"
@@ -211,7 +214,7 @@ export default function Home() {
               height={20}
               className="h-5"
             />
-            Deployment Status
+            Deployment status
           </a>
         </div>
       </footer>

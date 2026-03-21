@@ -2,10 +2,11 @@ import { motion } from 'framer-motion';
 
 export default function HonorsSection({ honors, reduceMotion, fadeIn, spring }) {
   return (
-    <section className="mt-10 panel">
+    <section className="mt-10 panel honors-dossier">
+      <p className="honors-dossier__eyebrow">Recognition</p>
       <h2 className="section-title mb-2">Honors</h2>
-      <p className="mb-5 text-sm text-slate-300">Recognition and challenge programs that shaped high-impact, production-minded work.</p>
-      <div className="grid gap-4">
+      <p className="honors-dossier__intro">Challenge programs and selective tracks that sharpened production-focused delivery.</p>
+      <div className="honors-dossier__list">
         {honors.map((honor, index) => (
           <motion.article
             key={honor.title}
@@ -13,13 +14,16 @@ export default function HonorsSection({ honors, reduceMotion, fadeIn, spring }) 
             whileInView={fadeIn.visible}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ ...spring, delay: index * 0.08 }}
-            className="glass rounded-xl p-5"
+            className="honors-dossier__item"
           >
-            <h3 className="text-base font-semibold text-cyan-200">{honor.title}</h3>
-            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-cyan-300">{honor.period}</p>
-            <ul className="mt-3 space-y-2 text-sm text-slate-300">
-              {honor.points.map((point) => (
-                <li key={point} className="border-l-2 border-cyan-400/40 pl-3">
+            <div className="honors-dossier__head">
+              <h3 className="honors-dossier__title">{honor.title}</h3>
+              <p className="honors-dossier__period">{honor.period}</p>
+            </div>
+            <ul className="honors-dossier__points">
+              {honor.points.map((point, pointIndex) => (
+                <li key={point} className="honors-dossier__point">
+                  <span className="honors-dossier__point-index">{String(pointIndex + 1).padStart(2, '0')}</span>
                   {point}
                 </li>
               ))}
