@@ -32,13 +32,13 @@ export const projects = [
     ],
     tags: ['Python', 'C++', 'GitHub Actions', 'ESP32', 'Semtech SX1278 RA-02'],
     theme: {
-      edge: 'rgba(125, 211, 252, 0.7)',
-      nodeBorder: 'rgba(125, 211, 252, 0.45)',
-      nodeBg: 'rgba(8, 25, 49, 0.78)',
-      nodeText: '#dbeafe',
-      panelBg: 'linear-gradient(145deg, rgba(10, 20, 40, 0.72), rgba(17, 47, 76, 0.56))',
-      chipBorder: 'rgba(125, 211, 252, 0.48)',
-      chipText: '#bae6fd',
+      edge: 'rgba(43, 138, 138, 0.72)',
+      nodeBorder: 'rgba(43, 138, 138, 0.4)',
+      nodeBg: 'rgba(24, 28, 32, 0.8)',
+      nodeText: '#f5f4f0',
+      panelBg: 'linear-gradient(145deg, rgba(23, 25, 26, 0.74), rgba(46, 53, 58, 0.56))',
+      chipBorder: 'rgba(43, 138, 138, 0.46)',
+      chipText: '#9cd9d8',
     },
     diagram: {
       nodes: [
@@ -89,13 +89,13 @@ export const projects = [
     ],
     tags: ['React', 'FastAPI', 'Python', 'CMU Multimodal SDK', 'TorchGeo', 'GitHub Actions'],
     theme: {
-      edge: 'rgba(165, 180, 252, 0.72)',
-      nodeBorder: 'rgba(165, 180, 252, 0.42)',
-      nodeBg: 'rgba(25, 22, 58, 0.78)',
-      nodeText: '#e0e7ff',
-      panelBg: 'linear-gradient(145deg, rgba(20, 22, 58, 0.72), rgba(52, 40, 96, 0.52))',
-      chipBorder: 'rgba(167, 139, 250, 0.5)',
-      chipText: '#ddd6fe',
+      edge: 'rgba(212, 165, 116, 0.72)',
+      nodeBorder: 'rgba(212, 165, 116, 0.42)',
+      nodeBg: 'rgba(40, 33, 22, 0.8)',
+      nodeText: '#fff6e8',
+      panelBg: 'linear-gradient(145deg, rgba(38, 31, 24, 0.74), rgba(72, 56, 35, 0.52))',
+      chipBorder: 'rgba(212, 165, 116, 0.5)',
+      chipText: '#f3dbc0',
     },
     diagram: {
       nodes: [
@@ -146,13 +146,13 @@ export const projects = [
     ],
     tags: ['Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365'],
     theme: {
-      edge: 'rgba(110, 231, 183, 0.68)',
-      nodeBorder: 'rgba(110, 231, 183, 0.45)',
-      nodeBg: 'rgba(14, 38, 34, 0.76)',
-      nodeText: '#d1fae5',
-      panelBg: 'linear-gradient(145deg, rgba(11, 28, 29, 0.74), rgba(23, 65, 58, 0.5))',
-      chipBorder: 'rgba(110, 231, 183, 0.5)',
-      chipText: '#bbf7d0',
+      edge: 'rgba(139, 111, 71, 0.7)',
+      nodeBorder: 'rgba(139, 111, 71, 0.45)',
+      nodeBg: 'rgba(39, 30, 22, 0.76)',
+      nodeText: '#f6ebdd',
+      panelBg: 'linear-gradient(145deg, rgba(35, 28, 24, 0.74), rgba(63, 49, 33, 0.5))',
+      chipBorder: 'rgba(139, 111, 71, 0.5)',
+      chipText: '#e8d2b3',
     },
     diagram: {
       nodes: [
@@ -217,22 +217,22 @@ export const honors = [
 export const techProjectionLanes = [
   {
     title: 'Languages',
-    accent: 'border-cyan-300/35 bg-cyan-500/5',
+    accent: 'border-[color:var(--accent-turq-solid)]/45 bg-[color:var(--accent-turq-solid)]/10',
     skills: ['Python', 'Bash', 'C++'],
   },
   {
     title: 'Version Control + CI/CD',
-    accent: 'border-sky-300/35 bg-sky-500/5',
+    accent: 'border-[color:var(--accent-gold-solid)]/45 bg-[color:var(--accent-gold-solid)]/10',
     skills: ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
   },
   {
     title: 'AI + Application',
-    accent: 'border-indigo-300/35 bg-indigo-500/5',
+    accent: 'border-[color:var(--accent-copper-solid)]/45 bg-[color:var(--accent-copper-solid)]/10',
     skills: ['React', 'FastAPI', 'CMU Multimodal SDK', 'TorchGeo'],
   },
   {
     title: 'Hardware + Enterprise',
-    accent: 'border-emerald-300/35 bg-emerald-500/5',
+    accent: 'border-[color:var(--ink-strong)]/30 bg-[color:var(--ink-strong)]/5',
     skills: ['ESP32', 'Semtech SX1278 RA-02', 'Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365 Integration'],
   },
 ];

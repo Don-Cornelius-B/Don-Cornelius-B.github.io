@@ -19,7 +19,7 @@ function buildOrbitNodes(techProjectionLanes) {
   return nodes.slice(0, 12);
 }
 
-export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, resumeMode }) {
+export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, resumeMode, isCardMode = false }) {
   const nodes = useMemo(() => buildOrbitNodes(techProjectionLanes), [techProjectionLanes]);
   const [rotation, setRotation] = useState(0);
   const [activeId, setActiveId] = useState(nodes[0]?.id ?? null);
@@ -28,7 +28,7 @@ export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, r
   const relatedLane = activeNode?.lane;
 
   useEffect(() => {
-    if (reduceMotion || resumeMode || !activeNode) {
+    if (reduceMotion || resumeMode || isCardMode || !activeNode) {
       return undefined;
     }
 
@@ -37,7 +37,7 @@ export default function SkillOrbitSection({ techProjectionLanes, reduceMotion, r
     }, 40);
 
     return () => window.clearInterval(timer);
-  }, [reduceMotion, resumeMode, activeNode]);
+  }, [reduceMotion, resumeMode, isCardMode, activeNode]);
 
   return (
     <section className="mt-10 panel skill-orbit" aria-label="Experimental skill orbit section">

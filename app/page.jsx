@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useSpring, useVelocity } from 'framer-motion';
+import { motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useVelocity } from 'framer-motion';
 import Image from 'next/image';
 import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
@@ -24,6 +24,7 @@ export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [resumeMode, setResumeMode] = useState(false);
+  const [isCardMode, setIsCardMode] = useState(false);
   const reduceMotion = useReducedMotion();
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -31,6 +32,15 @@ export default function Home() {
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, { stiffness: 120, damping: 24 });
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const threshold = Math.max(480, window.innerHeight * 0.95);
+    setIsCardMode(latest >= threshold);
+  });
 
   const filterOptions = [...new Set(projects.flatMap((project) => project.tags))].slice(0, 8);
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter((project) => project.tags.includes(activeFilter));
@@ -97,15 +107,16 @@ export default function Home() {
   }, [activeProject]);
 
   return (
-    <main className="main-canvas mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6" id="content-root">
+    <main className={`main-canvas ${isCardMode ? 'main-canvas--card' : ''} mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6`} id="content-root">
       <HeroSection
         spring={spring}
         resumeMode={resumeMode}
         onResumeModeToggle={() => setResumeMode((prev) => !prev)}
         reduceMotion={reduceMotion}
+        isCardMode={isCardMode}
       />
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
       <section className="section-cluster grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <motion.div
@@ -124,6 +135,7 @@ export default function Home() {
             onFilterChange={setActiveFilter}
             filterOptions={filterOptions}
             resumeMode={resumeMode}
+            isCardMode={isCardMode}
           />
         </motion.div>
 
@@ -135,7 +147,7 @@ export default function Home() {
           className="panel skill-atlas-panel"
         >
           <h2 className="section-title mb-2">Tech Stack Projection</h2>
-          <p className="mb-4 text-sm text-slate-300">
+          <p className="mb-4 text-sm text-[color:var(--ink-soft)]">
             {resumeMode
               ? 'Resume mode keeps this section visible with low motion for quick scanning.'
               : 'Applied tools grouped by how they deliver production value.'}
@@ -144,7 +156,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
       <section className="section-cluster grid gap-6 lg:grid-cols-2">
         <motion.div
@@ -155,7 +167,7 @@ export default function Home() {
           className="panel capability-frame"
         >
           <h2 className="section-title mb-2">Capability Matrix</h2>
-          <p className="mb-4 text-sm text-slate-300">Core strengths across engineering, tooling, and delivery.</p>
+          <p className="mb-4 text-sm text-[color:var(--ink-soft)]">Core strengths across engineering, tooling, and delivery.</p>
           <div className="capability-grid">
             {capabilities.map(([heading, ...skills]) => (
               <div key={heading} className="capability-card">
@@ -175,7 +187,7 @@ export default function Home() {
         <TimelineSection timeline={timeline} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
       </section>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
       <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
@@ -186,7 +198,7 @@ export default function Home() {
         <PrinciplesSection principles={principles} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
       </motion.div>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
       <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
@@ -197,7 +209,7 @@ export default function Home() {
         <HonorsSection honors={honors} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
       </motion.div>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} />
+      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
       <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
@@ -205,7 +217,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.24 }}
         transition={{ ...spring, delay: sectionDelays.orbit }}
       >
-        <SkillOrbitSection techProjectionLanes={techProjectionLanes} reduceMotion={reduceMotion} resumeMode={resumeMode} />
+        <SkillOrbitSection techProjectionLanes={techProjectionLanes} reduceMotion={reduceMotion} resumeMode={resumeMode} isCardMode={isCardMode} />
       </motion.div>
 
       <footer className="mt-10 panel site-signoff">

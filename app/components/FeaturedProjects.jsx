@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
-function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProjectOpen, resumeMode }) {
+function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProjectOpen, resumeMode, isCardMode }) {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -24,9 +24,15 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
       whileInView={resumeMode ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={resumeMode ? { duration: 0 } : { ...spring, delay: index * 0.08 }}
-      whileHover={resumeMode ? undefined : { y: -5 }}
-      style={resumeMode ? undefined : { y: storyY, opacity: storyOpacity, scale: storyScale }}
-      className="project-strip group"
+      whileHover={resumeMode || isCardMode ? undefined : { y: -5 }}
+      style={
+        resumeMode
+          ? undefined
+          : isCardMode
+            ? { y: 0, opacity: 1, scale: 1 }
+            : { y: storyY, opacity: storyOpacity, scale: storyScale }
+      }
+      className={`project-strip group ${isCardMode ? 'project-strip--card' : 'project-strip--immersive'}`}
     >
       <button
         type="button"
@@ -75,9 +81,10 @@ export default function FeaturedProjects({
   onFilterChange,
   filterOptions,
   resumeMode,
+  isCardMode,
 }) {
   return (
-    <div className="panel project-atlas">
+    <div className={`panel project-atlas ${isCardMode ? 'project-atlas--card' : 'project-atlas--immersive'}`}>
       <p className="project-atlas__eyebrow">Selected builds</p>
       <h2 className="section-title mb-2">Featured Work</h2>
       <p className="project-atlas__intro">
@@ -117,6 +124,7 @@ export default function FeaturedProjects({
             spring={spring}
             onProjectOpen={onProjectOpen}
             resumeMode={resumeMode}
+            isCardMode={isCardMode}
           />
         ))}
       </div>

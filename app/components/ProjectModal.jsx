@@ -95,11 +95,11 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
             ref={dialogRef}
             tabIndex={-1}
           >
-            <h3 id="project-modal-title" className="text-2xl font-bold text-slate-100">
+            <h3 id="project-modal-title" className="text-2xl font-semibold text-[color:var(--ink-strong)]">
               {activeProject.title} - Project Deep Dive
             </h3>
-            <p className="mt-2 text-sm uppercase tracking-[0.14em] text-cyan-300">{activeProject.duration}</p>
-            <p className="mt-1 text-slate-300">{activeProject.role}</p>
+            <p className="mt-2 text-sm uppercase tracking-[0.14em] text-[color:var(--accent-turq-solid)]">{activeProject.duration}</p>
+            <p className="mt-1 text-[color:var(--ink-soft)]">{activeProject.role}</p>
 
             <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap" role="tablist" aria-label="Project details tabs">
               {TABS.map((tab) => {
@@ -113,8 +113,8 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
                     aria-selected={selected}
                     className={`rounded-lg border px-3 py-2 text-xs uppercase tracking-[0.12em] transition ${
                       selected
-                        ? 'border-cyan-300/70 bg-cyan-500/15 text-cyan-100'
-                        : 'border-slate-500/40 text-slate-300 hover:border-cyan-300/50 hover:text-cyan-100'
+                        ? 'border-[color:var(--accent-gold-solid)]/75 bg-[color:var(--accent-gold-solid)]/20 text-[#4b331b]'
+                        : 'border-[color:var(--border-soft)] text-[color:var(--ink-soft)] hover:border-[color:var(--accent-turq-solid)]/60 hover:text-[color:var(--accent-turq-solid)]'
                     }`}
                     onClick={() => setActiveTab(tab)}
                   >
@@ -126,8 +126,8 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
 
             {activeTab === 'overview' && (
               <div className="mt-4 space-y-3">
-                <p className="text-sm text-slate-300">{activeProject.description}</p>
-                <p className="rounded-lg border border-cyan-300/25 bg-slate-950/40 px-3 py-2 text-sm text-cyan-100">
+                <p className="text-sm text-[color:var(--ink-soft)]">{activeProject.description}</p>
+                <p className="rounded-lg border border-[color:var(--accent-turq-solid)]/25 bg-[color:var(--surface-1)] px-3 py-2 text-sm text-[color:var(--accent-turq-solid)]">
                   {activeProject.impact}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -168,7 +168,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex w-fit rounded-lg border border-cyan-300/45 px-3 py-2 text-sm text-cyan-100 hover:bg-cyan-500/15"
+                    className="inline-flex w-fit rounded-lg border border-[color:var(--accent-gold-solid)]/55 px-3 py-2 text-sm text-[#4b331b] hover:bg-[color:var(--accent-gold-solid)]/20"
                   >
                     {link.label}
                   </a>
@@ -179,7 +179,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
             <button
               type="button"
               onClick={onClose}
-              className="mt-5 rounded-lg border border-slate-400/50 px-4 py-2 text-sm text-slate-100"
+              className="mt-5 rounded-lg border border-[color:var(--border-soft)] px-4 py-2 text-sm text-[color:var(--ink-strong)]"
               ref={closeRef}
             >
               Close

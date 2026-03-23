@@ -29,7 +29,7 @@ export default function SkillsProjectionDeck({ techProjectionLanes, disableAnima
                   <motion.span
                     key={skill}
                     className="skills-atlas__chip"
-                    whileHover={disableAnimation ? undefined : { y: -2, scale: 1.04, boxShadow: '0 0 16px rgba(56,189,248,0.34)' }}
+                    whileHover={disableAnimation ? undefined : { y: -2, scale: 1.04, boxShadow: '0 0 16px rgba(43,138,138,0.34)' }}
                   >
                     {skill}
                   </motion.span>
