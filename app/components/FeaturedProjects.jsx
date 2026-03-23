@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 
-function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProjectOpen, resumeMode, isCardMode }) {
+function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProjectOpen, resumeMode, isCardMode, themeMode }) {
+  const themePalette = project.theme?.light ? project.theme : { light: project.theme, dark: project.theme };
+  const activePalette = themePalette[themeMode] || themePalette.light;
   const accentStyle = {
-    '--project-edge': project.theme.edge,
-    '--project-chip-border': project.theme.chipBorder,
-    '--project-chip-text': project.theme.chipText,
+    '--project-edge': activePalette.edge,
+    '--project-chip-border': activePalette.chipBorder,
+    '--project-chip-text': activePalette.chipText,
   };
 
   return (
@@ -64,6 +66,7 @@ export default function FeaturedProjects({
   filterOptions,
   resumeMode,
   isCardMode,
+  themeMode,
 }) {
   return (
     <div className={`panel project-atlas ${isCardMode ? 'project-atlas--card' : 'project-atlas--immersive'}`}>
@@ -107,6 +110,7 @@ export default function FeaturedProjects({
             onProjectOpen={onProjectOpen}
             resumeMode={resumeMode}
             isCardMode={isCardMode}
+            themeMode={themeMode}
           />
         ))}
       </div>

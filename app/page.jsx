@@ -24,6 +24,7 @@ export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [resumeMode, setResumeMode] = useState(false);
+  const [themeMode, setThemeMode] = useState('light');
   const [isCardMode, setIsCardMode] = useState(false);
   const cardModeRef = useRef(false);
   const reduceMotion = useReducedMotion();
@@ -53,6 +54,27 @@ export default function Home() {
       setIsCardMode(false);
     }
   });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const stored = window.localStorage.getItem('portfolio-theme');
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
+    const resolved = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+    setThemeMode(resolved);
+    document.documentElement.dataset.theme = resolved;
+  }, []);
+
+  const handleThemeToggle = () => {
+    const nextMode = themeMode === 'dark' ? 'light' : 'dark';
+    setThemeMode(nextMode);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('portfolio-theme', nextMode);
+    }
+    document.documentElement.dataset.theme = nextMode;
+  };
 
   const filterOptions = [...new Set(projects.flatMap((project) => project.tags))].slice(0, 8);
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter((project) => project.tags.includes(activeFilter));
@@ -124,6 +146,8 @@ export default function Home() {
         spring={spring}
         resumeMode={resumeMode}
         onResumeModeToggle={() => setResumeMode((prev) => !prev)}
+        themeMode={themeMode}
+        onThemeToggle={handleThemeToggle}
         reduceMotion={reduceMotion}
         isCardMode={isCardMode}
       />
@@ -148,6 +172,7 @@ export default function Home() {
             filterOptions={filterOptions}
             resumeMode={resumeMode}
             isCardMode={isCardMode}
+            themeMode={themeMode}
           />
         </motion.div>
 
@@ -265,6 +290,7 @@ export default function Home() {
         onClose={handleProjectClose}
         dialogRef={dialogRef}
         closeRef={closeButtonRef}
+        themeMode={themeMode}
       />
       </main>
     </>

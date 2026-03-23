@@ -30,6 +30,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var stored=localStorage.getItem('portfolio-theme');var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var mode=(stored==='light'||stored==='dark')?stored:(prefersDark?'dark':'light');document.documentElement.dataset.theme=mode;}catch(e){document.documentElement.dataset.theme='light';}})();`,
+          }}
+        />
+      </head>
       <body className={`${displayFont.variable} ${bodyFont.variable}`}>
         <a href="#main-content" className="skip-link">
           Skip to main content

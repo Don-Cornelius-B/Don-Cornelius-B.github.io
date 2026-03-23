@@ -4,12 +4,13 @@ import { useState } from 'react';
 
 const TABS = ['overview', 'architecture', 'outcomes', 'links'];
 
-function ArchitectureDiagram({ project }) {
+function ArchitectureDiagram({ project, themeMode }) {
   if (!project?.diagram?.nodes?.length) {
     return null;
   }
 
-  const { diagram, theme } = project;
+  const { diagram } = project;
+  const theme = project.theme?.light ? project.theme[themeMode] : project.theme;
   const nodesById = Object.fromEntries(diagram.nodes.map((node) => [node.id, node]));
 
   return (
@@ -63,8 +64,13 @@ function ArchitectureDiagram({ project }) {
   );
 }
 
-export default function ProjectModal({ activeProject, reduceMotion, resumeMode, spring, onClose, dialogRef, closeRef }) {
+export default function ProjectModal({ activeProject, reduceMotion, resumeMode, spring, onClose, dialogRef, closeRef, themeMode }) {
   const [activeTab, setActiveTab] = useState('overview');
+  const activeTheme = activeProject
+    ? activeProject.theme?.light
+      ? activeProject.theme[themeMode] || activeProject.theme.light
+      : activeProject.theme
+    : null;
 
   useEffect(() => {
     if (activeProject) {
@@ -113,7 +119,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
                     aria-selected={selected}
                     className={`rounded-lg border px-3 py-2 text-xs uppercase tracking-[0.12em] transition ${
                       selected
-                        ? 'border-[color:var(--accent-gold-solid)]/75 bg-[color:var(--accent-gold-solid)]/20 text-[#4b331b]'
+                        ? 'border-[color:var(--accent-gold-solid)]/75 bg-[color:var(--accent-gold-solid)]/20 text-[color:var(--ink-strong)]'
                         : 'border-[color:var(--border-soft)] text-[color:var(--ink-soft)] hover:border-[color:var(--accent-turq-solid)]/60 hover:text-[color:var(--accent-turq-solid)]'
                     }`}
                     onClick={() => setActiveTab(tab)}
@@ -135,7 +141,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
                     <span
                       key={tag}
                       className="rounded-full border px-2 py-1 text-xs"
-                      style={{ borderColor: activeProject.theme.chipBorder, color: activeProject.theme.chipText }}
+                      style={{ borderColor: activeTheme?.chipBorder, color: activeTheme?.chipText }}
                     >
                       {tag}
                     </span>
@@ -144,7 +150,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
               </div>
             )}
 
-            {activeTab === 'architecture' && <ArchitectureDiagram project={activeProject} />}
+            {activeTab === 'architecture' && <ArchitectureDiagram project={activeProject} themeMode={themeMode} />}
 
             {activeTab === 'outcomes' && (
               <ol className="project-stepper mt-4" aria-label="Challenge decision outcome timeline">
@@ -168,7 +174,7 @@ export default function ProjectModal({ activeProject, reduceMotion, resumeMode, 
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex w-fit rounded-lg border border-[color:var(--accent-gold-solid)]/55 px-3 py-2 text-sm text-[#4b331b] hover:bg-[color:var(--accent-gold-solid)]/20"
+                    className="inline-flex w-fit rounded-lg border border-[color:var(--accent-gold-solid)]/55 px-3 py-2 text-sm text-[color:var(--ink-strong)] hover:bg-[color:var(--accent-gold-solid)]/20"
                   >
                     {link.label}
                   </a>

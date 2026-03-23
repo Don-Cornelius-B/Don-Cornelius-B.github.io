@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 
-export default function HeroSection({ spring, resumeMode, onResumeModeToggle, reduceMotion, isCardMode }) {
+export default function HeroSection({ spring, resumeMode, onResumeModeToggle, themeMode, onThemeToggle, reduceMotion, isCardMode }) {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -86,6 +86,17 @@ export default function HeroSection({ spring, resumeMode, onResumeModeToggle, re
               className={`hero-cta ${resumeMode ? 'hero-cta--mode-active' : 'hero-cta--mode'}`}
             >
               Resume Mode: {resumeMode ? 'On' : 'Off'}
+            </button>
+
+            <button
+              type="button"
+              onClick={onThemeToggle}
+              aria-pressed={themeMode === 'dark'}
+              aria-label={themeMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className={`hero-cta ${themeMode === 'dark' ? 'hero-cta--theme-active' : 'hero-cta--theme'}`}
+              title={themeMode === 'dark' ? 'Light mode' : 'Dark mode'}
+            >
+              Theme: {themeMode === 'dark' ? 'Dark' : 'Light'}
             </button>
 
             <a

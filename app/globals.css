@@ -20,6 +20,24 @@
   --ink-inverse: #f8f2e8;
 }
 
+[data-theme='dark'] {
+  color-scheme: dark;
+  --surface-1: rgba(14, 19, 30, 0.9);
+  --surface-2: rgba(12, 25, 44, 0.92);
+  --surface-3: rgba(4, 8, 18, 0.95);
+  --border-soft: rgba(86, 204, 242, 0.24);
+  --border-hard: rgba(255, 200, 87, 0.34);
+  --accent-turq: rgba(103, 232, 249, 0.74);
+  --accent-gold: rgba(255, 200, 87, 0.82);
+  --accent-copper: rgba(217, 147, 92, 0.72);
+  --accent-turq-solid: #67e8f9;
+  --accent-gold-solid: #ffc857;
+  --accent-copper-solid: #d9935c;
+  --ink-strong: #ecf7ff;
+  --ink-soft: #9fb7cf;
+  --ink-inverse: #f0f8ff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,6 +55,143 @@ body {
   margin: 0;
   position: relative;
   overflow-x: hidden;
+}
+
+[data-theme='dark'] body {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(103, 232, 249, 0.22), transparent 36%),
+    radial-gradient(circle at 80% 8%, rgba(255, 200, 87, 0.16), transparent 44%),
+    linear-gradient(180deg, #030712 0%, #071024 34%, #0b1020 66%, #101525 100%);
+  color: var(--ink-strong);
+}
+
+[data-theme='dark'] .stars,
+[data-theme='dark'] .hero-stars {
+  mix-blend-mode: screen;
+}
+
+[data-theme='dark'] .hero-atlas::after {
+  background: linear-gradient(to bottom, rgba(7, 12, 24, 0), rgba(7, 12, 24, 0.84));
+}
+
+[data-theme='dark'] .panel,
+[data-theme='dark'] .glass {
+  border-color: rgba(86, 204, 242, 0.24);
+  background: linear-gradient(160deg, rgba(9, 16, 28, 0.9), rgba(12, 24, 42, 0.92));
+}
+
+[data-theme='dark'] .panel {
+  box-shadow:
+    inset 0 1px 0 rgba(103, 232, 249, 0.14),
+    0 18px 36px rgba(0, 0, 0, 0.38);
+}
+
+[data-theme='dark'] .section-title {
+  color: #e6f4ff;
+}
+
+[data-theme='dark'] .hero-eyebrow,
+[data-theme='dark'] .hero-aside-label,
+[data-theme='dark'] .site-signoff__eyebrow {
+  color: #8ae9f7;
+}
+
+[data-theme='dark'] .hero-quick-note,
+[data-theme='dark'] .project-atlas__intro,
+[data-theme='dark'] .timeline-ledger__intro,
+[data-theme='dark'] .principles-constellation__intro,
+[data-theme='dark'] .honors-dossier__intro,
+[data-theme='dark'] .skill-orbit__intro {
+  color: #9fb7cf;
+}
+
+[data-theme='dark'] .project-atlas,
+[data-theme='dark'] .capability-frame,
+[data-theme='dark'] .timeline-ledger,
+[data-theme='dark'] .principles-constellation,
+[data-theme='dark'] .honors-dossier,
+[data-theme='dark'] .skill-orbit,
+[data-theme='dark'] .skills-atlas__desktop {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(103, 232, 249, 0.14), transparent 34%),
+    radial-gradient(circle at 84% 86%, rgba(255, 200, 87, 0.14), transparent 36%),
+    linear-gradient(160deg, rgba(8, 14, 26, 0.86), rgba(12, 23, 41, 0.92));
+}
+
+[data-theme='dark'] .capability-card,
+[data-theme='dark'] .timeline-ledger__item,
+[data-theme='dark'] .principles-constellation__card,
+[data-theme='dark'] .honors-dossier__item,
+[data-theme='dark'] .project-strip,
+[data-theme='dark'] .project-strip__aside,
+[data-theme='dark'] .skills-atlas__lane,
+[data-theme='dark'] .skills-atlas__mobile-lane,
+[data-theme='dark'] .skill-orbit__shell,
+[data-theme='dark'] .skill-orbit__detail,
+[data-theme='dark'] .skill-orbit__lane-card,
+[data-theme='dark'] .project-stepper__card {
+  border-color: rgba(86, 204, 242, 0.26);
+  background: rgba(7, 16, 32, 0.72);
+}
+
+[data-theme='dark'] .capability-chip,
+[data-theme='dark'] .project-filter,
+[data-theme='dark'] .skills-atlas__chip,
+[data-theme='dark'] .skill-orbit__node,
+[data-theme='dark'] .skill-orbit__mobile-chip,
+[data-theme='dark'] .skill-orbit__lane-mini-chip,
+[data-theme='dark'] .project-strip__tag,
+[data-theme='dark'] .project-stepper__dot {
+  border-color: rgba(86, 204, 242, 0.3);
+  background: rgba(8, 17, 34, 0.78);
+  color: #cce7ff;
+}
+
+[data-theme='dark'] .project-strip__title,
+[data-theme='dark'] .timeline-ledger__stage,
+[data-theme='dark'] .principles-constellation__title,
+[data-theme='dark'] .honors-dossier__title,
+[data-theme='dark'] .skill-orbit__detail-title {
+  color: #e7f5ff;
+}
+
+[data-theme='dark'] .project-strip__body,
+[data-theme='dark'] .project-strip__impact,
+[data-theme='dark'] .timeline-ledger__text,
+[data-theme='dark'] .principles-constellation__text,
+[data-theme='dark'] .honors-dossier__point,
+[data-theme='dark'] .skill-orbit__detail-copy,
+[data-theme='dark'] .project-stepper__text,
+[data-theme='dark'] .site-signoff__owner {
+  color: #b6cade;
+}
+
+[data-theme='dark'] .project-strip__open,
+[data-theme='dark'] .project-strip__role,
+[data-theme='dark'] .timeline-ledger__year,
+[data-theme='dark'] .principles-constellation__index,
+[data-theme='dark'] .skills-atlas__index {
+  color: #8faec8;
+}
+
+[data-theme='dark'] .project-filter--active,
+[data-theme='dark'] .hero-cta--theme-active {
+  background: rgba(255, 200, 87, 0.22);
+  color: #ffd992;
+  border-color: rgba(255, 200, 87, 0.72);
+}
+
+[data-theme='dark'] .project-filter:hover,
+[data-theme='dark'] .project-filter:focus-visible,
+[data-theme='dark'] .hero-cta--theme,
+[data-theme='dark'] .hero-cta--secondary {
+  border-color: rgba(103, 232, 249, 0.7);
+  color: #9defff;
+}
+
+[data-theme='dark'] .site-signoff {
+  border-color: rgba(86, 204, 242, 0.34);
+  background: linear-gradient(160deg, rgba(4, 10, 22, 0.9), rgba(8, 18, 35, 0.95));
 }
 
 .app-shell {
@@ -346,6 +501,18 @@ body {
   border-color: rgba(212, 165, 116, 0.72);
   color: #fff0d6;
   background: rgba(135, 100, 60, 0.34);
+}
+
+.hero-cta--theme {
+  border-color: rgba(80, 187, 189, 0.62);
+  color: #c9f7f8;
+  background: rgba(14, 63, 65, 0.42);
+}
+
+.hero-cta--theme-active {
+  border-color: rgba(255, 200, 87, 0.72);
+  color: #ffe6b0;
+  background: rgba(114, 78, 29, 0.44);
 }
 
 .hero-quick-note {
