@@ -52,10 +52,15 @@ export default function HeroSection({ spring, resumeMode, onResumeModeToggle, re
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={spring}
-      className={`hero-atlas ${isCardMode ? 'hero-atlas--card' : 'hero-atlas--immersive'}`}
+      className="hero-atlas hero-atlas--immersive"
       id="main-content"
       aria-label="Introduction"
     >
+      <>
+        <div aria-hidden="true" className="hero-stars hero-stars--far" />
+        <div aria-hidden="true" className="hero-stars hero-stars--near" />
+      </>
+
       {!resumeMode && !reduceMotion && !isCardMode && (
         <>
           <motion.div className="hero-parallax hero-parallax--one" style={{ x: layerOneX, y: layerOneY }} aria-hidden="true" />
