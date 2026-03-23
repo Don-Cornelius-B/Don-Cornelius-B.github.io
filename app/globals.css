@@ -150,6 +150,10 @@ body {
   --section-gap: clamp(2rem, 4.6vw, 3rem);
 }
 
+.content-shell {
+  padding-top: clamp(0.2rem, 1vw, 0.75rem);
+}
+
 .main-canvas--card {
   --section-gap: clamp(2.2rem, 4.3vw, 3.2rem);
 }
@@ -196,40 +200,42 @@ body {
 .hero-atlas {
   position: relative;
   overflow: hidden;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(139, 111, 71, 0.33);
+  min-height: 100svh;
+  padding-inline: clamp(1rem, 5vw, 4rem);
+  padding-block: clamp(4.5rem, 9vh, 7rem) clamp(2.1rem, 5vh, 3rem);
+  border-radius: 0;
+  border: 0;
   background:
-    radial-gradient(circle at 16% 14%, rgba(212, 165, 116, 0.16), transparent 42%),
-    radial-gradient(circle at 85% 83%, rgba(43, 138, 138, 0.16), transparent 48%),
-    linear-gradient(155deg, rgba(22, 18, 15, 0.93), rgba(44, 37, 31, 0.95));
-  box-shadow:
-    inset 0 1px 0 rgba(254, 241, 220, 0.15),
-    0 24px 40px rgba(16, 13, 10, 0.35);
+    radial-gradient(circle at 14% 12%, rgba(212, 165, 116, 0.18), transparent 40%),
+    radial-gradient(circle at 88% 82%, rgba(43, 138, 138, 0.2), transparent 52%),
+    radial-gradient(circle at 52% 96%, rgba(234, 212, 177, 0.14), transparent 36%),
+    linear-gradient(160deg, rgba(20, 16, 13, 0.97), rgba(45, 36, 30, 0.96));
+  box-shadow: none;
 }
 
 .hero-atlas--card {
+  min-height: 82svh;
   background:
-    radial-gradient(circle at 78% 12%, rgba(212, 165, 116, 0.12), transparent 42%),
+    radial-gradient(circle at 78% 12%, rgba(212, 165, 116, 0.16), transparent 42%),
     linear-gradient(155deg, rgba(245, 238, 225, 0.9), rgba(235, 224, 207, 0.95));
-  border-color: rgba(139, 111, 71, 0.28);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 250, 240, 0.74),
-    0 18px 36px rgba(36, 30, 24, 0.16);
+  box-shadow: none;
 }
 
 .hero-atlas__grid {
   position: relative;
   z-index: 2;
+  max-width: 78rem;
+  margin-inline: auto;
   display: grid;
-  gap: 1.25rem;
-  padding: 1.4rem;
+  gap: clamp(1rem, 2vw, 2.2rem);
+  padding: 0;
 }
 
 @media (min-width: 1024px) {
   .hero-atlas__grid {
     grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-    gap: 1.8rem;
-    padding: 1.8rem;
+    gap: clamp(1.6rem, 2.5vw, 3rem);
+    align-items: end;
   }
 }
 
@@ -242,12 +248,12 @@ body {
 }
 
 .hero-display {
-  margin-top: 0.4rem;
+  margin-top: 0.45rem;
   color: var(--ink-inverse);
   font-family: var(--font-display), 'Times New Roman', serif;
   font-weight: 600;
-  font-size: clamp(2rem, 4.1vw, 4.15rem);
-  line-height: 1.02;
+  font-size: clamp(2.25rem, 5.2vw, 5rem);
+  line-height: 0.98;
   letter-spacing: 0.01em;
 }
 
@@ -257,10 +263,10 @@ body {
 
 .hero-lead {
   margin-top: 0.85rem;
-  max-width: 46rem;
+  max-width: 52rem;
   color: #ded2c2;
-  font-size: 1rem;
-  line-height: 1.68;
+  font-size: clamp(1rem, 1.32vw, 1.18rem);
+  line-height: 1.7;
 }
 
 .hero-atlas--card .hero-lead {
@@ -321,16 +327,16 @@ body {
 
 .hero-aside {
   display: grid;
-  gap: 0.62rem;
+  gap: 0.9rem;
   align-content: start;
 }
 
 .hero-aside-card {
-  border: 1px solid rgba(182, 156, 120, 0.28);
-  border-left: 3px solid rgba(212, 165, 116, 0.8);
-  border-radius: 0.85rem;
-  background: rgba(35, 28, 22, 0.48);
-  padding: 0.74rem 0.82rem;
+  border: 0;
+  border-left: 2px solid rgba(212, 165, 116, 0.84);
+  border-radius: 0;
+  background: rgba(28, 21, 16, 0.28);
+  padding: 0.4rem 0 0.4rem 0.72rem;
 }
 
 .hero-aside-card:nth-child(2) {
@@ -342,16 +348,16 @@ body {
 }
 
 .hero-aside-label {
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: #dcc59c;
 }
 
 .hero-aside-text {
-  margin-top: 0.36rem;
-  font-size: 0.88rem;
-  line-height: 1.45;
+  margin-top: 0.28rem;
+  font-size: 0.92rem;
+  line-height: 1.52;
   color: #f4e7d1;
 }
 
@@ -1457,14 +1463,20 @@ body {
     padding: 0.95rem;
   }
 
+  .hero-atlas {
+    min-height: 100dvh;
+    padding-inline: 0.95rem;
+    padding-block: clamp(4.2rem, 12vw, 5.2rem) 2rem;
+  }
+
   .hero-display {
     font-size: clamp(1.72rem, 9vw, 2.22rem);
-    line-height: 1.06;
+    line-height: 1.04;
   }
 
   .hero-lead {
-    font-size: 0.92rem;
-    line-height: 1.52;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .hero-cta-row {

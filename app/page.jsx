@@ -107,7 +107,7 @@ export default function Home() {
   }, [activeProject]);
 
   return (
-    <main className={`main-canvas ${isCardMode ? 'main-canvas--card' : ''} mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6`} id="content-root">
+    <>
       <HeroSection
         spring={spring}
         resumeMode={resumeMode}
@@ -116,9 +116,11 @@ export default function Home() {
         isCardMode={isCardMode}
       />
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
+      <main className={`main-canvas ${isCardMode ? 'main-canvas--card' : ''}`} id="content-root">
+        <div className="content-shell mx-auto max-w-7xl px-4 pb-14 sm:px-6">
+          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
-      <section className="section-cluster grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+          <section className="section-cluster grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <motion.div
           initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,11 +156,11 @@ export default function Home() {
           </p>
           <SkillsProjectionDeck techProjectionLanes={techProjectionLanes} disableAnimation={resumeMode || reduceMotion} />
         </motion.div>
-      </section>
+          </section>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
+          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
-      <section className="section-cluster grid gap-6 lg:grid-cols-2">
+          <section className="section-cluster grid gap-6 lg:grid-cols-2">
         <motion.div
           initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}
@@ -185,42 +187,42 @@ export default function Home() {
         </motion.div>
 
         <TimelineSection timeline={timeline} reduceMotion={reduceMotion} fadeIn={fadeIn} spring={spring} />
-      </section>
+          </section>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
+          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
-      <motion.div
+          <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.28 }}
         transition={{ ...spring, delay: sectionDelays.principles }}
       >
         <PrinciplesSection principles={principles} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
-      </motion.div>
+          </motion.div>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
+          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
-      <motion.div
+          <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.28 }}
         transition={{ ...spring, delay: sectionDelays.honors }}
       >
         <HonorsSection honors={honors} reduceMotion={reduceMotion || resumeMode} fadeIn={fadeIn} spring={spring} />
-      </motion.div>
+          </motion.div>
 
-      <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
+          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
 
-      <motion.div
+          <motion.div
         initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.24 }}
         transition={{ ...spring, delay: sectionDelays.orbit }}
       >
         <SkillOrbitSection techProjectionLanes={techProjectionLanes} reduceMotion={reduceMotion} resumeMode={resumeMode} isCardMode={isCardMode} />
-      </motion.div>
+          </motion.div>
 
-      <footer className="mt-10 panel site-signoff">
+          <footer className="mt-10 panel site-signoff">
         <div className="site-signoff__row">
           <div>
             <p className="site-signoff__eyebrow">Build log</p>
@@ -242,9 +244,10 @@ export default function Home() {
             Deployment status
           </a>
         </div>
-      </footer>
+          </footer>
+        </div>
 
-      <ProjectModal
+        <ProjectModal
         activeProject={activeProject}
         reduceMotion={reduceMotion}
         resumeMode={resumeMode}
@@ -253,6 +256,7 @@ export default function Home() {
         dialogRef={dialogRef}
         closeRef={closeButtonRef}
       />
-    </main>
+      </main>
+    </>
   );
 }
