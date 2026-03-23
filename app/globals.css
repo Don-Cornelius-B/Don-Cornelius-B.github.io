@@ -67,6 +67,14 @@ body {
   outline-offset: 2px;
 }
 
+.stars {
+  position: fixed;
+  inset: -20% 0 -10% 0;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
 .hero-stars {
   position: absolute;
   inset: 0;
@@ -75,6 +83,7 @@ body {
   will-change: transform, opacity;
 }
 
+.stars--far,
 .hero-stars--far {
   opacity: 0.72;
   background-image:
@@ -89,6 +98,7 @@ body {
   animation: stars-fall 40s linear infinite;
 }
 
+.stars--near,
 .hero-stars--near {
   opacity: 0.52;
   background-image:
@@ -215,6 +225,17 @@ body {
     radial-gradient(circle at 52% 96%, rgba(234, 212, 177, 0.14), transparent 36%),
     linear-gradient(160deg, rgba(20, 16, 13, 0.97), rgba(45, 36, 30, 0.96));
   box-shadow: none;
+}
+
+.hero-atlas::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: clamp(80px, 16vh, 180px);
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(30, 24, 20, 0), rgba(30, 24, 20, 0.74));
+  z-index: 1;
 }
 
 .hero-atlas--card {
@@ -1442,6 +1463,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .stars--far,
+  .stars--near,
   .hero-stars--far,
   .hero-stars--near {
     animation: none;

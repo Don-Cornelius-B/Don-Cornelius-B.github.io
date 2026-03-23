@@ -25,6 +25,7 @@ export default function Home() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [resumeMode, setResumeMode] = useState(false);
   const [isCardMode, setIsCardMode] = useState(false);
+  const cardModeRef = useRef(false);
   const reduceMotion = useReducedMotion();
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -38,8 +39,19 @@ export default function Home() {
       return;
     }
 
-    const threshold = Math.max(480, window.innerHeight * 0.95);
-    setIsCardMode(latest >= threshold);
+    const enterThreshold = Math.max(460, window.innerHeight * 0.92);
+    const exitThreshold = Math.max(340, window.innerHeight * 0.7);
+
+    if (!cardModeRef.current && latest >= enterThreshold) {
+      cardModeRef.current = true;
+      setIsCardMode(true);
+      return;
+    }
+
+    if (cardModeRef.current && latest <= exitThreshold) {
+      cardModeRef.current = false;
+      setIsCardMode(false);
+    }
   });
 
   const filterOptions = [...new Set(projects.flatMap((project) => project.tags))].slice(0, 8);

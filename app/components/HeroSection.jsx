@@ -56,13 +56,6 @@ export default function HeroSection({ spring, resumeMode, onResumeModeToggle, re
       id="main-content"
       aria-label="Introduction"
     >
-      {!isCardMode && (
-        <>
-          <div aria-hidden="true" className="hero-stars hero-stars--far" />
-          <div aria-hidden="true" className="hero-stars hero-stars--near" />
-        </>
-      )}
-
       {!resumeMode && !reduceMotion && !isCardMode && (
         <>
           <motion.div className="hero-parallax hero-parallax--one" style={{ x: layerOneX, y: layerOneY }} aria-hidden="true" />

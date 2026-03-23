@@ -1,16 +1,6 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProjectOpen, resumeMode, isCardMode }) {
-  const cardRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ['start 90%', 'end 45%'],
-  });
-
-  const storyY = useTransform(scrollYProgress, [0, 1], [28, 0]);
-  const storyOpacity = useTransform(scrollYProgress, [0, 0.35, 1], [0.2, 0.7, 1]);
-  const storyScale = useTransform(scrollYProgress, [0, 1], [0.985, 1]);
   const accentStyle = {
     '--project-edge': project.theme.edge,
     '--project-chip-border': project.theme.chipBorder,
@@ -19,19 +9,11 @@ function ProjectStoryCard({ project, index, reduceMotion, fadeIn, spring, onProj
 
   return (
     <motion.article
-      ref={cardRef}
       initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
       whileInView={resumeMode ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={resumeMode ? { duration: 0 } : { ...spring, delay: index * 0.08 }}
       whileHover={resumeMode || isCardMode ? undefined : { y: -5 }}
-      style={
-        resumeMode
-          ? undefined
-          : isCardMode
-            ? { y: 0, opacity: 1, scale: 1 }
-            : { y: storyY, opacity: storyOpacity, scale: storyScale }
-      }
       className={`project-strip group ${isCardMode ? 'project-strip--card' : 'project-strip--immersive'}`}
     >
       <button
