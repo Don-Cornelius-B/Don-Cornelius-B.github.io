@@ -118,9 +118,7 @@ export default function Home() {
 
       <main className={`main-canvas ${isCardMode ? 'main-canvas--card' : ''}`} id="content-root">
         <div className="content-shell mx-auto max-w-7xl px-4 pb-14 sm:px-6">
-          <SectionDivider velocityValue={smoothVelocity} resumeMode={resumeMode} isCardMode={isCardMode} />
-
-          <section className="section-cluster grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+          <section className="section-cluster section-cluster--first grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <motion.div
           initial={reduceMotion || resumeMode ? false : fadeIn.hidden}
           whileInView={{ opacity: 1, y: 0 }}

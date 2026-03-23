@@ -34,8 +34,6 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <div aria-hidden="true" className="stars stars--far" />
-        <div aria-hidden="true" className="stars stars--near" />
         <div className="app-shell">{children}</div>
       </body>
     </html>

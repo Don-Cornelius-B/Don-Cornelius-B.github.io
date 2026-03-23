@@ -67,15 +67,15 @@ body {
   outline-offset: 2px;
 }
 
-.stars {
-  position: fixed;
-  inset: -20% 0 -10% 0;
+.hero-stars {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
   z-index: 1;
   will-change: transform, opacity;
 }
 
-.stars--far {
+.hero-stars--far {
   opacity: 0.72;
   background-image:
     radial-gradient(1px 1px at 20px 30px, rgba(252, 244, 229, 0.95) 98%, transparent),
@@ -89,7 +89,7 @@ body {
   animation: stars-fall 40s linear infinite;
 }
 
-.stars--near {
+.hero-stars--near {
   opacity: 0.52;
   background-image:
     radial-gradient(1.4px 1.4px at 28px 18px, rgba(252, 243, 227, 0.98) 98%, transparent),
@@ -151,7 +151,7 @@ body {
 }
 
 .content-shell {
-  padding-top: clamp(0.2rem, 1vw, 0.75rem);
+  padding-top: 0;
 }
 
 .main-canvas--card {
@@ -160,6 +160,10 @@ body {
 
 .section-cluster {
   margin-top: var(--section-gap);
+}
+
+.section-cluster--first {
+  margin-top: 0;
 }
 
 .capability-frame {
@@ -1438,8 +1442,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stars--far,
-  .stars--near {
+  .hero-stars--far,
+  .hero-stars--near {
     animation: none;
   }
 
@@ -1467,6 +1471,10 @@ body {
     min-height: 100dvh;
     padding-inline: 0.95rem;
     padding-block: clamp(4.2rem, 12vw, 5.2rem) 2rem;
+  }
+
+  .hero-atlas__grid {
+    min-height: calc(100dvh - clamp(6.2rem, 16vw, 8rem));
   }
 
   .hero-display {
