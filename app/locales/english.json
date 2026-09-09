@@ -1,0 +1,142 @@
+{
+  "enButton": "ENGLISH",
+  "esButton": "SPANISH",
+  "crtButton": "CRT EFFECT",
+
+  "opening": "Opening",
+  "errPart1": "x_x Syntax Error",
+  "errPart2": "is not a recognized command. Type \"help\" for valid commands.",
+
+  "banner": [
+    "  ____   ____ ____    // SYS_STATUS: OPERATIONAL",
+    " |  _ \\ / ___| __ )   Name: Don Cornelius B",
+    " | | | | |   |  _ \\   Role: Cloud Systems & DevOps Engineer | CSE Technologist",
+    " | |_| | |___| |_) |  Base: Chennai, IN",
+    " |____/ \\____|____/   Mail: doncorneliuslivi@gmail.com",
+    "                      Phone: +91 6374760469",
+    "",
+    " Quick Direct Commands:",
+    " =^..^= github        https://github.com/Don-Cornelius-B",
+    " [in]   linkedin      https://linkedin.com/in/don-cornelius-livi/",
+    " [pdf]  resume        /Don_Cornelius_B_Resume.pdf",
+    "",
+    " ═══════════════════════════════════════════════════════════════════════════════",
+    " Type \"help\" to display all available buffer commands.",
+    " Type \"projects\" to inspect verified systems engineering projects.\n"
+  ],
+
+  "help": [
+    "Available Terminal Commands:\n",
+    "banner          Displays system ID banner and initial greeting",
+    "help            Shows this command index",
+    "bio             Developer biography and background overview",
+    "skills          Core cloud, devops, and infrastructure competencies",
+    "projects        Detailed breakdown of all 3 verified engineering projects",
+    "project 1       Multimodal AI Supply Chain Analysis (GMU ChallengeX Winner)",
+    "project 2       Smart Rental Tracking System (Caterpillar Hackathon Winner)",
+    "project 3       Interactive Developer Portfolio Platform",
+    "education       Academic degrees and institutions",
+    "awards          Hackathon victories and competitive accolades",
+    "resume          Opens official PDF resume (/Don_Cornelius_B_Resume.pdf)",
+    "contact         Direct comms channels (Email, Phone, Location)",
+    "github          Opens GitHub profile (https://github.com/Don-Cornelius-B)",
+    "linkedin        Opens LinkedIn profile (https://linkedin.com/in/don-cornelius-livi/)",
+    "cls             Clears terminal buffer\n\n"
+  ],
+
+  "bio": [
+    "IDENTIFIER: Don Cornelius B",
+    "STATUS: OPERATIONAL • CHENNAI, IN",
+    "ROLE: Cloud Systems & DevOps Engineer | CSE Technologist",
+    "",
+    "Computer Science and Engineering undergraduate at Sathyabama Institute of",
+    "Science and Technology (2023–2027) specializing in Cloud Computing, DevOps",
+    "Engineering, and cloud-native systems for future scaling.\n\n"
+  ],
+
+  "skills": [
+    "Cloud & DevOps      AWS, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD",
+    "Backend & Systems   Python, Node.js, Express, REST APIs, Microservices",
+    "Frontend & UI       React, Next.js 15, Three.js, Tailwind CSS, Monospace TUI",
+    "Data & Spatial      TorchGeo, CMU SDK, Multimodal AI, IoT Telemetry\n\n"
+  ],
+
+  "projects": [
+    "VERIFIED ENGINEERING PROJECTS:\n",
+    "1. MULTIMODAL AI SUPPLY CHAIN ANALYSIS",
+    "   Repo: https://github.com/tanmaya-kamma/multimodal_ai",
+    "   Tech: React, Python, GitHub Actions, Multimodal AI, CMU SDK, TorchGeo",
+    "   Desc: Situational awareness application detecting supply chain disruptions",
+    "         by fusing real-time traffic, weather, and social media streams.",
+    "   Win:  George Mason University ChallengeX Winner (2nd Place / 8-week federal & industry hackathon with CNA & USDA).\n",
+    "2. SMART RENTAL TRACKING SYSTEM",
+    "   Repo: https://github.com/Don-Cornelius-B/Smart_Rental_Tracking_System_SDD",
+    "   Tech: React, Node.js/Express, Three.js, Tailwind CSS, Python",
+    "   Desc: Heavy machinery fleet telemetry portal combining real-time IoT signal",
+    "         streaming, predictive maintenance modeling, and 3D digital twin rendering.",
+    "   Win:  Caterpillar Hackathon Winner (2nd Place / 24-hour hackathon at Sathyabama IST).\n",
+    "3. INTERACTIVE DEVELOPER PORTFOLIO PLATFORM",
+    "   Repo: https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io",
+    "   Tech: Next.js 15, React 19, Tailwind CSS, Framer Motion, GitHub Actions",
+    "   Desc: High-performance portfolio platform featuring interactive telemetry",
+    "         canvas, dynamic architecture drawers, and automated GitHub Pages CI/CD delivery.\n\n"
+  ],
+
+  "education": [
+    "ACADEMIC TIMELINE:\n",
+    "[2023 – 2027]  B.E. Computer Science and Engineering",
+    "               Sathyabama Institute of Science and Technology, Chennai",
+    "",
+    "[2021 – 2023]  Higher Secondary Studies",
+    "               Zion Matriculation Higher Secondary School\n\n"
+  ],
+
+  "awards": [
+    "HONORS & COMPETITIVE ACCOLADES:\n",
+    "[02/2026 – 04/2026]  2nd Place | GMU ChallengeX (Federal Supply Chain Resilience)",
+    "                     8-week federal & industry hackathon partner: CNA & USDA.",
+    "",
+    "[08/2026]            2nd Place | Caterpillar Hackathon",
+    "                     24-hour university hackathon at Sathyabama IST.\n\n"
+  ],
+
+  "contact": [
+    "COMMUNICATION CHANNELS:\n",
+    "Email:    doncorneliuslivi@gmail.com",
+    "Phone:    +91 6374760469",
+    "Location: Chennai, Tamil Nadu, India",
+    "GitHub:   https://github.com/Don-Cornelius-B",
+    "LinkedIn: https://linkedin.com/in/don-cornelius-livi/\n\n"
+  ],
+
+  "smallBanner": [
+    "DCB // SYS_STATUS: OPERATIONAL",
+    "Name: Don Cornelius B",
+    "Role: Cloud Systems & DevOps Engineer",
+    "Base: Chennai, IN",
+    "Mail: doncorneliuslivi@gmail.com",
+    "",
+    "Type \"help\" to view available commands\n\n"
+  ],
+
+  "smallHelp": [
+    "Commands: banner, help, bio, skills, projects, education, awards, resume, contact, github, linkedin, cls\n\n"
+  ],
+
+  "smallSkills": [
+    "Cloud: AWS, Docker, K8s, Terraform, CI/CD",
+    "Dev: Python, Node.js, React, Next.js, Three.js\n\n"
+  ],
+
+  "quotes": [
+    "DCB // SYS_STATUS: OPERATIONAL",
+    "CHENNAI, IN [13.0827° N, 80.2707° E]",
+    "CLOUD SYSTEMS & DEVOPS ENGINEER",
+    "GMU CHALLENGEX 2ND PLACE WINNER",
+    "CATERPILLAR HACKATHON 2ND PLACE WINNER",
+    "KUBERNETES // DOCKER // TERRAFORM // AWS",
+    "HIGH-THROUGHPUT CLOUD-NATIVE ARCHITECTURE",
+    "REAL-TIME TELEMETRY BUFFER ACTIVE",
+    "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY (2023-2027)"
+  ]
+}

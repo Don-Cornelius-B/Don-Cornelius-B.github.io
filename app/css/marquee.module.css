@@ -1,0 +1,44 @@
+.header {
+  border: 1px solid rgb(255, 255, 255);
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  margin: 25px 25px 0 25px;
+  white-space: nowrap;
+}
+
+.header>h1 {
+  font-size: 8vh;
+  animation: slide var(--transition-duration) infinite linear;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media only screen and (max-width: 1250px) and (min-width: 760px) {
+  .header {
+    height: 10svh;
+  }
+
+  .header>h1 {
+    font-size: 8svh;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .header {
+    height: 8svh;
+  }
+
+  .header>h1 {
+    font-size: 5svh;
+    text-align: center;
+  }
+}

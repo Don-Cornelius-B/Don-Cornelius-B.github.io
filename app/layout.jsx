@@ -1,49 +1,25 @@
 import './globals.css';
-import { Cormorant_Garamond, Lora } from 'next/font/google';
-
-const displayFont = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-display',
-});
-
-const bodyFont = Lora({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-body',
-});
+import Dots from './components/Dots';
+import Marquee from './components/Marquee';
+import { LanguageContextProvider } from './context/LanguageContext';
+import { CrtContextProvider } from './context/CrtContext';
 
 export const metadata = {
-  title: 'Don Cornelius B | Immersive Portfolio',
-  description: 'Creative technologist portfolio showcasing cloud-native systems with an immersive luxury-forward interface.',
-  metadataBase: new URL('https://don-cornelius-b.github.io'),
-  openGraph: {
-    title: 'Don Cornelius B | Immersive Portfolio',
-    description:
-      'Portfolio featuring modern motion design, engineering projects, and deployment-ready workflows built with Next.js.',
-    url: 'https://don-cornelius-b.github.io',
-    siteName: 'Don Cornelius B Portfolio',
-    type: 'website',
-  },
+  title: 'Don Cornelius B | Cloud Systems & DevOps Engineer',
+  description: 'Interactive Terminal Portfolio',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var stored=localStorage.getItem('portfolio-theme');var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var mode=(stored==='light'||stored==='dark')?stored:(prefersDark?'dark':'light');document.documentElement.dataset.theme=mode;}catch(e){document.documentElement.dataset.theme='light';}})();`,
-          }}
-        />
-      </head>
-      <body className={`${displayFont.variable} ${bodyFont.variable}`}>
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <div aria-hidden="true" className="stars stars--far" />
-        <div aria-hidden="true" className="stars stars--near" />
-        <div className="app-shell">{children}</div>
+    <html lang="en" translate="no">
+      <body>
+        <LanguageContextProvider>
+          <CrtContextProvider>
+            <Marquee />
+            <Dots />
+            {children}
+          </CrtContextProvider>
+        </LanguageContextProvider>
       </body>
     </html>
   );

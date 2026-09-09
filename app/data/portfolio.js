@@ -1,78 +1,32 @@
-export const projects = [
-  {
-    id: 'akon',
-    title: 'AKON - Agnostic Key-stream Optimized Network',
-    duration: '01/2026 - Present',
-    description:
-      'Built a P2P security gateway bridging mobile socket messaging with off-grid RF hardware for emergency response and resilient field communication.',
-    role: 'Systems + Embedded Engineer',
-    impact: 'Offline message relay prototype validated with secure key-stream exchange.',
-    outcomes: [
-      'Reduced dependency on internet connectivity for field communication paths.',
-      'Designed bridge architecture between mobile socket clients and RF edge devices.',
-      'Created CI-friendly pipeline for repeatable firmware and gateway updates.',
-    ],
-    stepper: [
-      {
-        phase: 'Challenge',
-        detail: 'Enable resilient communication in low-connectivity environments for emergency teams.',
-      },
-      {
-        phase: 'Decision',
-        detail: 'Bridge mobile socket traffic into an RF-enabled gateway with secure key-stream handling.',
-      },
-      {
-        phase: 'Outcome',
-        detail: 'Validated offline relay workflow with repeatable deployment and operational traceability.',
-      },
-    ],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
-    ],
-    tags: ['Python', 'C++', 'GitHub Actions', 'ESP32', 'Semtech SX1278 RA-02'],
-    theme: {
-      light: {
-        edge: 'rgba(43, 138, 138, 0.72)',
-        nodeBorder: 'rgba(43, 138, 138, 0.4)',
-        nodeBg: 'rgba(24, 28, 32, 0.8)',
-        nodeText: '#f5f4f0',
-        panelBg: 'linear-gradient(145deg, rgba(23, 25, 26, 0.74), rgba(46, 53, 58, 0.56))',
-        chipBorder: 'rgba(43, 138, 138, 0.46)',
-        chipText: '#9cd9d8',
-      },
-      dark: {
-        edge: 'rgba(103, 232, 249, 0.8)',
-        nodeBorder: 'rgba(103, 232, 249, 0.48)',
-        nodeBg: 'rgba(12, 26, 33, 0.86)',
-        nodeText: '#d6fbff',
-        panelBg: 'linear-gradient(145deg, rgba(11, 21, 30, 0.78), rgba(17, 45, 61, 0.6))',
-        chipBorder: 'rgba(103, 232, 249, 0.52)',
-        chipText: '#b8f4fb',
-      },
-    },
-    diagram: {
-      nodes: [
-        { id: 'mobile', label: 'Mobile Socket', x: 11, y: 16 },
-        { id: 'gateway', label: 'Secure Gateway', x: 50, y: 16 },
-        { id: 'rescue', label: 'Responder Console', x: 89, y: 16 },
-        { id: 'crypto', label: 'Key-stream Layer', x: 32, y: 72 },
-        { id: 'rf', label: 'RF Transceiver', x: 68, y: 72 },
-      ],
-      links: [
-        { from: 'mobile', to: 'gateway' },
-        { from: 'gateway', to: 'rescue' },
-        { from: 'gateway', to: 'crypto' },
-        { from: 'gateway', to: 'rf' },
-      ],
-    },
+/* ═══════════════════════════════════════════════════════════
+   VERIFIED PORTFOLIO DATA — Don Cornelius B
+   Source of truth aligned with resume (Sep 2026)
+   ═══════════════════════════════════════════════════════════ */
+
+export const identity = {
+  name: 'Don Cornelius B',
+  role: 'Cloud Systems & DevOps Engineer',
+  specialization: 'Cloud Computing & DevOps Engineering',
+  tagline: 'Engineering resilient cloud-native systems, real-time fleet telemetry, and multimodal AI.',
+  bio: 'Computer Science and Engineering undergraduate at Sathyabama Institute of Science and Technology (2023–2027) with an active specialization in Cloud Computing, DevOps Engineering, and cloud-native systems for future scaling.',
+  location: 'Chennai, Tamil Nadu, India',
+  email: 'doncorneliuslivi@gmail.com',
+  phone: '+91 6374760469',
+  resumePath: '/Don_Cornelius_B_Resume.pdf',
+  socials: {
+    github: 'https://github.com/Don-Cornelius-B',
+    linkedin: 'https://linkedin.com/in/don-cornelius-livi/',
+    portfolio: 'https://don-cornelius-b.github.io',
   },
+};
+
+export const projects = [
   {
     id: 'multimodal-supply-chain',
     title: 'Multimodal AI Supply Chain Analysis',
-    duration: '02/2026 - Present',
+    duration: '02/2026 – 04/2026',
     description:
-      'Developed a situational awareness system for supply-chain disruption detection by fusing real-time traffic, weather, and social signals into a multimodal AI pipeline.',
+      'Developed a situational awareness application to detect supply chain disruptions by fusing real-time traffic, weather, and social media data into a multimodal AI pipeline.',
     role: 'Full-stack AI Engineer',
     impact: 'Built a multimodal pipeline that surfaces disruption signals into a single operational view.',
     outcomes: [
@@ -80,128 +34,185 @@ export const projects = [
       'Delivered React dashboard views for rapid response and anomaly inspection.',
       'Modularized pipeline components for reproducible model and API deployments.',
     ],
+    honor: {
+      title: 'ChallengeX Winner — 2nd Place',
+      org: 'George Mason University',
+      detail: '8-week federal & industry hackathon with CNA & USDA.',
+    },
     stepper: [
-      {
-        phase: 'Challenge',
-        detail: 'Detect disruptions early across fragmented, high-volume logistics data streams.',
-      },
-      {
-        phase: 'Decision',
-        detail: 'Implement multimodal fusion pipeline with operational dashboard and API-driven services.',
-      },
-      {
-        phase: 'Outcome',
-        detail: 'Produced a unified view of risk signals to accelerate response and decision quality.',
-      },
+      { phase: 'Challenge', detail: 'Detect disruptions early across fragmented, high-volume logistics data streams.' },
+      { phase: 'Decision', detail: 'Implement multimodal fusion pipeline with operational dashboard and API-driven services.' },
+      { phase: 'Outcome', detail: 'Produced a unified view of risk signals to accelerate response and decision quality.' },
     ],
     links: [
-      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
+      { label: 'GitHub', href: 'https://github.com/tanmaya-kamma/multimodal_ai' },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
     ],
-    tags: ['React', 'FastAPI', 'Python', 'CMU Multimodal SDK', 'TorchGeo', 'GitHub Actions'],
-    theme: {
-      light: {
-        edge: 'rgba(212, 165, 116, 0.72)',
-        nodeBorder: 'rgba(212, 165, 116, 0.42)',
-        nodeBg: 'rgba(40, 33, 22, 0.8)',
-        nodeText: '#fff6e8',
-        panelBg: 'linear-gradient(145deg, rgba(38, 31, 24, 0.74), rgba(72, 56, 35, 0.52))',
-        chipBorder: 'rgba(212, 165, 116, 0.5)',
-        chipText: '#f3dbc0',
-      },
-      dark: {
-        edge: 'rgba(255, 200, 87, 0.82)',
-        nodeBorder: 'rgba(255, 200, 87, 0.5)',
-        nodeBg: 'rgba(45, 30, 12, 0.86)',
-        nodeText: '#fff2cc',
-        panelBg: 'linear-gradient(145deg, rgba(35, 25, 12, 0.8), rgba(82, 56, 15, 0.58))',
-        chipBorder: 'rgba(255, 200, 87, 0.54)',
-        chipText: '#ffe8a8',
-      },
-    },
+    tags: ['React', 'Python', 'GitHub Actions', 'Multimodal AI', 'CMU SDK', 'TorchGeo'],
+    category: 'Multimodal AI',
     diagram: {
       nodes: [
-        { id: 'feeds', label: 'Traffic/Weather/Social', x: 11, y: 16 },
-        { id: 'fusion', label: 'Fusion Engine', x: 50, y: 16 },
-        { id: 'dashboard', label: 'React Dashboard', x: 89, y: 16 },
-        { id: 'geo', label: 'TorchGeo Signals', x: 33, y: 72 },
-        { id: 'api', label: 'FastAPI Service', x: 67, y: 72 },
+        { id: 'feeds', label: 'Traffic / Weather / Social', x: 10, y: 20 },
+        { id: 'fusion', label: 'Multimodal Fusion Engine', x: 50, y: 20 },
+        { id: 'dashboard', label: 'React Dashboard', x: 90, y: 20 },
+        { id: 'risk', label: 'Risk Scoring Model', x: 30, y: 75 },
+        { id: 'api', label: 'Python API Service', x: 70, y: 75 },
       ],
       links: [
         { from: 'feeds', to: 'fusion' },
         { from: 'fusion', to: 'dashboard' },
-        { from: 'fusion', to: 'geo' },
-        { from: 'fusion', to: 'api' },
+        { from: 'fusion', to: 'risk' },
+        { from: 'risk', to: 'api' },
+        { from: 'api', to: 'dashboard' },
       ],
     },
   },
   {
-    id: 'usda-marketplace',
-    title: 'USDA Talent Mobility Marketplace',
-    duration: '03/2026 - Present',
+    id: 'smart-rental-tracking',
+    title: 'Smart Rental Tracking System',
+    duration: '08/2026',
     description:
-      'Designed and prototyped an internal gig-economy marketplace to unlock underutilized organizational talent and support fractional work assignments.',
-    role: 'Product + Workflow Engineer',
-    impact: 'Prototyped an internal marketplace flow for faster talent matching and assignment execution.',
+      'Developed an end-to-end telemetry and fleet intelligence portal for heavy machinery tracking, combining real-time IoT signal streaming, predictive maintenance modeling, and 3D digital twin rendering.',
+    role: 'Systems + Full-stack Engineer',
+    impact: 'Built and demonstrated a functional Smart Rental Tracking System featuring automated alert routing, AI health insights, and operational KPI dashboards.',
     outcomes: [
-      'Mapped low-friction process from employee profile creation to assignment fulfillment.',
-      'Automated approval and routing steps with Power Automate flows.',
-      'Structured Dataverse records to support scalable reporting and governance.',
+      'Built a functional Smart Rental Tracking System featuring automated alert routing, AI health insights, and operational KPI dashboards.',
+      'Secured 2nd place in a high-intensity 24-hour university hackathon conducted by Caterpillar.',
+      'Co-engineered production-ready prototypes and multimodal AI architectures within a multidisciplinary team.',
     ],
+    honor: {
+      title: 'Caterpillar Hackathon Winner — 2nd Place',
+      org: 'Sathyabama Institute of Science and Technology',
+      detail: '24-hour university hackathon at Sathyabama IST.',
+    },
     stepper: [
-      {
-        phase: 'Challenge',
-        detail: 'Improve talent utilization across teams while reducing assignment friction.',
-      },
-      {
-        phase: 'Decision',
-        detail: 'Design an internal marketplace backed by Dataverse with automated routing flows.',
-      },
-      {
-        phase: 'Outcome',
-        detail: 'Delivered a workable prototype for faster role matching and transparent workflow governance.',
-      },
+      { phase: 'Challenge', detail: 'Enable real-time fleet monitoring with predictive maintenance for heavy rental machinery.' },
+      { phase: 'Decision', detail: 'Build a full-stack telemetry portal with Three.js digital twin, Node.js API, and AI health engine.' },
+      { phase: 'Outcome', detail: 'Delivered a working prototype with automated alerts, fleet KPIs, and 3D asset visualization.' },
     ],
     links: [
-      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B' },
+      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B/Smart_Rental_Tracking_System_SDD' },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/don-cornelius-livi/' },
     ],
-    tags: ['Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365'],
-    theme: {
-      light: {
-        edge: 'rgba(139, 111, 71, 0.7)',
-        nodeBorder: 'rgba(139, 111, 71, 0.45)',
-        nodeBg: 'rgba(39, 30, 22, 0.76)',
-        nodeText: '#f6ebdd',
-        panelBg: 'linear-gradient(145deg, rgba(35, 28, 24, 0.74), rgba(63, 49, 33, 0.5))',
-        chipBorder: 'rgba(139, 111, 71, 0.5)',
-        chipText: '#e8d2b3',
-      },
-      dark: {
-        edge: 'rgba(217, 147, 92, 0.8)',
-        nodeBorder: 'rgba(217, 147, 92, 0.52)',
-        nodeBg: 'rgba(42, 25, 16, 0.82)',
-        nodeText: '#ffe1cf',
-        panelBg: 'linear-gradient(145deg, rgba(34, 22, 15, 0.8), rgba(72, 41, 24, 0.56))',
-        chipBorder: 'rgba(217, 147, 92, 0.56)',
-        chipText: '#ffcda8',
-      },
-    },
+    tags: ['React', 'Node.js/Express', 'Three.js', 'Tailwind CSS', 'Python'],
+    category: 'Telemetry/IoT',
     diagram: {
       nodes: [
-        { id: 'staff', label: 'Employee Profiles', x: 11, y: 16 },
-        { id: 'market', label: 'Talent Marketplace', x: 50, y: 16 },
-        { id: 'admins', label: 'Program Leads', x: 89, y: 16 },
-        { id: 'flows', label: 'Power Automate Flows', x: 33, y: 72 },
-        { id: 'data', label: 'Dataverse Records', x: 67, y: 72 },
+        { id: 'sensors', label: 'IoT Sensor Fleet', x: 10, y: 20 },
+        { id: 'api', label: 'Node.js / Express API', x: 50, y: 20 },
+        { id: 'dashboard', label: 'React Dashboard', x: 90, y: 20 },
+        { id: 'twin', label: 'Three.js Digital Twin', x: 30, y: 75 },
+        { id: 'ai', label: 'Python AI Health Engine', x: 70, y: 75 },
       ],
       links: [
-        { from: 'staff', to: 'market' },
-        { from: 'market', to: 'admins' },
-        { from: 'market', to: 'flows' },
-        { from: 'flows', to: 'data' },
+        { from: 'sensors', to: 'api' },
+        { from: 'api', to: 'dashboard' },
+        { from: 'api', to: 'twin' },
+        { from: 'api', to: 'ai' },
+        { from: 'ai', to: 'dashboard' },
       ],
     },
+  },
+  {
+    id: 'portfolio-platform',
+    title: 'Interactive Developer Portfolio Platform',
+    duration: '06/2026 – Present',
+    description:
+      'Engineered a high-performance Next.js portfolio platform featuring interactive 3D particle systems, a custom skill orbit visualizer, dynamic modal projections, and automated CI/CD deployment pipelines.',
+    role: 'Design Engineer',
+    impact: 'Shipped a production-grade portfolio with interactive telemetry canvas, Web Audio synthesis, and automated GitHub Pages deployment.',
+    outcomes: [
+      'Engineered a high-performance Next.js portfolio with interactive particle systems and dynamic modal projections.',
+      'Built automated CI/CD deployment pipelines with GitHub Actions for zero-downtime static exports.',
+      'Implemented a custom skill orbit visualizer and tactile Web Audio feedback system.',
+    ],
+    honor: null,
+    stepper: [
+      { phase: 'Challenge', detail: 'Create a portfolio that demonstrates systems engineering craft, not just lists projects.' },
+      { phase: 'Decision', detail: 'Build an interactive Systems Deck with telemetry canvas, sound synthesis, and live diagnostics.' },
+      { phase: 'Outcome', detail: 'Production static export deployed to GitHub Pages with automated CI/CD and zero hydration errors.' },
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io' },
+      { label: 'Live', href: 'https://don-cornelius-b.github.io' },
+    ],
+    tags: ['Next.js 15', 'React 19', 'Tailwind CSS', 'Framer Motion', 'GitHub Actions'],
+    category: 'Cloud/DevOps',
+    diagram: {
+      nodes: [
+        { id: 'code', label: 'Next.js 15 Source', x: 10, y: 20 },
+        { id: 'ci', label: 'GitHub Actions CI', x: 50, y: 20 },
+        { id: 'pages', label: 'GitHub Pages CDN', x: 90, y: 20 },
+        { id: 'canvas', label: 'Telemetry Canvas', x: 30, y: 75 },
+        { id: 'audio', label: 'Web Audio Engine', x: 70, y: 75 },
+      ],
+      links: [
+        { from: 'code', to: 'ci' },
+        { from: 'ci', to: 'pages' },
+        { from: 'code', to: 'canvas' },
+        { from: 'code', to: 'audio' },
+      ],
+    },
+  },
+];
+
+export const honors = [
+  {
+    title: 'ChallengeX Winner — 2nd Place',
+    org: 'George Mason University',
+    period: '02/2026 – 04/2026',
+    points: [
+      'Selected for an 8-week high-impact hackathon focused on federal and private sector challenges.',
+      'Developed specialized solutions for Supply Chain Situational Awareness (CNA).',
+      'Co-engineered production-ready prototypes and multimodal AI architectures within a multidisciplinary team.',
+    ],
+  },
+  {
+    title: 'Caterpillar Hackathon Winner — 2nd Place',
+    org: 'Sathyabama Institute of Science and Technology',
+    period: '08/2026',
+    points: [
+      'Secured 2nd place in a high-intensity 24-hour university hackathon conducted by Caterpillar.',
+      'Built and demonstrated a functional Smart Rental Tracking System featuring automated alert routing, AI health insights, and operational KPI dashboards.',
+    ],
+  },
+];
+
+export const education = [
+  {
+    institution: 'Sathyabama Institute of Science and Technology',
+    degree: 'B.E. Computer Science and Engineering',
+    period: '2023 – 2027',
+    location: 'Chennai, India',
+    detail: 'Currently pursuing Computer Science and Engineering with a specialized focus on Cloud Computing and DevOps Engineering.',
+  },
+  {
+    institution: 'Zion Matriculation Higher Secondary School',
+    degree: 'Higher Secondary',
+    period: '2021 – 2023',
+    location: 'India',
+    detail: 'Completed Higher Secondary education with a focus on Mathematics and Computer Science. Developed a foundational interest in software logic and creative technology.',
+  },
+];
+
+export const capabilities = [
+  {
+    category: 'Languages',
+    accent: 'cyan',
+    skills: ['Python', 'Bash', 'JavaScript/TypeScript', 'C++'],
+    projectIds: ['multimodal-supply-chain', 'smart-rental-tracking', 'portfolio-platform'],
+  },
+  {
+    category: 'Cloud & DevOps',
+    accent: 'amber',
+    skills: ['Docker', 'Containers', 'GitHub Actions', 'CI/CD Pipelines', 'Microsoft Azure', 'Linux'],
+    projectIds: ['multimodal-supply-chain', 'portfolio-platform'],
+  },
+  {
+    category: 'Web & 3D',
+    accent: 'cyan',
+    skills: ['React', 'Next.js', 'Node.js/Express', 'Three.js', 'Tailwind CSS'],
+    projectIds: ['smart-rental-tracking', 'portfolio-platform'],
   },
 ];
 
@@ -211,61 +222,44 @@ export const principles = [
     text: 'Every product choice starts from reliability, observability, and predictable behavior under load.',
   },
   {
-    title: 'Motion with Meaning',
-    text: 'Animation is used to signal structure and intent, never to distract from content clarity.',
+    title: 'Ship with Confidence',
+    text: 'CI/CD pipelines and automated validation ensure every deployment is repeatable and traceable.',
   },
   {
-    title: 'Build-to-Ship',
-    text: 'Each project is designed with CI-friendly workflows and practical deployment paths from day one.',
+    title: 'Measure, Then Optimize',
+    text: 'Performance gains are validated with benchmarks, not assumptions. Data drives architecture decisions.',
   },
-];
-
-export const capabilities = [
-  ['Programming & APIs', 'Python', 'C++', 'Bash', 'FastAPI'],
-  ['Cloud & Delivery', 'Docker', 'GitHub Actions', 'Git', 'GitHub'],
-  ['Applied Platforms', 'ESP32', 'TorchGeo', 'Power Apps', 'Dataverse'],
 ];
 
 export const timeline = [
-  { year: '2019 - 2021', stage: 'ZION', text: 'Higher Secondary foundation with strong focus on computing logic.' },
   {
-    year: '2023 - Present',
-    stage: 'Sathyabama B.E CSE',
-    text: '3rd Year CSE building cloud-native systems, creative technology products, and automation-first workflows.',
-  },
-];
-
-export const honors = [
-  {
-    title: 'ChallengeX Participant | George Mason University',
-    period: '02/2026 - Present',
-    points: [
-      'Selected for an 8-week high-impact hackathon focused on federal and private-sector challenges.',
-      'Built focused solutions for Supply Chain Situational Awareness (CNA) and Talent Mobility (USDA).',
-      'Collaborating in a multidisciplinary team to ship production-ready prototypes and multimodal AI architectures.',
-    ],
-  },
-];
-
-export const techProjectionLanes = [
-  {
-    title: 'Languages',
-    accent: 'border-[color:var(--accent-turq-solid)]/45 bg-[color:var(--accent-turq-solid)]/10',
-    skills: ['Python', 'Bash', 'C++'],
+    year: '2021 – 2023',
+    stage: 'Zion Matriculation Higher Secondary',
+    text: 'Completed Higher Secondary with a focus on Mathematics and Computer Science.',
+    type: 'education',
   },
   {
-    title: 'Version Control + CI/CD',
-    accent: 'border-[color:var(--accent-gold-solid)]/45 bg-[color:var(--accent-gold-solid)]/10',
-    skills: ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
+    year: '2023 – 2027',
+    stage: 'Sathyabama IST — B.E. CSE',
+    text: 'Pursuing Computer Science and Engineering with Cloud Computing & DevOps specialization.',
+    type: 'education',
   },
   {
-    title: 'AI + Application',
-    accent: 'border-[color:var(--accent-copper-solid)]/45 bg-[color:var(--accent-copper-solid)]/10',
-    skills: ['React', 'FastAPI', 'CMU Multimodal SDK', 'TorchGeo'],
+    year: '08/2026',
+    stage: 'Caterpillar Hackathon — 2nd Place',
+    text: 'Built Smart Rental Tracking System with IoT telemetry, digital twin, and fleet intelligence in a 24-hour sprint.',
+    type: 'honor',
   },
   {
-    title: 'Hardware + Enterprise',
-    accent: 'border-[color:var(--ink-strong)]/30 bg-[color:var(--ink-strong)]/5',
-    skills: ['ESP32', 'Semtech SX1278 RA-02', 'Power Apps', 'Power Automate', 'Dataverse', 'Microsoft 365 Integration'],
+    year: '02/2026 – 04/2026',
+    stage: 'GMU ChallengeX — 2nd Place',
+    text: 'Developed multimodal AI supply chain situational awareness system in an 8-week federal hackathon.',
+    type: 'honor',
+  },
+  {
+    year: '06/2026 – Present',
+    stage: 'Interactive Portfolio Platform',
+    text: 'Engineered a high-performance Next.js Systems Deck with telemetry canvas, Web Audio, and automated CI/CD.',
+    type: 'project',
   },
 ];

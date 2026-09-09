@@ -44,7 +44,6 @@ body {
   justify-content: center;
   overflow-x: hidden;
   color: white;
-  font-family: var(--vt323), monospace;
 }
 
 a {
@@ -74,7 +73,6 @@ a {
   background-size: 1.2% 1.2%;
   animation: flicker 100ms infinite;
   pointer-events: none;
-  z-index: 999;
 }
 
 .scanner {
@@ -85,8 +83,6 @@ a {
   left: 0;
   height: 0.5%;
   width: 100%;
-  pointer-events: none;
-  z-index: 1000;
 }
 
 .--hidden {

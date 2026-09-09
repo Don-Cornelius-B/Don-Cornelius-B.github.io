@@ -1,0 +1,134 @@
+{
+  "enButton": "ENGLISH",
+  "esButton": "SPANISH",
+  "crtButton": "EFECTO CRT",
+
+  "opening": "Abriendo",
+  "errPart1": "x_x Error de sintaxis",
+  "errPart2": "no es un comando reconocido. Escribe \"help\" para ver comandos.",
+
+  "banner": [
+    "  ____   ____ ____    // ESTADO_DEL_SISTEMA: OPERATIVO",
+    " |  _ \\ / ___| __ )   Nombre: Don Cornelius B",
+    " | | | | |   |  _ \\   Rol: Ingeniero de Sistemas Cloud & DevOps",
+    " | |_| | |___| |_) |  Base: Chennai, IN",
+    " |____/ \\____|____/   Correo: doncorneliuslivi@gmail.com",
+    "                      Teléfono: +91 6374760469",
+    "",
+    " Enlaces directos:",
+    " =^..^= github        https://github.com/Don-Cornelius-B",
+    " [in]   linkedin      https://linkedin.com/in/don-cornelius-livi/",
+    " [pdf]  resume        /Don_Cornelius_B_Resume.pdf",
+    "",
+    " ═══════════════════════════════════════════════════════════════════════════════",
+    " Escribe \"help\" para ver los comandos disponibles.",
+    " Escribe \"projects\" para ver los proyectos de ingeniería.\n"
+  ],
+
+  "help": [
+    "Comandos Disponibles:\n",
+    "banner          Muestra el banner de identificación",
+    "help            Muestra esta lista de comandos",
+    "bio             Biografía y trayectoria profesional",
+    "skills          Habilidades técnicas en cloud e infraestructura",
+    "projects        Detalles de los 3 proyectos verificados",
+    "project 1       Multimodal AI Supply Chain Analysis",
+    "project 2       Smart Rental Tracking System",
+    "project 3       Interactive Developer Portfolio Platform",
+    "education       Historial académico",
+    "awards          Premios y reconocimientos en hackathons",
+    "resume          Abre el currículum oficial en PDF",
+    "contact         Canales de contacto directo",
+    "github          Abre perfil de GitHub",
+    "linkedin        Abre perfil de LinkedIn",
+    "cls             Limpia la terminal\n\n"
+  ],
+
+  "bio": [
+    "IDENTIFICADOR: Don Cornelius B",
+    "ESTADO: OPERATIVO • CHENNAI, IN",
+    "ROL: Ingeniero Cloud & DevOps | Tecnólogo CSE",
+    "",
+    "Estudiante de Ingeniería en Ciencias de la Computación en Sathyabama",
+    "Institute of Science and Technology (2023–2027), especializado en Cloud",
+    "Computing, DevOps y arquitecturas nativas de nube para escalamiento.\n\n"
+  ],
+
+  "skills": [
+    "Cloud & DevOps      AWS, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD",
+    "Backend & Sistemas  Python, Node.js, Express, REST APIs, Microservicios",
+    "Frontend & UI       React, Next.js 15, Three.js, Tailwind CSS, TUI",
+    "Datos y Espacial    TorchGeo, CMU SDK, Multimodal AI, Telemetría IoT\n\n"
+  ],
+
+  "projects": [
+    "PROYECTOS DE INGENIERÍA VERIFICADOS:\n",
+    "1. MULTIMODAL AI SUPPLY CHAIN ANALYSIS",
+    "   Repo: https://github.com/tanmaya-kamma/multimodal_ai",
+    "   Tech: React, Python, GitHub Actions, Multimodal AI, CMU SDK, TorchGeo",
+    "   Desc: Detección de disrupciones en cadenas de suministro en tiempo real.",
+    "   Premio: Ganador George Mason Univ ChallengeX (2do Lugar / Hackathon federal CNA & USDA).\n",
+    "2. SMART RENTAL TRACKING SYSTEM",
+    "   Repo: https://github.com/Don-Cornelius-B/Smart_Rental_Tracking_System_SDD",
+    "   Tech: React, Node.js/Express, Three.js, Tailwind CSS, Python",
+    "   Desc: Portal de telemetría para maquinaria pesada con IoT y gemelo digital 3D.",
+    "   Premio: Ganador Hackathon Caterpillar (2do Lugar / Sathyabama IST).\n",
+    "3. INTERACTIVE DEVELOPER PORTFOLIO PLATFORM",
+    "   Repo: https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io",
+    "   Tech: Next.js 15, React 19, Tailwind CSS, Framer Motion, GitHub Actions",
+    "   Desc: Plataforma de portafolio TUI de alto rendimiento con CI/CD automatizado.\n\n"
+  ],
+
+  "education": [
+    "HISTORIAL ACADÉMICO:\n",
+    "[2023 – 2027]  B.E. Computer Science and Engineering",
+    "               Sathyabama Institute of Science and Technology, Chennai",
+    "",
+    "[2021 – 2023]  Educación Secundaria Superior",
+    "               Zion Matriculation Higher Secondary School\n\n"
+  ],
+
+  "awards": [
+    "HONORES Y PREMIOS:\n",
+    "[02/2026 – 04/2026]  2do Lugar | GMU ChallengeX (Resiliencia en Cadenas de Suministro)",
+    "",
+    "[08/2026]            2do Lugar | Caterpillar Hackathon (Sathyabama IST)\n\n"
+  ],
+
+  "contact": [
+    "CANALES DE CONTACTO:\n",
+    "Correo:   doncorneliuslivi@gmail.com",
+    "Teléfono: +91 6374760469",
+    "Base:     Chennai, Tamil Nadu, India",
+    "GitHub:   https://github.com/Don-Cornelius-B",
+    "LinkedIn: https://linkedin.com/in/don-cornelius-livi/\n\n"
+  ],
+
+  "smallBanner": [
+    "DCB // ESTADO: OPERATIVO",
+    "Nombre: Don Cornelius B",
+    "Rol: Ingeniero Cloud & DevOps",
+    "Base: Chennai, IN",
+    "Mail: doncorneliuslivi@gmail.com\n\n"
+  ],
+
+  "smallHelp": [
+    "Comandos: banner, help, bio, skills, projects, education, awards, resume, contact, github, linkedin, cls\n\n"
+  ],
+
+  "smallSkills": [
+    "Cloud: AWS, Docker, K8s, Terraform, CI/CD",
+    "Dev: Python, Node.js, React, Next.js, Three.js\n\n"
+  ],
+
+  "quotes": [
+    "DCB // ESTADO: OPERATIVO",
+    "CHENNAI, IN [13.0827° N, 80.2707° E]",
+    "INGENIERO DE SISTEMAS CLOUD & DEVOPS",
+    "GANADOR 2DO LUGAR GMU CHALLENGEX",
+    "GANADOR 2DO LUGAR HACKATHON CATERPILLAR",
+    "KUBERNETES // DOCKER // TERRAFORM // AWS",
+    "ARQUITECTURAS NATIVAS DE NUBE DE ALTO RENDIMIENTO",
+    "BUFFER DE TELEMETRÍA EN TIEMPO REAL ACTIVO"
+  ]
+}
