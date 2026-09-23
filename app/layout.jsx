@@ -3,6 +3,7 @@ import Dots from './components/Dots';
 import Marquee from './components/Marquee';
 import { LanguageContextProvider } from './context/LanguageContext';
 import { CrtContextProvider } from './context/CrtContext';
+import { vt323 } from './fonts/fonts';
 
 export const metadata = {
   title: 'Don Cornelius B | Cloud Systems & DevOps Engineer',
@@ -11,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" translate="no">
-      <body>
+    <html lang="en" translate="no" className={vt323.variable}>
+      <body className={vt323.className}>
         <LanguageContextProvider>
           <CrtContextProvider>
             <Marquee />
