@@ -1,7 +1,6 @@
 {
   "enButton": "ENGLISH",
   "esButton": "SPANISH",
-  "crtButton": "EFECTO CRT",
 
   "opening": "Abriendo",
   "errPart1": "x_x Error de sintaxis",
@@ -41,7 +40,7 @@
     "contact         Canales de contacto directo",
     "github          Abre perfil de GitHub",
     "linkedin        Abre perfil de LinkedIn",
-    "cls             Limpia la terminal\n\n"
+    "cls / clear     Limpia la terminal\n\n"
   ],
 
   "bio": [

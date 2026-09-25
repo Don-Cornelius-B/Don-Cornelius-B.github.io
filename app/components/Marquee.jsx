@@ -1,6 +1,5 @@
 'use client';
 import { useLanguageContext } from '../context/LanguageContext';
-import { useCrtContext } from '../context/CrtContext';
 import { useState, useEffect } from 'react';
 import styles from '../css/marquee.module.css';
 import { dotFont } from '../fonts/fonts';
@@ -8,7 +7,6 @@ import { dotFont } from '../fonts/fonts';
 const Marquee = () => {
   const { tArray } = useLanguageContext();
   const quotes = tArray("quotes");
-  const { crt } = useCrtContext();
 
   const [quote, setQuote] = useState('');
   const [speed, setSpeed] = useState('10');
@@ -27,7 +25,7 @@ const Marquee = () => {
   if (!quote) return null;
 
   return (
-    <header className={`${styles.header} ${crt ? "bright__border" : ""}`} style={{ '--transition-duration': speed + 's' }}>
+    <header className={styles.header} style={{ '--transition-duration': speed + 's' }}>
       <h1
         key={quote}
         className={dotFont.className}

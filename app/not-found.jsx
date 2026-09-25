@@ -2,11 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { vt323 } from './fonts/fonts';
 import styles from './css/terminal.module.css';
-import { useCrtContext } from './context/CrtContext';
 
 export default function NotFound() {
   const router = useRouter();
-  const { crt } = useCrtContext();
 
   return (
     <main style={{ 
@@ -19,7 +17,7 @@ export default function NotFound() {
       padding: '25px',
       color: 'white'
     }}>
-      <div className={`${styles.terminal} ${crt ? "bright__border" : ""}`} style={{ height: 'auto', width: '100%', maxWidth: '800px', animation: 'none' }}>
+      <div className={styles.terminal} style={{ height: 'auto', width: '100%', maxWidth: '800px', animation: 'none' }}>
         <div className={`${styles.terminal__history} ${vt323.className}`}>
           SYS_ERROR: 404_NOT_FOUND
           <br /><br />

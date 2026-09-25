@@ -2,7 +2,6 @@ import './globals.css';
 import Dots from './components/Dots';
 import Marquee from './components/Marquee';
 import { LanguageContextProvider } from './context/LanguageContext';
-import { CrtContextProvider } from './context/CrtContext';
 import { vt323 } from './fonts/fonts';
 
 export const metadata = {
@@ -15,11 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en" translate="no" className={vt323.variable}>
       <body className={vt323.className}>
         <LanguageContextProvider>
-          <CrtContextProvider>
-            <Marquee />
-            <Dots />
-            {children}
-          </CrtContextProvider>
+          <Marquee />
+          <Dots />
+          {children}
         </LanguageContextProvider>
       </body>
     </html>

@@ -1,0 +1,291 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: #000000;
+  box-sizing: border-box;
+  font-family: var(--vt323), monospace;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Header & Tab Switcher */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.statusDotIdle {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.tabSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.tabBracket {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.tabDivider {
+  color: #ffffff;
+  opacity: 0.4;
+  margin: 0 2px;
+}
+
+.tabBtn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  outline: none;
+}
+
+.tabBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.tabBtnActive {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1px solid #ffffff;
+}
+
+/* Body Deck */
+.deckBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+/* ===================================================
+   VIEW 1: [ EQ ] ASCII BLOCK SPECTRUM
+   =================================================== */
+.eqContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.eqGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.eqCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.eqBarsStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 48px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 12px;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+.eqBarRow {
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eqLabel {
+  font-size: 13px;
+  line-height: 1;
+  color: #ffffff;
+  opacity: 0.85;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.eqFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 0.6;
+  padding-top: 2px;
+  border-top: 1px dotted rgba(255, 255, 255, 0.2);
+}
+
+/* ===================================================
+   VIEW 2: [ KEYS ] TERMINAL MACRO DISPATCHER
+   =================================================== */
+.keysContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+}
+
+.macroGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.macroBtn {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  font-family: var(--vt323), monospace;
+  font-size: 17px;
+  padding: 8px 4px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  white-space: nowrap;
+  transition: background-color 0.1s ease, color 0.1s ease, transform 0.05s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+.macroBtn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 700;
+}
+
+.macroBtn:active,
+.macroBtnFlashed {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  transform: translateY(1px);
+}
+
+.keysStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 0.6;
+  padding-top: 2px;
+  border-top: 1px dotted rgba(255, 255, 255, 0.2);
+}
+
+/* Media Query Adaptations */
+@media only screen and (max-width: 1250px) and (min-width: 760px) {
+  .macroGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  
+  .macroBtn {
+    padding: 6px 4px;
+    font-size: 16px;
+  }
+
+  .eqLabel {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .macroGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .macroBtn {
+    padding: 6px 4px;
+    font-size: 15px;
+  }
+
+  .eqLabel {
+    font-size: 11px;
+  }
+
+  .eqBarsStack {
+    height: 40px;
+    font-size: 15px;
+    line-height: 10px;
+  }
+}

@@ -1,7 +1,6 @@
 {
   "enButton": "ENGLISH",
   "esButton": "SPANISH",
-  "crtButton": "CRT EFFECT",
 
   "opening": "Opening",
   "errPart1": "x_x Syntax Error",
@@ -41,7 +40,7 @@
     "contact         Direct comms channels (Email, Phone, Location)",
     "github          Opens GitHub profile (https://github.com/Don-Cornelius-B)",
     "linkedin        Opens LinkedIn profile (https://linkedin.com/in/don-cornelius-livi/)",
-    "cls             Clears terminal buffer\n\n"
+    "cls / clear     Clears terminal buffer\n\n"
   ],
 
   "bio": [

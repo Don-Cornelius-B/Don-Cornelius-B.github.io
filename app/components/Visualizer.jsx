@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from '../css/visualizer.module.css';
 import { TRACKS } from '../data/tracks';
-import { useCrtContext } from '../context/CrtContext';
 import { vt323 } from '../fonts/fonts';
 
 const formatTime = (timeInSeconds) => {
@@ -13,7 +12,6 @@ const formatTime = (timeInSeconds) => {
 };
 
 const Visualizer = () => {
-  const { crt } = useCrtContext();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -27,6 +25,14 @@ const Visualizer = () => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  // Broadcast audio playback state for AuxConsole and global listeners
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.__PORTFOLIO_AUDIO_PLAYING__ = isPlaying;
+      window.dispatchEvent(new CustomEvent('portfolio-audio-state', { detail: { isPlaying } }));
+    }
+  }, [isPlaying]);
 
   // Handle Play/Pause execution
   useEffect(() => {
@@ -131,45 +137,45 @@ const Visualizer = () => {
       </div>
 
       <div className={styles.telemetryContainer}>
-        <div className={`${styles.telemetryLine} ${crt ? 'bright' : ''}`}>
+        <div className={styles.telemetryLine}>
           TRACK: {currentTrack.title}
         </div>
         
         <div className={styles.progressRow}>
-          <span className={`${crt ? 'bright' : ''}`}>{formatTime(currentTime)}</span>
+          <span>{formatTime(currentTime)}</span>
           <input
             type="range"
             min="0"
             max={duration || 0}
             value={currentTime}
             onChange={handleSeek}
-            className={`${styles.progressBar} ${crt ? 'bright__border' : ''}`}
+            className={styles.progressBar}
             style={{
               background: `linear-gradient(to right, #ffffff ${progressPercent}%, transparent ${progressPercent}%)`
             }}
           />
-          <span className={`${crt ? 'bright' : ''}`}>{formatTime(duration)}</span>
+          <span>{formatTime(duration)}</span>
         </div>
         
         <div className={styles.controls}>
-          <button className={`${styles.controlBtn} ${crt ? 'bright' : ''}`} onClick={handlePrev} title="Previous">
+          <button className={styles.controlBtn} onClick={handlePrev} title="Previous">
             |&lt;
           </button>
-          <button className={`${styles.controlBtn} ${crt ? 'bright' : ''}`} onClick={togglePlay} title={isPlaying ? "Pause" : "Play"}>
+          <button className={styles.controlBtn} onClick={togglePlay} title={isPlaying ? "Pause" : "Play"}>
             {isPlaying ? '||' : ' > '}
           </button>
-          <button className={`${styles.controlBtn} ${crt ? 'bright' : ''}`} onClick={handleNext} title="Next">
+          <button className={styles.controlBtn} onClick={handleNext} title="Next">
             &gt;|
           </button>
           
           <div className={styles.volumeGroup}>
-            <button className={`${styles.controlBtn} ${crt ? 'bright' : ''}`} onClick={decreaseVolume} title="Decrease Volume">
+            <button className={styles.controlBtn} onClick={decreaseVolume} title="Decrease Volume">
               [-]
             </button>
-            <span className={`${styles.volumeLabel} ${crt ? 'bright' : ''}`}>
+            <span className={styles.volumeLabel}>
               VOL: {volumePercent.toString().padStart(3, '\u00A0')}%
             </span>
-            <button className={`${styles.controlBtn} ${crt ? 'bright' : ''}`} onClick={increaseVolume} title="Increase Volume">
+            <button className={styles.controlBtn} onClick={increaseVolume} title="Increase Volume">
               [+]
             </button>
           </div>

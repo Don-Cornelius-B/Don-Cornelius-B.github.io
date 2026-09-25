@@ -43,7 +43,7 @@
   justify-content: center;
 }
 
-.crtSwitch {
+.auxConsole {
   border: 1px solid rgb(255, 255, 255);
   height: 20%;
   display: flex;
@@ -98,7 +98,7 @@
     height: 100%;
   }
 
-  .crtSwitch {
+  .auxConsole {
     height: 100%;
   }
 }

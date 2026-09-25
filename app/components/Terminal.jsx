@@ -3,11 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLanguageContext } from '../context/LanguageContext';
 import styles from '../css/terminal.module.css';
 import { vt323 } from '../fonts/fonts';
-import { useCrtContext } from '../context/CrtContext';
 
 const Terminal = () => {
   const { t, tArray, language } = useLanguageContext();
-  const { crt } = useCrtContext();
   const divRef = useRef(null);
   const inputRef = useRef(null);
   
@@ -15,6 +13,11 @@ const Terminal = () => {
   const [output, setOutput] = useState("");
   const [slicedText, setSlicedText] = useState("");
   const timeoutRef = useRef(null);
+  const outputRef = useRef(output);
+
+  useEffect(() => {
+    outputRef.current = output;
+  }, [output]);
 
   const smallScreen = typeof window !== 'undefined' ? window.innerWidth <= 760 : false;
   const joinArray = (key, sep) => {
@@ -84,69 +87,85 @@ const Terminal = () => {
     return linkified;
   };
 
+  const executeCommand = (commandToRun) => {
+    const trimmed = (commandToRun ?? '').trim();
+    if (!trimmed) return;
+
+    let textToAppend = `SYS_GUEST@dcb-portfolio ~ ${trimmed}\n\n`;
+    let link = "";
+    let openLink = `${t("opening")} ${trimmed}...\n\n`;
+    const cmd = trimmed.toLowerCase();
+
+    switch (cmd) {
+      case "banner": textToAppend += banner; break;
+      case "help": textToAppend += help; break;
+      case "skills": textToAppend += skills; break;
+      case "projects": textToAppend += projects; break;
+      case "project 1":
+        textToAppend += openLink;
+        link = "https://github.com/tanmaya-kamma/multimodal_ai";
+        break;
+      case "project 2":
+        textToAppend += openLink;
+        link = "https://github.com/Don-Cornelius-B/Smart_Rental_Tracking_System_SDD";
+        break;
+      case "project 3":
+        textToAppend += openLink;
+        link = "https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io";
+        break;
+      case "education": textToAppend += education; break;
+      case "awards": textToAppend += awards; break;
+      case "bio": textToAppend += bio; break;
+      case "contact": textToAppend += contact; break;
+      case "github":
+        textToAppend += openLink;
+        link = "https://github.com/Don-Cornelius-B";
+        break;
+      case "linkedin":
+        textToAppend += openLink;
+        link = "https://linkedin.com/in/don-cornelius-livi/";
+        break;
+      case "resume":
+        textToAppend += openLink;
+        link = "/Don_Cornelius_B_Resume.pdf";
+        break;
+      case "cls":
+      case "clear":
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        setOutput("");
+        setSlicedText("");
+        setInput("");
+        return;
+      default:
+        textToAppend += `${t("errPart1")} "${trimmed}" ${t("errPart2")}\n\n`;
+    }
+
+    animateText(outputRef.current, textToAppend, link);
+    setInput("");
+  };
+
+  useEffect(() => {
+    const handleTerminalCmd = (event) => {
+      const commandString = event?.detail;
+      if (typeof commandString === 'string') {
+        executeCommand(commandString);
+      }
+    };
+
+    window.addEventListener('terminal-cmd', handleTerminalCmd);
+    return () => {
+      window.removeEventListener('terminal-cmd', handleTerminalCmd);
+    };
+  }, [banner, help, skills, projects, education, awards, bio, contact]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      let textToAppend = "";
-      let link = "";
-      textToAppend = `SYS_GUEST@dcb-portfolio ~ ${input}\n\n`;
-      let openLink = `${t("opening")} ${input}...\n\n`;
-      
-      const cmd = input.trim().toLowerCase();
-      
-      switch (cmd) {
-        case "banner": textToAppend += banner; break;
-        case "help": textToAppend += help; break;
-        case "skills": textToAppend += skills; break;
-        case "projects": textToAppend += projects; break;
-        case "project 1":
-          textToAppend += openLink;
-          link = "https://github.com/tanmaya-kamma/multimodal_ai";
-          break;
-        case "project 2":
-          textToAppend += openLink;
-          link = "https://github.com/Don-Cornelius-B/Smart_Rental_Tracking_System_SDD";
-          break;
-        case "project 3":
-          textToAppend += openLink;
-          link = "https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io";
-          break;
-        case "education": textToAppend += education; break;
-        case "awards": textToAppend += awards; break;
-        case "bio": textToAppend += bio; break;
-        case "contact": textToAppend += contact; break;
-        case "github":
-          textToAppend += openLink;
-          link = "https://github.com/Don-Cornelius-B";
-          break;
-        case "linkedin":
-          textToAppend += openLink;
-          link = "https://linkedin.com/in/don-cornelius-livi/";
-          break;
-        case "resume":
-          textToAppend += openLink;
-          link = "/Don_Cornelius_B_Resume.pdf";
-          break;
-        case "cls":
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          setOutput("");
-          setSlicedText("");
-          setInput("");
-          break;
-        default:
-          if (cmd !== "") {
-            textToAppend += `${t("errPart1")} "${input}" ${t("errPart2")}\n\n`;
-          }
-      }
-
-      if (cmd !== "cls" && cmd !== "") {
-        animateText(output, textToAppend, link);
-      }
-      setInput("");
+      executeCommand(input);
     }
   };
 
   return (
-    <div ref={divRef} className={`${styles.terminal} ${crt ? "bright__border" : ""}`} onClick={() => inputRef.current?.focus()}>
+    <div ref={divRef} className={styles.terminal} onClick={() => inputRef.current?.focus()}>
       <div className={`${styles.terminal__history} ${vt323.className}`}>
         <span dangerouslySetInnerHTML={{ __html: formatOutputWithLinks(output) }} />
         <span>{slicedText}</span>
