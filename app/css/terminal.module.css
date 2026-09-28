@@ -2,9 +2,9 @@
   animation: bottom 1s ease;
   width: 65%;
   overflow-Y: auto;
-  overflow-X: hidden;
+  overflow-X: auto;
   color: white;
-  font-size: 3vh;
+  font-size: clamp(16px, 1.35vw, 24px);
   border: 1px solid rgb(255, 255, 255);
 }
 
@@ -12,8 +12,10 @@
   padding: 15px 15px 0px 15px;
   width: 100%;
   color: white;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  white-space: pre;
+  overflow-x: auto;
+  font-family: inherit;
+  margin: 0;
 }
 
 .terminal__prompt {
@@ -31,7 +33,7 @@
   width: 100%;
   background-color: transparent;
   color: white;
-  font-size: 3vh;
+  font-size: inherit;
 }
 
 @keyframes bottom {

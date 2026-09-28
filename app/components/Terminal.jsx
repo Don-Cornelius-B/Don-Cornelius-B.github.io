@@ -4,6 +4,39 @@ import { useLanguageContext } from '../context/LanguageContext';
 import styles from '../css/terminal.module.css';
 import { vt323 } from '../fonts/fonts';
 
+const KNIGHT_ASCII = `
+      ,-'""\`-,               
+    ,'        \`.             
+   /    _,,,_   \\            
+  /   ,'  |  \`\\/\\\\           
+ /   /,--' \`--.  \`           
+ |   /      ___\\_            
+ |  | /  ______|             
+ |  | |  |_' \\'|             
+ \\ ,' (   _) -\`|             
+  '--- \\ '-.-- /             
+ ______/\`--'--<              
+ |    |\`-.  ,;/\\'\\'--._        
+ |    |-. _///     ,'\`\\      
+ |    |\`-Y;'/     /  ,-'\\    
+ |    | // <_    / ,'  ,-'\\  
+ '----'// -- \`-./,' ,-'  \\/  
+`;
+
+const buildBannerWithKnight = (metaLines) => {
+  const knightLines = KNIGHT_ASCII.replace(/^\n+/, '').replace(/\n+$/, '').split('\n');
+  const paddedKnight = knightLines.map(line => line.padEnd(33, ' '));
+  const maxLines = Math.max(paddedKnight.length, metaLines.length);
+  const combined = [];
+  for (let i = 0; i < maxLines; i++) {
+    const k = paddedKnight[i] || ' '.repeat(33);
+    const m = metaLines[i] || '';
+    combined.push(k + m);
+  }
+  combined.push('================================================================================');
+  return combined.join('\n');
+};
+
 const Terminal = () => {
   const { t, tArray, language } = useLanguageContext();
   const divRef = useRef(null);
@@ -26,7 +59,11 @@ const Terminal = () => {
   };
   const sep = '\n';
   
-  const banner = smallScreen ? joinArray("smallBanner", sep) : joinArray("banner", sep);
+  const bannerMeta = tArray("bannerMeta");
+  const desktopBanner = Array.isArray(bannerMeta) && bannerMeta.length > 0
+    ? buildBannerWithKnight(bannerMeta)
+    : joinArray("banner", sep);
+  const banner = smallScreen ? joinArray("smallBanner", sep) : desktopBanner;
   const help = smallScreen ? joinArray("smallHelp", sep) : joinArray("help", sep);
   const skills = smallScreen ? joinArray("smallSkills", sep) : joinArray("skills", sep);
   const projects = joinArray("projects", sep);
@@ -166,10 +203,10 @@ const Terminal = () => {
 
   return (
     <div ref={divRef} className={styles.terminal} onClick={() => inputRef.current?.focus()}>
-      <div className={`${styles.terminal__history} ${vt323.className}`}>
+      <pre className={`${styles.terminal__history} ${vt323.className}`}>
         <span dangerouslySetInnerHTML={{ __html: formatOutputWithLinks(output) }} />
         <span>{slicedText}</span>
-      </div>
+      </pre>
       <section className={styles.terminal__prompt}>
         <article className={vt323.className}>SYS_GUEST@dcb-portfolio ~</article>
         <article className={styles.terminal__inputContainer}>

@@ -1,29 +1,28 @@
 {
   "enButton": "ENGLISH",
   "esButton": "SPANISH",
-
   "opening": "Opening",
   "errPart1": "x_x Syntax Error",
   "errPart2": "is not a recognized command. Type \"help\" for valid commands.",
-
   "banner": [
-    "  ____   ____ ____    // SYS_STATUS: OPERATIONAL",
-    " |  _ \\ / ___| __ )   Name: Don Cornelius B",
-    " | | | | |   |  _ \\   Role: Cloud Systems & DevOps Engineer | CSE Technologist",
-    " | |_| | |___| |_) |  Base: Chennai, IN",
-    " |____/ \\____|____/   Mail: doncorneliuslivi@gmail.com",
-    "                      Phone: +91 6374760469",
-    "",
-    " Quick Direct Commands:",
-    " =^..^= github        https://github.com/Don-Cornelius-B",
-    " [in]   linkedin      https://linkedin.com/in/don-cornelius-livi/",
-    " [pdf]  resume        /Don_Cornelius_B_Resume.pdf",
-    "",
-    " ═══════════════════════════════════════════════════════════════════════════════",
-    " Type \"help\" to display all available buffer commands.",
-    " Type \"projects\" to inspect verified systems engineering projects.\n"
+    "      ,-'\"\"`-,                   // SYS_STATUS: OPERATIONAL",
+    "    ,'        `.                 Name: Don Cornelius B",
+    "   /    _,,,_   \\                Role: Cloud Systems & DevOps Engineer | CSE Technologist",
+    "  /   ,'  |  `\\/\\\\               Base: Chennai, IN",
+    " /   /,--' `--.  `               Mail: doncorneliuslivi@gmail.com",
+    " |   /      ___\\_                Phone: +91 6374760469",
+    " |  | /  ______|                 ",
+    " |  | |  |_' \\'|                 Quick Direct Commands:",
+    " \\ ,' (   _) -`|                 =^..^= github    https://github.com/Don-Cornelius-B",
+    "  '--- \\ '-.-- /                 [in]   linkedin  https://linkedin.com/in/don-cornelius-livi/",
+    " ______/`--'--<                  [pdf]  resume    /Don_Cornelius_B_Resume.pdf",
+    " |    |`-.  ,;/\\'\\'--._          [dir]  projects  Inspect verified systems engineering projects",
+    " |    |-. _///     ,'`\\          [man]  help      Display all available buffer commands",
+    " |    |`-Y;'/     /  ,-'\\        ",
+    " |    | // <_    / ,'  ,-'\\      ",
+    " '----'// -- `-./,' ,-'  \\/      ",
+    "================================================================================"
   ],
-
   "help": [
     "Available Terminal Commands:\n",
     "banner          Displays system ID banner and initial greeting",
@@ -42,7 +41,6 @@
     "linkedin        Opens LinkedIn profile (https://linkedin.com/in/don-cornelius-livi/)",
     "cls / clear     Clears terminal buffer\n\n"
   ],
-
   "bio": [
     "IDENTIFIER: Don Cornelius B",
     "STATUS: OPERATIONAL • CHENNAI, IN",
@@ -52,14 +50,12 @@
     "Science and Technology (2023–2027) specializing in Cloud Computing, DevOps",
     "Engineering, and cloud-native systems for future scaling.\n\n"
   ],
-
   "skills": [
     "Cloud & DevOps      AWS, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD",
     "Backend & Systems   Python, Node.js, Express, REST APIs, Microservices",
     "Frontend & UI       React, Next.js 15, Three.js, Tailwind CSS, Monospace TUI",
     "Data & Spatial      TorchGeo, CMU SDK, Multimodal AI, IoT Telemetry\n\n"
   ],
-
   "projects": [
     "VERIFIED ENGINEERING PROJECTS:\n",
     "1. MULTIMODAL AI SUPPLY CHAIN ANALYSIS",
@@ -80,7 +76,6 @@
     "   Desc: High-performance portfolio platform featuring interactive telemetry",
     "         canvas, dynamic architecture drawers, and automated GitHub Pages CI/CD delivery.\n\n"
   ],
-
   "education": [
     "ACADEMIC TIMELINE:\n",
     "[2023 – 2027]  B.E. Computer Science and Engineering",
@@ -89,7 +84,6 @@
     "[2021 – 2023]  Higher Secondary Studies",
     "               Zion Matriculation Higher Secondary School\n\n"
   ],
-
   "awards": [
     "HONORS & COMPETITIVE ACCOLADES:\n",
     "[02/2026 – 04/2026]  2nd Place | GMU ChallengeX (Federal Supply Chain Resilience)",
@@ -98,7 +92,6 @@
     "[08/2026]            2nd Place | Caterpillar Hackathon",
     "                     24-hour university hackathon at Sathyabama IST.\n\n"
   ],
-
   "contact": [
     "COMMUNICATION CHANNELS:\n",
     "Email:    doncorneliuslivi@gmail.com",
@@ -107,7 +100,6 @@
     "GitHub:   https://github.com/Don-Cornelius-B",
     "LinkedIn: https://linkedin.com/in/don-cornelius-livi/\n\n"
   ],
-
   "smallBanner": [
     "DCB // SYS_STATUS: OPERATIONAL",
     "Name: Don Cornelius B",
@@ -117,16 +109,13 @@
     "",
     "Type \"help\" to view available commands\n\n"
   ],
-
   "smallHelp": [
     "Commands: banner, help, bio, skills, projects, education, awards, resume, contact, github, linkedin, cls\n\n"
   ],
-
   "smallSkills": [
     "Cloud: AWS, Docker, K8s, Terraform, CI/CD",
     "Dev: Python, Node.js, React, Next.js, Three.js\n\n"
   ],
-
   "quotes": [
     "DCB // SYS_STATUS: OPERATIONAL",
     "CHENNAI, IN [13.0827° N, 80.2707° E]",
@@ -137,5 +126,20 @@
     "HIGH-THROUGHPUT CLOUD-NATIVE ARCHITECTURE",
     "REAL-TIME TELEMETRY BUFFER ACTIVE",
     "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY (2023-2027)"
+  ],
+  "bannerMeta": [
+    "// SYS_STATUS: OPERATIONAL",
+    "Name: Don Cornelius B",
+    "Role: Cloud Systems & DevOps Engineer | CSE Technologist",
+    "Base: Chennai, IN",
+    "Mail: doncorneliuslivi@gmail.com",
+    "Phone: +91 6374760469",
+    "",
+    "Quick Direct Commands:",
+    "=^..^= github    https://github.com/Don-Cornelius-B",
+    "[in]   linkedin  https://linkedin.com/in/don-cornelius-livi/",
+    "[pdf]  resume    /Don_Cornelius_B_Resume.pdf",
+    "[dir]  projects  Inspect verified systems engineering projects",
+    "[man]  help      Display all available buffer commands"
   ]
 }
