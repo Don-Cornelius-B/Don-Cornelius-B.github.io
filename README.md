@@ -1,72 +1,104 @@
-# My-Portfolio
+# 🖥️ Don Cornelius B — Interactive 1-Bit Developer Workstation
 
-Modern Pro portfolio for Don Cornelius B, built with Next.js 15 (App Router), Tailwind CSS, and Framer Motion.
+An authentic, high-performance 1-bit terminal workstation and interactive IDE environment built with **Next.js 15**, **React 19**, and **Tailwind CSS**. Deployed continuously to GitHub Pages via automated GitHub Actions workflows.
 
-## Stack
+🔗 **Live Deployment:** [https://don-cornelius-b.github.io/](https://don-cornelius-b.github.io/)
 
-- Next.js 15 App Router
-- React 19
-- Tailwind CSS
-- Framer Motion
-- GitHub Actions (build + GitHub Pages deploy)
+---
 
-## Highlights
+## ⚡ Key Architectural Features
 
-- Deep charcoal and midnight-blue glassmorphism UI
-- Hero with creative technologist positioning
-- Agnostic project grid with hover tech tags
-- Project Deep Dive modal with architecture diagram
-- System Logs terminal-style technical overlay
-- Skill matrix grouped into glass cards
-- Interactive vertical journey timeline
-- Tech Stack Orbit animation
-- Live deployment status badge in footer
+### 1. 🛡️ 1-Bit Knight ASCII Monogram & Quick Direct Commands
+* **Custom Knight Insignia**: Line-calibrated 1-bit medieval knight ASCII graphic aligned alongside system operational telemetry without horizontal wrapping.
+* **Streamlined Command Directory**: Consolidated primary system navigation triggers (`github`, `linkedin`, `resume`, `projects`, `help`) into an index directly above the prompt divider.
 
-## Local Development
+### 2. 💽 Embedded Vinyl Audio Deck & Decoupled State Sync
+* **1-Bit Retro Media Deck**: Interactive turntable visualizer with spinning vinyl record graphics, track scrubbing slider, volume controls, and track metadata readout (`Above the Clouds`).
+* **Hardware Event Synchronization**: Broadcasts audio playback lifecycle hooks via custom window events (`portfolio-audio-state`) to coordinate visualizer reactive loops without re-rendering parent tree layouts.
 
-Install dependencies:
+### 3. 🎛️ Dual-Mode Hardware AuxConsole (`[ EQ | KEYS ]`)
+* **8-Band ASCII EQ Spectrum**: Visualizes multi-band frequencies (60Hz to 16kHz) reacting dynamically to audio playback using authentic Unicode block tiers (` `, `▂`, `▃`, `▄`, `▅`, `▆`, `▇`, `█`).
+* **Tactile Macro Dispatcher**: 4 hardware macro triggers (`[ ? help ]`, `[ * projects ]`, `[ @ bio ]`, `[ ! clear ]`) dispatching non-blocking buffer executions directly to the terminal engine.
 
-```bash
-npm install
+### 4. 📂 Sliding NerdTree Explorer & Read-Only Document Reader (`OVERALL VIEW`)
+* **Choreographed IDE Transition**:
+  1. Triggering `[ OVERALL VIEW ]` smoothly slides the audio player and AuxConsole modules off-screen (`translateX(120%)`).
+  2. The top pane expands downward to fill the right column with a collapsible Vim NerdTree directory structure.
+  3. The main stage smoothly transitions into a **60/40 IDE layout ratio**, swapping the terminal shell for a read-only document editor.
+* **Document Viewer**: Formats structured repository overviews and an edge-to-edge bordered text recreation of the engineering resume with direct PDF access.
+
+---
+
+## 🛠️ Tech Stack & Tooling
+
+* **Framework**: [Next.js 15](https://nextjs.org/) (Static Export / App Router)
+* **Library**: React 19
+* **Styling**: Tailwind CSS & Vanilla CSS Modules
+* **Typography**: Monospace VT323 (`--font-vt323`)
+* **Animation & State**: Custom CSS transitions, custom DOM event buses, decoupled buffer refs
+* **CI/CD**: GitHub Actions deploying automatically to GitHub Pages
+
+---
+
+## 📁 Repository Directory Structure
+
+```text
+don-cornelius-b/
+├── app/
+│   ├── components/
+│   │   ├── AuxConsole.jsx       # Dual-mode EQ & macro hardware console
+│   │   ├── DocumentReader.jsx   # Read-only project README & resume viewer
+│   │   ├── NerdTree.jsx         # Collapsible directory tree browser
+│   │   ├── Terminal.jsx         # Custom CLI execution buffer & ASCII header
+│   │   └── Visualizer.jsx       # 1-bit vinyl audio player deck
+│   ├── css/
+│   │   ├── auxconsole.module.css
+│   │   ├── documentreader.module.css
+│   │   ├── nerdtree.module.css
+│   │   ├── page.module.css
+│   │   └── terminal.module.css
+│   ├── data/
+│   │   └── english.json         # Systems, projects, and bio data records
+│   ├── layout.jsx
+│   └── page.jsx                 # Master 3-box rail and IDE transition orchestrator
+├── public/
+│   ├── Don_Cornelius_B_Resume.pdf
+│   └── audio/
+└── next.config.mjs
 ```
 
-Run development server:
+---
 
-```bash
-npm run dev
-```
+## 🚀 Local Development Setup
 
-Build production export:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Don-Cornelius-B/Don-Cornelius-B.github.io.git
+   cd Don-Cornelius-B.github.io
+   ```
 
-```bash
-npm run build
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Deployment
+3. **Start local development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) (or http://localhost:3001) in your browser.
 
-Deployment is automated via [.github/workflows/main.yml](.github/workflows/main.yml).
+4. **Build static production export:**
+   ```bash
+   npm run build
+   ```
 
-On every push to `main`, GitHub Actions:
+---
 
-1. Installs dependencies
-2. Builds static export (`out/`)
-3. Deploys to GitHub Pages
+## 👤 Author
 
-### GitHub Pages mode
-
-This repository is currently configured for **root-domain hosting** (`https://don-cornelius-b.github.io`) by setting:
-
-- `PAGES_PROJECT_SITE: 'false'` in workflow build env
-- environment-aware asset path handling in `next.config.mjs`
-
-If you ever switch to project-path hosting (`/My-Portfolio`), set:
-
-- `PAGES_PROJECT_SITE: 'true'` in `.github/workflows/main.yml`
-
-### Quick troubleshooting
-
-If deployment succeeds but the page appears unstyled/blank:
-
-1. Open browser devtools → Network
-2. Check for `/_next/static/...` 404 responses
-3. Confirm `PAGES_PROJECT_SITE` matches your hosting mode (root vs project path)
+**Don Cornelius Barnabas**
+* **Role**: Cloud Systems & DevOps Engineer | CSE Technologist
+* **Location**: Chennai, IN
+* **GitHub**: [@Don-Cornelius-B](https://github.com/Don-Cornelius-B)
+* **LinkedIn**: [don-cornelius-livi](https://linkedin.com/in/don-cornelius-livi/)
