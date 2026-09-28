@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLanguageContext } from '../context/LanguageContext';
 import styles from '../css/terminal.module.css';
 import { vt323 } from '../fonts/fonts';
+import DocumentReader from './DocumentReader';
 
 const KNIGHT_ASCII = `
       ,-'""\`-,               
@@ -37,7 +38,8 @@ const buildBannerWithKnight = (metaLines) => {
   return combined.join('\n');
 };
 
-const Terminal = () => {
+const Terminal = ({ phase, setIsExplorerOpen, selectedFile }) => {
+  const isExplorerOpen = phase >= 1;
   const { t, tArray, language } = useLanguageContext();
   const divRef = useRef(null);
   const inputRef = useRef(null);
@@ -202,28 +204,38 @@ const Terminal = () => {
   };
 
   return (
-    <div ref={divRef} className={styles.terminal} onClick={() => inputRef.current?.focus()}>
-      <pre className={`${styles.terminal__history} ${vt323.className}`}>
-        <span dangerouslySetInnerHTML={{ __html: formatOutputWithLinks(output) }} />
-        <span>{slicedText}</span>
-      </pre>
-      <section className={styles.terminal__prompt}>
-        <article className={vt323.className}>SYS_GUEST@dcb-portfolio ~</article>
-        <article className={styles.terminal__inputContainer}>
-          <p className={vt323.className}>&gt;</p>
-          <input
-            className={`${styles.terminal__input} ${vt323.className}`}
-            ref={inputRef}
-            type="text"
-            id='prompt'
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            autoComplete="off"
-            spellCheck="false"
-          />
-        </article>
-      </section>
+    <div 
+      ref={divRef} 
+      className={styles.terminal} 
+      onClick={() => { if (!isExplorerOpen) inputRef.current?.focus(); }}
+    >
+      {!isExplorerOpen ? (
+        <>
+          <pre className={`${styles.terminal__history} ${vt323.className}`}>
+            <span dangerouslySetInnerHTML={{ __html: formatOutputWithLinks(output) }} />
+            <span>{slicedText}</span>
+          </pre>
+          <section className={styles.terminal__prompt}>
+            <article className={vt323.className}>SYS_GUEST@dcb-portfolio ~</article>
+            <article className={styles.terminal__inputContainer}>
+              <p className={vt323.className}>&gt;</p>
+              <input
+                className={`${styles.terminal__input} ${vt323.className}`}
+                ref={inputRef}
+                type="text"
+                id='prompt'
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                autoComplete="off"
+                spellCheck="false"
+              />
+            </article>
+          </section>
+        </>
+      ) : (
+        <DocumentReader selectedFile={selectedFile} setIsExplorerOpen={setIsExplorerOpen} />
+      )}
     </div>
   );
 };

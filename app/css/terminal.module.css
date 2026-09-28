@@ -1,6 +1,6 @@
 .terminal {
   animation: bottom 1s ease;
-  width: 65%;
+  width: 100%;
   overflow-Y: auto;
   overflow-X: auto;
   color: white;
@@ -75,4 +75,34 @@
     height: 40%;
     animation: none;
   }
+}
+
+.tabHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+
+.tabTitle {
+  color: #fff;
+}
+
+.exitBtn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.exitBtn:hover {
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
 }
